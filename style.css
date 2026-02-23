@@ -1,3 +1,4 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -6,25 +7,27 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #f8f8f8;
+    background: #f7f7f7;
     color: #222;
 }
 
 .container {
     max-width: 1200px;
     margin: auto;
+    padding: 0 20px;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 25px 0;
 }
 
 .logo {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
     color: #ff5a5f;
 }
@@ -36,152 +39,194 @@ body {
 }
 
 .header-search input {
-    padding: 8px 15px;
-    border-radius: 25px;
+    padding: 10px 20px;
+    border-radius: 30px;
     border: 1px solid #ddd;
+    width: 260px;
+    transition: 0.3s;
+}
+
+.header-search input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255,90,95,0.15);
 }
 
 .login-btn {
     background: #ff5a5f;
     border: none;
-    padding: 8px 18px;
+    padding: 10px 22px;
     border-radius: 25px;
     color: white;
+    font-weight: 500;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-/* HERO */
-hero {
-    height: 400px; /* Өндрийг жоохон ихэсгэвэл гоё харагдана */
-    /* Интернетээс зураг татах */
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 40px 0;
-    text-align: center;
+.login-btn:hover {
+    background: #e0484d;
 }
 
-.hero h1 {
-    color: white;
-    font-size: 40px;
+/* ================= CATEGORY ================= */
+
+.categories {
+    margin-top: 40px;
 }
 
-/* CATEGORY */
 .categories h2 {
     margin-bottom: 25px;
+    font-size: 24px;
 }
 
 .category-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+    gap: 30px;
 }
 
 .category-card {
     background: white;
-    padding: 30px;
+    padding: 35px;
     border-radius: 20px;
     text-align: center;
     border: 1px solid #eee;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .category-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
 }
 
-/* FEATURED */
+.category-card i {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* ================= FEATURED ================= */
+
 .featured {
-    margin-top: 60px;
+    margin-top: 70px;
 }
 
 .featured-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .view-btn {
-    padding: 8px 20px;
+    padding: 8px 18px;
     border-radius: 25px;
     border: 1px solid #ddd;
     background: white;
+    cursor: pointer;
+    transition: 0.3s;
 }
+
+.view-btn:hover {
+    background: #f1f1f1;
+}
+
+/* ================= PROPERTY GRID ================= */
 
 .property-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 30px;
+    gap: 40px;
 }
+
+/* CARD */
 
 .property-card {
     background: white;
     border-radius: 20px;
     overflow: hidden;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
 }
 
 .property-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.07);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
 }
+
+/* IMAGE — хамгийн чухал */
 
 .property-card img {
     width: 100%;
-    height: 220px;
+    height: 250px;
     object-fit: cover;
+    display: block;
 }
 
+/* INFO */
+
 .property-info {
-    padding: 20px;
+    padding: 22px;
+}
+
+.property-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.property-info p {
+    font-size: 14px;
+    margin-bottom: 6px;
 }
 
 .price {
     font-weight: 600;
+    font-size: 15px;
 }
 
 .rating {
-    color: gray;
+    color: #777;
     font-size: 14px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
+
 footer {
     background: white;
-    margin-top: 80px;
-    padding: 50px 0;
+    margin-top: 90px;
+    padding: 60px 0 30px 0;
     border-top: 1px solid #eee;
 }
 
 .footer-container {
     max-width: 1200px;
     margin: auto;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
 }
 
 .footer-container h4 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .footer-container p {
-    margin: 5px 0;
-    color: gray;
+    margin-bottom: 10px;
+    color: #666;
+    cursor: pointer;
+}
+
+.footer-container p:hover {
+    color: black;
 }
 
 .footer-bottom {
     text-align: center;
+    margin-top: 40px;
+    color: #888;
     font-size: 14px;
-    margin-bottom: 10px;
 }
 
 .created-by {
     text-align: center;
+    margin-top: 8px;
     font-size: 14px;
-    color: gray;
+    color: #ff5a5f;
 }
