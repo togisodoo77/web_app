@@ -1,139 +1,631 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>AmraltRent</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AmraltRent — амралтын байр түрээсийн платформ. Хамгийн тохилог амралтын байруудыг олоорой." />
+  <meta name="robots" content="index, follow" />
+  <title>AmraltRent — Амралтын байр хайх</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
 
-    <meta
-      name="description"
-      content="AmraltRent — амралтын байр түрээсийн платформ."
-    />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-;
-  <body>
-    <div class="container">
-      <div class="header">
-        <div class="logo">AmraltRent</div>
+<!-- Skip link wrapped in a block-level element -->
+<div><a href="#main-content" class="skip-link">Үндсэн агуулга руу очих</a></div>
 
-        <div class="header-right">
-          <div class="header-search">
-            <label for="search">Амралт хайх:</label>
-            <input type="text" id="search" name="search" />
-          </div>
+<div class="container">
 
-          <a href="renter.html">Түрээслэгч</a>
-          <button type="button" class="icon-btn">&#9829;</button>
-          <button type="button" class="login-btn">Нэвтрэх / Бүртгүүлэх</button>
+  <!-- ===== HEADER ===== -->
+  <div class="header">
+
+    <!-- Logo with simple text (SVG replaced by emoji) -->
+    <div class="logo">
+      <span class="icon-logo">🏠</span> AmraltRent
+    </div>
+
+    <div class="header-right">
+      <div class="header-search">
+        <label for="search">Амралт хайх:</label>
+        <!-- placeholder removed -->
+        <input type="text" id="search" name="search" />
+      </div>
+      <a href="renter.html">Түрээслэгч</a>
+      <!-- aria-label removed, heart as text -->
+      <button type="button" class="icon-btn">❤️</button>
+      <!-- aria-label removed, dark mode toggles with simple text -->
+      <button type="button" id="dark-toggle" class="dark-toggle">☾</button>
+      <button type="button" class="login-btn" id="btn-auth">
+        Нэвтрэх / Бүртгүүлэх
+      </button>
+    </div>
+  </div>
+  <!-- /HEADER -->
+
+  <!-- main replaced by div -->
+  <div id="main-content">
+
+    <!-- ===== CATEGORIES ===== -->
+    <!-- section replaced by div -->
+    <div class="categories">
+      <h2>Гол цэс</h2>
+      <div class="category-grid">
+
+        <!-- River / Lake -->
+        <!-- data-filter, tabindex, role, aria-pressed removed; filter stored in class -->
+        <div class="category-card filter-гол">
+          <span class="cat-icon">🌊</span>
+          <p>Гол</p>
         </div>
+
+        <!-- Mountain -->
+        <div class="category-card filter-уул">
+          <span class="cat-icon">🏔️</span>
+          <p>Уул</p>
+        </div>
+
+        <!-- VIP / Star -->
+        <div class="category-card filter-vip">
+          <span class="cat-icon">⭐</span>
+          <p>Vip</p>
+        </div>
+
+        <!-- Country / Field -->
+        <div class="category-card filter-хөдөө">
+          <span class="cat-icon">🌾</span>
+          <p>Хөдөө</p>
+        </div>
+
+      </div>
+    </div>
+    <!-- /CATEGORIES -->
+
+    <!-- ===== FEATURED PROPERTIES ===== -->
+    <div class="featured">
+      <div class="featured-top">
+        <h2 id="featured-title">Онцлох байр</h2>
+        <button type="button" class="view-btn" id="clear-filter" style="display:none;">✕ Бүгдийг харах</button>
       </div>
 
-      <div class="categories">
-        <h2>Гол цэс</h2>
-        <div class="category-grid">
-          <div class="category-card">
-            <p>Гол</p>
-          </div>
-          <div class="category-card">
-            <p>Уул</p>
-          </div>
-          <div class="category-card">
-            <p>Vip</p>
-          </div>
-          <div class="category-card">
-            <p>Хөдөө</p>
+      <div class="property-grid" id="property-grid">
+
+        <!-- data-category, tabindex, role, aria-label removed; category stored in class -->
+        <div class="property-card cat-гол" id="card-1">
+          <img
+            src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+            alt="Тансаг зэрэглэлийн байшин" width="800" height="250" />
+          <div class="property-info">
+            <h3>Тансаг зэрэглэлийн байшин</h3>
+            <p>Хөвсгөл далай</p>
+            <p class="price">350k / шөнө</p>
+            <p class="rating">★ 4.8 (120 сэтгэгдэл)</p>
+            <p class="card-hint">Дэлгэрэнгүй харах →</p>
           </div>
         </div>
+
+        <div class="property-card cat-уул" id="card-2">
+          <img
+            src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+            alt="Уулын байшин" width="800" height="250" />
+          <div class="property-info">
+            <h3>Уулын байшин</h3>
+            <p>Тэрэлж</p>
+            <p class="price">200k / шөнө</p>
+            <p class="rating">★ 4.7 (85 сэтгэгдэл)</p>
+            <p class="card-hint">Дэлгэрэнгүй харах →</p>
+          </div>
+        </div>
+
+        <div class="property-card cat-vip" id="card-3">
+          <img
+            src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+            alt="Вилла" width="800" height="250" />
+          <div class="property-info">
+            <h3>Вилла</h3>
+            <p>Архангай</p>
+            <p class="price">400k / шөнө</p>
+            <p class="rating">★ 4.9 (200 сэтгэгдэл)</p>
+            <p class="card-hint">Дэлгэрэнгүй харах →</p>
+          </div>
+        </div>
+
+        <div class="property-card cat-хөдөө" id="card-4">
+          <img
+            src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+            alt="Модон байшин" width="800" height="250" />
+          <div class="property-info">
+            <h3>Модон байшин</h3>
+            <p>Булган</p>
+            <p class="price">180k / шөнө</p>
+            <p class="rating">★ 4.6 (64 сэтгэгдэл)</p>
+            <p class="card-hint">Дэлгэрэнгүй харах →</p>
+          </div>
+        </div>
+
+        <div class="property-card cat-гол" id="card-5">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+            alt="Нуурын эрэгт байшин" width="800" height="250" />
+          <div class="property-info">
+            <h3>Нуурын эрэгт байшин</h3>
+            <p>Хөвсгөл</p>
+            <p class="price">290k / шөнө</p>
+            <p class="rating">★ 4.8 (143 сэтгэгдэл)</p>
+            <p class="card-hint">Дэлгэрэнгүй харах →</p>
+          </div>
+        </div>
+
+        <div class="property-card cat-хөдөө" id="card-6">
+          <img
+            src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+            alt="Гэр буудал" width="800" height="250" />
+          <div class="property-info">
+            <h3>Гэр буудал</h3>
+            <p>Өвөрхангай</p>
+            <p class="price">120k / шөнө</p>
+            <p class="rating">★ 4.7 (97 сэтгэгдэл)</p>
+            <p class="card-hint">Дэлгэрэнгүй харах →</p>
+          </div>
+        </div>
+
+        <div class="property-card cat-уул" id="card-7">
+          <img
+            src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+            alt="Хад чулуун байшин" width="800" height="250" />
+          <div class="property-info">
+            <h3>Хад чулуун байшин</h3>
+            <p>Баянхонгор</p>
+            <p class="price">220k / шөнө</p>
+            <p class="rating">★ 4.5 (52 сэтгэгдэл)</p>
+            <p class="card-hint">Дэлгэрэнгүй харах →</p>
+          </div>
+        </div>
+
+        <div class="property-card cat-vip" id="card-8">
+          <img
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+            alt="Шилэн таазтай байшин" width="800" height="250" />
+          <div class="property-info">
+            <h3>Шилэн таазтай байшин</h3>
+            <p>Тэрэлж</p>
+            <p class="price">480k / шөнө</p>
+            <p class="rating">★ 5.0 (311 сэтгэгдэл)</p>
+            <p class="card-hint">Дэлгэрэнгүй харах →</p>
+          </div>
+        </div>
+
+        <div id="no-results" style="display:none; grid-column:1/-1; text-align:center; padding:3rem 1rem;">
+          <p style="font-size:2.5rem;">🏠</p>
+          <p style="font-size:1.125rem; font-weight:600; margin-top:0.75rem;">Байр олдсонгүй</p>
+          <p style="color:#9e9890; margin-top:0.5rem;">Энэ ангилалд байр байхгүй байна.</p>
+        </div>
+
       </div>
+    </div>
+    <!-- /FEATURED -->
 
-      <div class="featured">
-        <div class="featured-top">
-          <h2>Онцлох байр</h2>
-          <button type="button" class="view-btn">бүгдийг харах</button>
+  </div>
+  <!-- /main-content -->
+</div>
+<!-- /CONTAINER -->
+
+<!-- ===== FOOTER ===== -->
+<!-- footer replaced by div -->
+<div class="footer">
+  <div class="footer-container">
+    <div>
+      <h4>Тусламж</h4>
+      <p>Тусламжийн центр</p>
+      <p>Аюулгүй байдал</p>
+      <p>Цуцлах сонголт</p>
+      <p>Асуудал мэдээлэх</p>
+    </div>
+    <div>
+      <h4>Байршуулалт</h4>
+      <p>Байршуулж үзэх</p>
+      <p>Хариуцлагатай түрээслэгчид</p>
+      <p>Нөөцийн төв</p>
+    </div>
+    <div>
+      <h4>AmraltRent</h4>
+      <p>Мэдэгдэл</p>
+      <p>Зохиогчид</p>
+      <p>Бидний тухай</p>
+      <p>Нийгмийн хариуцлага</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&#169; 2025 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
+  </div>
+  <p class="created-by">Made with ❤️ in Mongolia</p>
+</div>
+<!-- /FOOTER -->
+
+
+<!-- ===== PROPERTY DETAIL MODAL ===== -->
+<!-- ARIA attributes removed -->
+<div id="prop-modal" class="modal-overlay">
+  <div class="modal-box">
+    <button type="button" id="prop-close" class="modal-close">✕</button>
+    <div id="prop-body"></div>
+  </div>
+</div>
+
+<!-- ===== AUTH MODAL ===== -->
+<!-- ARIA attributes removed -->
+<div id="auth-modal" class="modal-overlay">
+  <div class="modal-box modal-auth">
+    <button type="button" id="auth-close" class="modal-close">✕</button>
+
+    <!-- role="tablist" removed -->
+    <div class="at-tabs">
+      <button type="button" id="tab-li" class="at-tab on">Нэвтрэх</button>
+      <button type="button" id="tab-re" class="at-tab">Бүртгүүлэх</button>
+    </div>
+
+    <!-- Login panel -->
+    <div id="p-li">
+      <h2 class="at-heading">Тавтай морил!</h2>
+      <p class="at-sub">Бүртгэлтэй хэрэглэгч нэвтэрнэ үү.</p>
+      <div class="at-form">
+        <div class="fg">
+          <label for="li-email">Имэйл</label>
+          <!-- autocomplete removed -->
+          <input type="text" id="li-email" name="li-email" />
         </div>
-
-        <div class="property-grid">
-          <div class="property-card">
-            <img
-              src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-              alt="Тансаг зэрэглэлийн байшин"
-              width="800"
-              height="250"
-            />
-            <div class="property-info">
-              <h3>Тансаг зэрэглэлийн байшин</h3>
-              <p>Хөвсгөл далай</p>
-              <p class="price">350k / шөнө</p>
-              <p class="rating">&#9733; 4.8 (120 сэтгэгдэл)</p>
-            </div>
-          </div>
-
-          <div class="property-card">
-            <img
-              src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-              alt="Уулын байшин"
-              width="800"
-              height="250"
-            />
-            <div class="property-info">
-              <h3>Уулын байшин</h3>
-              <p>Тэрэлж</p>
-              <p class="price">200k / шөнө</p>
-              <p class="rating">&#9733; 4.7 (85 сэтгэгдэл)</p>
-            </div>
-          </div>
-
-          <div class="property-card">
-            <img
-              src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-              alt="Вилла"
-              width="800"
-              height="250"
-            />
-            <div class="property-info">
-              <h3>Вилла</h3>
-              <p>Архангай</p>
-              <p class="price">400k / шөнө</p>
-              <p class="rating">&#9733; 4.9 (200 сэтгэгдэл)</p>
-            </div>
+        <div class="fg">
+          <label for="li-pass">Нууц үг</label>
+          <div class="pw-box">
+            <input type="password" id="li-pass" name="li-pass" />
+            <!-- aria-label removed -->
+            <button type="button" class="pw-eye" id="li-eye">👁️</button>
           </div>
         </div>
+        <div class="frow">
+          <label class="chk">
+            <input type="checkbox" id="li-rem" name="li-rem" />
+            Намайг санах
+          </label>
+          <a href="#forgot" class="lnk">Нууц үг мартсан?</a>
+        </div>
+        <button type="button" class="sub-btn" id="li-sub">Нэвтрэх</button>
+        <div class="or-div">эсвэл</div>
+        <button type="button" class="g-btn">
+          <!-- aria-hidden removed -->
+          <span class="g-icon">G</span> Google-ээр нэвтрэх
+        </button>
       </div>
     </div>
 
-    <div class="footer">
-      <div class="footer-container">
-        <div>
-          <h4>Тусламж</h4>
-          <p>Тусламжийн центр</p>
-          <p>Аюулгүй байдал</p>
-          <p>Цуцлах сонголт</p>
-          <p>Асуудал мэдээлэх</p>
+    <!-- Register panel -->
+    <div id="p-re" style="display:none;">
+      <h2 class="at-heading">Бүртгүүлэх</h2>
+      <p class="at-sub">Шинэ бүртгэл үүсгэнэ үү.</p>
+      <div class="at-form">
+        <div class="fg2">
+          <div class="fg">
+            <label for="r-fn">Нэр</label>
+            <input type="text" id="r-fn" name="r-fn" />
+          </div>
+          <div class="fg">
+            <label for="r-ln">Овог</label>
+            <input type="text" id="r-ln" name="r-ln" />
+          </div>
         </div>
-
-        <div>
-          <h4>Байршуулалт</h4>
-          <p>байршуулж үзэх</p>
-          <p>Хариуцлагатай түрээслэгчид</p>
+        <div class="fg">
+          <label for="r-email">Имэйл</label>
+          <input type="text" id="r-email" name="r-email" />
         </div>
-
-        <div>
-          <h4>AmraltRent</h4>
-          <p>Мэдэгдэл</p>
-          <p>Зохиогчид</p>
-          <p>Бидний тухай</p>
+        <div class="fg">
+          <label for="r-phone">Утас</label>
+          <input type="text" id="r-phone" name="r-phone" />
         </div>
-      </div>
-
-      <div class="footer-bottom">
-        &#169; 2026 AmraltRent, Inc. All rights reserved. Privacy &#183; Terms
-        &#183; Sitemap
-      </div>
-
-      <div class="created-by">
-        Created by Sodnomdamba, Erdenedalai, Ariuntuya
+        <div class="fg">
+          <label for="r-pass">Нууц үг</label>
+          <div class="pw-box">
+            <input type="password" id="r-pass" name="r-pass" />
+            <button type="button" class="pw-eye" id="r-eye">👁️</button>
+          </div>
+        </div>
+        <div class="fg">
+          <label for="r-pass2">Нууц үг давтах</label>
+          <input type="password" id="r-pass2" name="r-pass2" />
+        </div>
+        <div class="fg">
+          <label class="chk">
+            <input type="checkbox" id="r-agree" name="r-agree" />
+            <a href="#terms" class="lnk">Үйлчилгээний нөхцөл</a>-ийг зөвшөөрч байна
+          </label>
+        </div>
+        <button type="button" class="sub-btn" id="r-sub">Бүртгүүлэх</button>
       </div>
     </div>
-  </body>
+
+  </div>
+</div>
+<!-- /AUTH MODAL -->
+
+
+<script type="text/javascript">
+//<![CDATA[
+var PD = {
+  "1": {
+    title:"Тансаг зэрэглэлийн байшин", loc:"Хөвсгөл далай",
+    price:"350,000&#8366;", rat:"4.8", rev:"120",
+    guests:"8", beds:"4", baths:"3",
+    img:"https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    alt:"Тансаг байшин",
+    desc:"Хөвсгөл нуурын тунгалаг усны эрэг дэх тансаг байшин. 4 унтлагын өрөө, хувийн буудал, панорам харагдах байдалтай тохилог орчин.",
+    ams:["WiFi","Хувийн буудал","Гал тогоо","Зогсоол","BBQ"]
+  },
+  "2": {
+    title:"Уулын байшин", loc:"Тэрэлж",
+    price:"200,000&#8366;", rat:"4.7", rev:"85",
+    guests:"6", beds:"3", baths:"2",
+    img:"https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    alt:"Уулын байшин",
+    desc:"Тэрэлжийн хадан уулсын дунд панорам харагдахуйтай шилэн ханатай байшин. Байгалийн гоо үзэсгэлэн бүрэн эдлэх боломжтой.",
+    ams:["WiFi","Уулын харагдах","Гал тогоо","Дулаацуулагч","Хайкинг"]
+  },
+  "3": {
+    title:"Вилла", loc:"Архангай",
+    price:"400,000&#8366;", rat:"4.9", rev:"200",
+    guests:"10", beds:"5", baths:"4",
+    img:"https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    alt:"Вилла",
+    desc:"Архангайн цэлийхэн тал дунд хувийн усан сантай VIP вилла. Монголын хамгийн их дуртай байруудын нэг.",
+    ams:["Хувийн усан сан","WiFi","Гарден","Гал тогоо","BBQ"]
+  },
+  "4": {
+    title:"Модон байшин", loc:"Булган",
+    price:"180,000&#8366;", rat:"4.6", rev:"64",
+    guests:"4", beds:"2", baths:"1",
+    img:"https://images.unsplash.com/photo-1542718610-a1d656d1884c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    alt:"Модон байшин",
+    desc:"Булганы ногоон ойн дунд байрлах уламжлалт модон байшин. Тайван байгаль орчин, агаар цэвэр, хотын шуугианаас хол амарч болно.",
+    ams:["WiFi","Гал тогоо","Зогсоол","Ойн зам","Гал асаах газар"]
+  },
+  "5": {
+    title:"Нуурын эрэгт байшин", loc:"Хөвсгөл",
+    price:"290,000&#8366;", rat:"4.8", rev:"143",
+    guests:"6", beds:"3", baths:"2",
+    img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    alt:"Нуурын эрэгт байшин",
+    desc:"Хөвсгөл нуурын эрэгт шууд гарц бүхий орчин үеийн байшин. Нарийхан элсэн эрэгтэй, каяк болон загас агнах боломжтой.",
+    ams:["WiFi","Хувийн эрэг","Каяк","Гал тогоо","Дулаацуулагч"]
+  },
+  "6": {
+    title:"Гэр буудал", loc:"Өвөрхангай",
+    price:"120,000&#8366;", rat:"4.7", rev:"97",
+    guests:"3", beds:"1", baths:"1",
+    img:"https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    alt:"Гэр буудал",
+    desc:"Монголын уламжлалт гэрт суугаад нүүдэлчдийн амьдралыг мэдрээрэй. Өвөрхангайн алдарт талбайд байрлах, морь унах боломжтой.",
+    ams:["Уламжлалт гэр","Морь унах","Гал тогоо","Аялал жуулчлал","Гэрэл зураг авах газар"]
+  },
+  "7": {
+    title:"Хад чулуун байшин", loc:"Баянхонгор",
+    price:"220,000&#8366;", rat:"4.5", rev:"52",
+    guests:"5", beds:"2", baths:"2",
+    img:"https://images.unsplash.com/photo-1470770903676-69b98201ea1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    alt:"Хад чулуун байшин",
+    desc:"Баянхонгорын гайхамшигт хад асгануудын дунд байрлах онцгой байшин. Одны ажиглалт, тэнгэрийн зургийг харуулах тохилог орчин.",
+    ams:["WiFi","Гал тогоо","Телескоп","Зогсоол","BBQ"]
+  },
+  "8": {
+    title:"Шилэн таазтай байшин", loc:"Тэрэлж",
+    price:"480,000&#8366;", rat:"5.0", rev:"311",
+    guests:"2", beds:"1", baths:"1",
+    img:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    alt:"Шилэн таазтай байшин",
+    desc:"Тэрэлжийн уулсын дунд шилэн тааз бүхий романтик байшин. Орондоо хэвтэж одод харах — амралтыг өвөрмөц болгох туршлага.",
+    ams:["Шилэн тааз","WiFi","Хувийн халуун ус","Гал тогоо","Романтик тохиргоо"]
+  }
+};
+
+function el(id){ return document.getElementById(id); }
+
+/* ---- Category filter (using classes) ---- */
+var activeFilter = null;
+
+// Get category cards by class (they have class "filter-*")
+var catCards = document.querySelectorAll('.category-card[class*="filter-"]');
+var propCards = document.querySelectorAll('.property-card[class*="cat-"]');
+var noResults = el('no-results');
+var featuredTitle = el('featured-title');
+var clearBtn = el('clear-filter');
+
+// Map filter class suffix to display name
+var labelMap = {
+  "гол":   "Голын байрууд",
+  "уул":   "Уулын байрууд",
+  "vip":   "VIP байрууд",
+  "хөдөө": "Хөдөөгийн байрууд"
+};
+
+// Extract filter value from class (e.g., "filter-гол" → "гол")
+function getFilterFromClass(element) {
+  var classes = element.className.split(' ');
+  for (var i = 0; i < classes.length; i++) {
+    if (classes[i].indexOf('filter-') === 0) {
+      return classes[i].substring(7); // length of 'filter-'
+    }
+  }
+  return null;
+}
+
+// Extract category from property card class (e.g., "cat-гол" → "гол")
+function getCategoryFromClass(element) {
+  var classes = element.className.split(' ');
+  for (var i = 0; i < classes.length; i++) {
+    if (classes[i].indexOf('cat-') === 0) {
+      return classes[i].substring(4); // length of 'cat-'
+    }
+  }
+  return null;
+}
+
+function applyFilter(filter) {
+  var visibleCount = 0;
+  for (var i = 0; i < propCards.length; i++) {
+    var card = propCards[i];
+    var cat = getCategoryFromClass(card);
+    if (!filter || cat === filter) {
+      card.style.display = '';
+      visibleCount++;
+    } else {
+      card.style.display = 'none';
+    }
+  }
+  noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  featuredTitle.textContent = filter ? labelMap[filter] : 'Онцлох байр';
+  clearBtn.style.display = filter ? '' : 'none';
+
+  // Update active state on category cards
+  for (var j = 0; j < catCards.length; j++) {
+    var f = getFilterFromClass(catCards[j]);
+    if (f === filter) {
+      catCards[j].classList.add('category-active');
+    } else {
+      catCards[j].classList.remove('category-active');
+    }
+  }
+}
+
+// Attach click handlers to category cards
+for (var k = 0; k < catCards.length; k++) {
+  (function(card) {
+    card.onclick = function() {
+      var f = getFilterFromClass(card);
+      if (activeFilter === f) {
+        activeFilter = null;
+      } else {
+        activeFilter = f;
+      }
+      applyFilter(activeFilter);
+    };
+  })(catCards[k]);
+}
+
+clearBtn.onclick = function() {
+  activeFilter = null;
+  applyFilter(null);
+};
+
+/* ---- Property modal ---- */
+function showModal(id){
+  el(id).style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+function hideModal(id){
+  el(id).style.display = "none";
+  document.body.style.overflow = "";
+}
+
+function openProp(pid){
+  var p = PD[pid]; if(!p){ return; }
+  var a = "";
+  for(var i=0;i<p.ams.length;i++){
+    a += '<span class="pm-am">'+p.ams[i]+'</span>';
+  }
+  el("prop-body").innerHTML =
+    '<img src="'+p.img+'" alt="'+p.alt+'" class="pm-img" width="1200" height="500" />'+
+    '<div class="pm-body">'+
+      '<div class="pm-row">'+
+        '<div>'+
+          '<h2 class="pm-title">'+p.title+'</h2>'+
+          '<p class="pm-loc">📍 '+p.loc+'</p>'+
+        '</div>'+
+        '<div class="pm-rat">★ '+p.rat+' <small>('+p.rev+' сэтгэгдэл)</small></div>'+
+      '</div>'+
+      '<div class="pm-stats">'+
+        '<div class="pm-stat"><b>'+p.guests+'</b><small>Хүн</small></div>'+
+        '<div class="pm-stat"><b>'+p.beds+'</b><small>Унтлагын өрөө</small></div>'+
+        '<div class="pm-stat"><b>'+p.baths+'</b><small>Угаалгын өрөө</small></div>'+
+      '</div>'+
+      '<p class="pm-desc">'+p.desc+'</p>'+
+      '<p class="pm-ams-title">Тохиромжлол</p>'+
+      '<div class="pm-ams">'+a+'</div>'+
+      '<div class="pm-book">'+
+        '<div class="pm-price">'+p.price+' <small>/ шөнө</small></div>'+
+        '<button type="button" class="pm-book-btn" onclick="alert(\'Захиалгын систем удахгүй!\')">Захиалах</button>'+
+      '</div>'+
+    '</div>';
+  showModal("prop-modal");
+}
+
+var map = [["card-1","1"],["card-2","2"],["card-3","3"],["card-4","4"],["card-5","5"],["card-6","6"],["card-7","7"],["card-8","8"]];
+for(var c=0;c<map.length;c++){
+  (function(cid,pid){
+    var card=el(cid); if(!card){ return; }
+    card.onclick = function(){ openProp(pid); };
+    // keypress handling removed (tabindex removed), but you could add if needed
+  })(map[c][0], map[c][1]);
+}
+
+el("prop-close").onclick = function(){ hideModal("prop-modal"); };
+el("prop-modal").onclick = function(e){ if(e.target===this){ hideModal("prop-modal"); } };
+
+el("btn-auth").onclick = function(){ showModal("auth-modal"); };
+el("auth-close").onclick = function(){ hideModal("auth-modal"); };
+el("auth-modal").onclick = function(e){ if(e.target===this){ hideModal("auth-modal"); } };
+
+el("tab-li").onclick = function(){
+  el("tab-li").className = "at-tab on";
+  el("tab-re").className = "at-tab";
+  el("p-li").style.display = "block";
+  el("p-re").style.display = "none";
+};
+el("tab-re").onclick = function(){
+  el("tab-re").className = "at-tab on";
+  el("tab-li").className = "at-tab";
+  el("p-re").style.display = "block";
+  el("p-li").style.display = "none";
+};
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+el("li-sub").onclick = function(){
+  var e=el("li-email").value.trim(), p=el("li-pass").value;
+  if(!e||!p){ alert("Имэйл болон нууц үгээ оруулна уу."); return; }
+  if(!isValidEmail(e)){ alert("Зөв имэйл хаяг оруулна уу."); return; }
+  alert("Нэвтрэх амжилттай! Тавтай морил.");
+  hideModal("auth-modal");
+};
+
+el("r-sub").onclick = function(){
+  var fn=el("r-fn").value.trim(), ln=el("r-ln").value.trim(),
+      em=el("r-email").value.trim(), p=el("r-pass").value,
+      p2=el("r-pass2").value, ok=el("r-agree").checked;
+  if(!fn||!ln||!em||!p){ alert("Бүх заавал талбаруудыг бөглөнө үү."); return; }
+  if(!isValidEmail(em)){ alert("Зөв имэйл хаяг оруулна уу."); return; }
+  if(p!==p2){ alert("Нууц үг таарахгүй байна."); return; }
+  if(!ok){ alert("Үйлчилгээний нөхцөлийг зөвшөөрнө үү."); return; }
+  alert("Бүртгэл амжилттай! Тавтай морил, "+fn+"!");
+  hideModal("auth-modal");
+};
+
+el("li-eye").onclick = function(){
+  var i=el("li-pass"); i.type=(i.type==="password")?"text":"password";
+};
+el("r-eye").onclick = function(){
+  var i=el("r-pass"); i.type=(i.type==="password")?"text":"password";
+};
+
+el("dark-toggle").onclick = function(){
+  document.body.classList.toggle("dark-mode");
+  this.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "☾";
+};
+
+document.addEventListener("keydown",function(e){
+  if(e.key==="Escape"){ hideModal("prop-modal"); hideModal("auth-modal"); }
+});
+//]]>
+</script>
+
+</body>
 </html>
