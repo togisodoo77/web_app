@@ -11,6 +11,135 @@
   <meta name="robots" content="index, follow" />
   <title>AmraltRent &#8212; Амралтын байр хайх</title>
   <link rel="stylesheet" type="text/css" href="style.css" />
+  <style type="text/css">
+  /*<![CDATA[*/
+    /* ===== Базовые стили ===== */
+    body { margin:0; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background:#f5f7fb; color:#1e293b; line-height:1.5; }
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    a { color:#ff5a5f; text-decoration:none; }
+    .skip-link { position:absolute; left:-999px; top:0; background:#ff5a5f; color:#fff; padding:8px 16px; }
+    .skip-link:focus { left:16px; top:16px; z-index:1000; }
+
+    /* header */
+    .header { display:flex; justify-content:space-between; align-items:center; background:#fff; border-radius:60px; padding:14px 28px; box-shadow:0 4px 20px rgba(0,0,0,0.02); margin-bottom:32px; }
+    .logo { font-weight:800; font-size:24px; color:#ff5a5f; }
+    .icon-logo { font-size:26px; margin-right:6px; }
+    .header-right { display:flex; align-items:center; gap:22px; }
+    .nav-link { font-weight:500; color:#2d3a4f; }
+    .nav-active { color:#ff5a5f; font-weight:700; border-bottom:2px solid #ff5a5f; padding-bottom:4px; }
+    .icon-btn { background:none; border:none; font-size:22px; cursor:pointer; color:#5f6b7a; }
+    .dark-toggle { background:#edf2f7; border:none; border-radius:40px; padding:8px 14px; font-size:18px; cursor:pointer; }
+    .login-btn { background:#ff5a5f; color:#fff; border:none; padding:10px 22px; border-radius:40px; font-weight:600; cursor:pointer; }
+
+    /* hero & search */
+    .hero-section { text-align:center; margin:40px 0 50px; }
+    .hero-text h1 { font-size:48px; margin:0 0 12px; }
+    .hero-sub { font-size:18px; color:#5f6b7a; max-width:600px; margin:0 auto 36px; }
+    .search-form { background:#fff; border-radius:80px; padding:10px; max-width:1000px; margin:0 auto; box-shadow:0 8px 30px rgba(0,0,0,0.05); }
+    .search-fields { display:flex; align-items:center; flex-wrap:wrap; }
+    .search-field { flex:1; min-width:140px; padding:8px 12px; }
+    .search-label { display:block; font-size:12px; font-weight:600; color:#5f6b7a; margin-bottom:4px; text-align:left; }
+    .search-input { width:100%; border:none; background:transparent; font-size:15px; padding:6px 0; outline:none; }
+    .search-select { appearance:none; background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%235f6b7a" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat right 0 center; background-size:14px; }
+    .search-sep { width:1px; height:40px; background:#e2e8f0; }
+    .search-btn-wrapper { padding:12px 20px; }
+    .search-btn { background:#ff5a5f; color:#fff; border:none; padding:14px 32px; border-radius:60px; font-weight:700; font-size:16px; cursor:pointer; width:100%; }
+    .search-btn:hover { background:#e0484d; }
+
+    /* categories */
+    .categories { margin:60px 0 20px; }
+    .categories h2 { font-size:24px; margin:0 0 24px; }
+    .category-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .category-card { background:#fff; border-radius:60px; padding:28px 12px; text-align:center; cursor:pointer; transition:0.2s; border:2px solid transparent; }
+    .category-card:hover { border-color:#ff5a5f; }
+    .category-active { background:#ff5a5f; color:#fff; border-color:#ff5a5f; }
+    .category-active .cat-emoji { color:#fff; }
+    .cat-emoji { font-size:36px; display:block; margin-bottom:8px; }
+
+    /* featured */
+    .featured { margin-top:48px; }
+    .featured-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; }
+    .featured-top h2 { font-size:28px; margin:0; }
+    .view-btn { background:none; border:1px solid #ff5a5f; color:#ff5a5f; padding:8px 20px; border-radius:40px; font-weight:600; cursor:pointer; }
+    .property-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+    .property-card { background:#fff; border-radius:28px; overflow:hidden; cursor:pointer; box-shadow:0 5px 20px rgba(0,0,0,0.02); transition:0.2s; }
+    .property-card:hover { transform:scale(1.02); box-shadow:0 10px 30px rgba(0,0,0,0.1); }
+    .property-card img { width:100%; height:200px; object-fit:cover; display:block; }
+    .property-info { padding:18px 20px 22px; }
+    .property-info h3 { margin:0 0 4px; font-size:18px; }
+    .property-info p { margin:4px 0; color:#5f6b7a; }
+    .price { font-weight:700; color:#1e293b; }
+    .rating { color:#f5b342; }
+    .card-hint { font-size:13px; color:#ff5a5f; font-weight:600; margin-top:12px; }
+
+    /* property modal */
+    .modal-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:10000; }
+    .modal-box { background:#fff; border-radius:32px; max-width:680px; width:90%; max-height:90vh; overflow-y:auto; position:relative; }
+    .modal-close { position:absolute; top:16px; right:16px; width:36px; height:36px; border-radius:50%; border:1px solid #ddd; background:#fff; font-size:18px; cursor:pointer; z-index:10; }
+    .pm-img { width:100%; height:280px; object-fit:cover; border-radius:20px 20px 0 0; display:block; }
+    .pm-body { padding:24px 28px 28px; }
+    .pm-row { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:14px; }
+    .pm-title { font-size:22px; font-weight:700; margin:0 0 4px; }
+    .pm-loc { font-size:14px; color:#777; }
+    .pm-rat { font-size:17px; font-weight:700; white-space:nowrap; }
+    .pm-stats { display:flex; gap:28px; padding:13px 0; border-top:1px solid #eee; border-bottom:1px solid #eee; margin-bottom:16px; }
+    .pm-stat { display:flex; flex-direction:column; }
+    .pm-stat b { font-size:18px; }
+    .pm-desc { font-size:14px; color:#444; line-height:1.7; margin-bottom:16px; }
+    .pm-ams { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+    .pm-am { background:#f7f7f7; border:1px solid #eee; border-radius:20px; padding:5px 14px; font-size:13px; }
+    .pm-book { display:flex; justify-content:space-between; align-items:center; gap:16px; padding-top:16px; border-top:1px solid #eee; }
+    .pm-price { font-size:22px; font-weight:700; }
+    .pm-book-btn { background:#ff5a5f; color:#fff; border:none; padding:13px 26px; border-radius:10px; font-size:15px; font-weight:700; cursor:pointer; }
+
+    /* auth modal */
+    .modal-auth { max-width:440px; padding:36px; }
+    .at-tabs { display:flex; background:#f5f5f5; border-radius:10px; padding:4px; gap:4px; margin-bottom:24px; }
+    .at-tab { flex:1; padding:10px; border:none; background:transparent; border-radius:8px; font-size:14px; font-weight:500; cursor:pointer; color:#777; }
+    .at-tab.on { background:#fff; color:#222; font-weight:700; }
+    .at-heading { font-size:22px; font-weight:700; margin-bottom:4px; }
+    .at-sub { font-size:14px; color:#777; margin-bottom:16px; }
+    .at-form { display:flex; flex-direction:column; gap:14px; }
+    .fg2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .fg { display:flex; flex-direction:column; gap:5px; }
+    .fg label { font-size:13px; font-weight:600; color:#333; }
+    .fg input, .fg select { padding:11px 14px; border:1.5px solid #ddd; border-radius:10px; font-size:14px; }
+    .pw-box { position:relative; }
+    .pw-eye { position:absolute; right:12px; top:50%; margin-top:-10px; background:none; border:none; cursor:pointer; }
+    .frow { display:flex; justify-content:space-between; align-items:center; }
+    .chk { display:flex; align-items:center; gap:7px; font-size:13px; cursor:pointer; }
+    .sub-btn { background:#ff5a5f; color:#fff; border:none; padding:13px; border-radius:10px; font-weight:700; cursor:pointer; width:100%; }
+    .or-div { display:flex; align-items:center; gap:10px; color:#aaa; font-size:13px; margin:10px 0; }
+    .g-btn { display:flex; align-items:center; justify-content:center; gap:10px; padding:12px; border:1.5px solid #ddd; border-radius:10px; background:#fff; font-size:14px; font-weight:600; cursor:pointer; width:100%; }
+    .g-icon { width:22px; height:22px; border-radius:50%; background:#ff5a5f; color:#fff; display:inline-flex; align-items:center; justify-content:center; }
+
+    /* creators */
+    .creators-section { background:#fff; border-radius:40px; padding:48px 20px; margin:40px 0; text-align:center; }
+    .creators-title { font-size:32px; margin:0 0 8px; }
+    .creators-sub { color:#5f6b7a; margin-bottom:32px; }
+    .creators-grid { display:flex; gap:28px; justify-content:center; flex-wrap:wrap; }
+    .creator-card { background:#f8fafc; border-radius:60px; padding:28px 24px; width:200px; }
+    .creator-avatar { width:70px; height:70px; border-radius:50%; background:#ff5a5f; color:#fff; font-size:28px; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
+    .creator-name { font-weight:700; margin:0; }
+
+    /* footer */
+    .footer { background:#fff; padding:40px 20px 20px; border-radius:40px 40px 0 0; margin-top:40px; }
+    .footer-container { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:30px; }
+    .footer h4 { margin:0 0 16px; font-size:16px; }
+    .footer p { color:#5f6b7a; margin:8px 0; font-size:14px; }
+    .footer a { color:#5f6b7a; }
+    .footer-bottom { text-align:center; border-top:1px solid #e2e8f0; padding-top:24px; margin-top:24px; color:#94a3b8; }
+    .created-by { text-align:center; color:#94a3b8; font-size:13px; margin-top:16px; }
+
+    /* dark mode */
+    .dark-mode { background:#0f172a; color:#e2e8f0; }
+    .dark-mode .header, .dark-mode .modal-box, .dark-mode .creators-section, .dark-mode .footer { background:#1e293b; }
+    .dark-mode .nav-link { color:#cbd5e1; }
+    .dark-mode .search-form { background:#1e293b; }
+    .dark-mode .category-card { background:#1e293b; color:#e2e8f0; }
+    .dark-mode .property-card { background:#1e293b; color:#e2e8f0; }
+  /*]]>*/
+  </style>
 </head>
 <body>
 
@@ -80,7 +209,11 @@
         </div>
 
       </div>
-      <button type="submit" class="search-btn">&#128269; Хайх</button>
+
+      <!-- Исправление XHTML Strict: button должен быть внутри блочного элемента -->
+      <div class="search-btn-wrapper">
+        <button type="submit" class="search-btn">&#128269; Хайх</button>
+      </div>
     </form>
   </div>
   <!-- /HERO -->
