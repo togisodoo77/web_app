@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="mn" lang="mn">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>AmraltRent — Нэвтрэх / Бүртгүүлэх</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+
+  <div><a href="#main-content" class="skip-link">Үндсэн агуулга руу очих</a></div>
+
+  <div class="container">
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+      <div class="logo">
+        <span class="icon-logo">&#8962;</span> AmraltRent
+      </div>
+      <div class="header-right">
+        <a href="index.html" class="nav-link">Нүүр</a>
+        <a href="renter.html" class="nav-link">Түрээслэгч</a>
+        <a href="booking.html" class="nav-link">Захиалга</a>
+        <a href="host.html" class="nav-link">+ Байр нэмэх</a>
+        <button type="button" class="icon-btn">&#9829;</button>
+        <button type="button" id="dark-toggle" class="dark-toggle">&#9790;</button>
+        <a href="auth.html" class="icon-btn" title="Нэвтрэх / Бүртгүүлэх">&#128100;</a>
+      </div>
+    </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div id="main-content" class="auth-page-container">
+      
+      <div class="auth-box">
+        <div class="at-tabs">
+          <button type="button" id="tab-li" class="at-tab on">Нэвтрэх</button>
+          <button type="button" id="tab-re" class="at-tab">Бүртгүүлэх</button>
+        </div>
+
+        <!-- Login panel -->
+        <div id="p-li">
+          <h2 class="at-heading">Тавтай морил!</h2>
+          <p class="at-sub">Бүртгэлтэй хэрэглэгч нэвтэрнэ үү.</p>
+          <div class="at-form">
+            <div class="fg">
+              <label for="li-email">Имэйл хаяг</label>
+              <input type="text" id="li-email" name="li-email" />
+            </div>
+            <div class="fg">
+              <label for="li-pass">Нууц үг</label>
+              <div class="pw-box">
+                <input type="password" id="li-pass" name="li-pass" />
+                <button type="button" class="pw-eye" id="li-eye">&#128065;</button>
+              </div>
+            </div>
+            <div class="frow">
+              <label class="chk">
+                <input type="checkbox" id="li-rem" name="li-rem" />
+                Намайг санах
+              </label>
+              <a href="#forgot" class="lnk">Нууц үг мартсан?</a>
+            </div>
+            <button type="button" class="sub-btn" id="li-sub">Нэвтрэх</button>
+            <div class="or-div">эсвэл</div>
+            <button type="button" class="g-btn">
+              <span class="g-icon">G</span> Google-ээр нэвтрэх
+            </button>
+          </div>
+        </div>
+
+        <!-- Register panel -->
+        <div id="p-re" class="hidden">
+          <h2 class="at-heading">Бүртгүүлэх</h2>
+          <p class="at-sub">Шинэ бүртгэл үүсгэнэ үү.</p>
+          <div class="at-form">
+            <div class="fg2">
+              <div class="fg">
+                <label for="r-fn">Нэр</label>
+                <input type="text" id="r-fn" name="r-fn" />
+              </div>
+              <div class="fg">
+                <label for="r-ln">Овог</label>
+                <input type="text" id="r-ln" name="r-ln" />
+              </div>
+            </div>
+            <div class="fg">
+              <label for="r-email">Имэйл</label>
+              <input type="text" id="r-email" name="r-email" />
+            </div>
+            <div class="fg">
+              <label for="r-phone">Утас</label>
+              <input type="text" id="r-phone" name="r-phone" />
+            </div>
+            <div class="fg">
+              <label for="r-pass">Нууц үг</label>
+              <div class="pw-box">
+                <input type="password" id="r-pass" name="r-pass" />
+                <button type="button" class="pw-eye" id="r-eye">&#128065;</button>
+              </div>
+            </div>
+            <div class="fg">
+              <label for="r-pass2">Нууц үг давтах</label>
+              <input type="password" id="r-pass2" name="r-pass2" />
+            </div>
+            <div class="fg">
+              <label class="chk">
+                <input type="checkbox" id="r-agree" name="r-agree" />
+                <a href="#terms" class="lnk">Үйлчилгээний нөхцөл</a>-ийг зөвшөөрч байна
+              </label>
+            </div>
+            <button type="button" class="sub-btn" id="r-sub">Бүртгүүлэх</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <div class="footer-container">
+        <div>
+          <h4>AmraltRent</h4>
+          <p>Амралтын газрын захиалгыг хурдан, хялбар хийх платформ.</p>
+        </div>
+        <div>
+          <h4>Тусламж</h4>
+          <p><a href="#faq">Түгээмэл асуултууд</a></p>
+          <p><a href="#terms">Үйлчилгээний нөхцөл</a></p>
+          <p><a href="#privacy">Нууцлалын бодлого</a></p>
+        </div>
+        <div>
+          <h4>Холбоо барих</h4>
+          <p>Email: contact@amraltrent.mn</p>
+          <p>Утас: 77112233</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 AmraltRent. All rights reserved.
+      </div>
+    </div>
+
+  </div>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    function el(id) { return document.getElementById(id); }
+
+    el("tab-li").onclick = function () {
+      el("tab-li").className = "at-tab on";
+      el("tab-re").className = "at-tab";
+      el("p-li").classList.remove("hidden");
+      el("p-re").classList.add("hidden");
+    };
+    el("tab-re").onclick = function () {
+      el("tab-re").className = "at-tab on";
+      el("tab-li").className = "at-tab";
+      el("p-re").classList.remove("hidden");
+      el("p-li").classList.add("hidden");
+    };
+
+    function validEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+    el("li-sub").onclick = function () {
+      var e = el("li-email").value.trim(), p = el("li-pass").value;
+      if (!e || !p) { alert("Имэйл болон нууц үгээ оруулна уу."); return; }
+      if (!validEmail(e)) { alert("Зөв имэйл хаяг оруулна уу."); return; }
+      alert("Нэвтрэх амжилттай! Тавтай морил.");
+      window.location.href = "index.html";
+    };
+
+    el("r-sub").onclick = function () {
+      var fn = el("r-fn").value.trim(), ln = el("r-ln").value.trim(), em = el("r-email").value.trim(), p = el("r-pass").value, p2 = el("r-pass2").value, ok = el("r-agree").checked;
+      if (!fn || !ln || !em || !p) { alert("Бүх заавал талбаруудыг бөглөнө үү."); return; }
+      if (!validEmail(em)) { alert("Зөв имэйл хаяг оруулна уу."); return; }
+      if (p !== p2) { alert("Нууц үг таарахгүй байна."); return; }
+      if (!ok) { alert("Үйлчилгээний нөхцөлийг зөвшөөрнө үү."); return; }
+      alert("Бүртгэл амжилттай! Тавтай морил, " + fn + "!");
+      window.location.href = "index.html";
+    };
+
+    el("li-eye").onclick = function () { var i = el("li-pass"); i.type = (i.type === "password") ? "text" : "password"; };
+    el("r-eye").onclick = function () { var i = el("r-pass"); i.type = (i.type === "password") ? "text" : "password"; };
+
+    /* ---- Dark mode ---- */
+    el("dark-toggle").onclick = function () {
+      document.body.classList.toggle("dark-mode");
+      this.textContent = document.body.classList.contains("dark-mode") ? "&#9728;" : "&#9790;";
+    };
+    //]]>
+  </script>
+
+</body>
+
+</html>

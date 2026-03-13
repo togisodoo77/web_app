@@ -195,6 +195,9 @@ button { font-family: var(--ff-body); }
 
 ul, ol { list-style: none; }
 
+/* Utility — hide elements (replaces inline style="display:none") */
+.hidden { display: none; }
+
 
 /* ============================================================
    4. TYPOGRAPHY

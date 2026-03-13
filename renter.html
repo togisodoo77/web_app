@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,378 +11,278 @@
   <title>Түрээслэгч — AmraltRent</title>
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
+
 <body>
 
-<!-- Skip link wrapped in a block-level element -->
-<div><a href="#main-content" class="skip-link">Үндсэн агуулга руу очих</a></div>
+  <!-- Skip link wrapped in a block-level element -->
+  <div><a href="#main-content" class="skip-link">Үндсэн агуулга руу очих</a></div>
 
-<div class="container">
-
-  <!-- ===== HEADER ===== -->
-  <div class="header">
-
-    <!-- Logo replaced with text/emoji (SVG removed) -->
-    <div class="logo">
-      <span class="icon-logo">🏠</span> AmraltRent
-    </div>
-
-    <div class="header-right">
-      <div class="header-search">
-        <label for="search">Амралт хайх:</label>
-        <!-- placeholder removed -->
-        <input type="text" id="search" name="search" />
-      </div>
-      <a href="index.html" class="nav-link">Нүүр</a>
-      <a href="renter.html" class="nav-link nav-active">Түрээслэгч</a>
-      <a href="booking.html" class="nav-link">Захиалга</a>
-      <a href="host.html" class="nav-link">+ Байр нэмэх</a>
-      <button type="button" class="icon-btn">&#9829;</button>
-      <!-- aria-label removed -->
-      <button type="button" id="dark-toggle" class="dark-toggle">☾</button>
-      <button type="button" class="login-btn" id="open-login-btn">Нэвтрэх / Бүртгүүлэх</button>
-    </div>
-  </div>
-  <!-- /HEADER -->
-
-  <!-- main replaced by div -->
-  <div id="main-content">
-    <div class="host-dashboard">
-
-      <!-- Dashboard header -->
-      <div class="dashboard-header">
-        <div>
-          <h1>Түрээслэгчийн самбар</h1>
-          <p class="dashboard-subtitle">Өөрийн байрнууд болон захиалгуудыг эндээс удирд.</p>
-        </div>
-        <button type="button" class="add-property-btn" id="add-btn">+ Шинэ байр нэмэх</button>
-      </div>
-
-      <!-- Stats grid – aria-label removed -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <p class="stat-label">Нийт байр</p>
-          <p class="stat-value">2</p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-label">Нийт захиалга</p>
-          <p class="stat-value">42</p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-label">Нийт орлого</p>
-          <p class="stat-value stat-value-highlight">&#8366;22,500,000</p>
-        </div>
-        <div class="stat-card">
-          <p class="stat-label">Дундаж үнэлгээ</p>
-          <p class="stat-value">4.96 <span class="stat-star">★</span></p>
-        </div>
-      </div>
-
-      <!-- Property list -->
-      <div class="host-properties">
-        <h2>Таны байрнууд</h2>
-
-        <div class="host-property-card" id="hp1">
-          <div class="host-property-image">
-            <img
-              src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-              alt="Тансаг уулын амралтын байр"
-              width="800" height="160" />
-          </div>
-          <div class="host-property-content">
-            <div class="host-property-header">
-              <div>
-                <h3>Тансаг зэрэглэлийн байр</h3>
-                <p class="host-property-location">Улаанбаатар</p>
-              </div>
-              <span class="status-pill status-active">Идэвхтэй</span>
-            </div>
-            <div class="host-property-meta">
-              <div>
-                <p class="meta-label">Захиалга</p>
-                <p class="meta-value">24</p>
-              </div>
-              <div>
-                <p class="meta-label">Үнэлгээ</p>
-                <p class="meta-value">4.95 <span class="stat-star">★</span></p>
-              </div>
-              <div>
-                <p class="meta-label">Сэтгэгдэл</p>
-                <p class="meta-value">128</p>
-              </div>
-            </div>
-            <div class="host-property-footer">
-              <div class="host-property-price">
-                <span class="price-amount">450.000&#8366;</span>
-                <span class="price-unit"> / шөнө</span>
-              </div>
-              <div class="property-actions">
-                <button type="button" class="property-btn">Харах</button>
-                <button type="button" class="property-btn" id="edit-hp1">Засах</button>
-                <button type="button" class="property-btn property-btn-danger" id="del-hp1">Устгах</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!-- /host-properties -->
-
-    </div>
-    <!-- /host-dashboard -->
-  </div>
-  <!-- /main-content -->
-</div>
-<!-- /CONTAINER -->
-
-<!-- ===== CREATORS SECTION ===== -->
-<div class="creators-section">
   <div class="container">
-    <h2 class="creators-title">&#9998; Бүтээгчид</h2>
-    <p class="creators-sub">AmraltRent платформыг бүтээсэн баг</p>
-    <div class="creators-grid">
-      <div class="creator-card">
-        <div class="creator-avatar">TS</div>
-        <p class="creator-name">T. Sodnomdamba</p>
-        <p class="creator-role">Frontend хөгжүүлэгч</p>
+
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+
+      <!-- Logo replaced with text/emoji (SVG removed) -->
+      <div class="logo">
+        <span class="icon-logo">🏠</span> AmraltRent
       </div>
-      <div class="creator-card">
-        <div class="creator-avatar">TE</div>
-        <p class="creator-name">T. Erdenedalai</p>
-        <p class="creator-role">UI / UX дизайнер</p>
-      </div>
-      <div class="creator-card">
-        <div class="creator-avatar">DA</div>
-        <p class="creator-name">D. Ariuntuya</p>
-        <p class="creator-role">Контент менежер</p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ===== FOOTER ===== -->
-<div class="footer">
-  <div class="footer-container">
-    <div>
-      <h4>Тусламж</h4>
-      <p>Тусламжийн центр</p>
-      <p>Аюулгүй байдал</p>
-      <p>Цуцлах сонголт</p>
-      <p>Асуудал мэдээлэх</p>
-    </div>
-    <div>
-      <h4>Байршуулалт</h4>
-      <p>Байршуулж үзэх</p>
-      <p>Хариуцлагатай түрээслэгчид</p>
-    </div>
-    <div>
-      <h4>AmraltRent</h4>
-      <p>Мэдэгдэл</p>
-      <p>Зохиогчид</p>
-      <p>Бидний тухай</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&#169; 2025 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
-  </div>
-  <p class="created-by">Made with ❤️ in Mongolia</p>
-</div>
-<!-- /FOOTER -->
+      <div class="header-right">
+        <div class="header-search">
 
-
-<!-- ===== AUTH MODAL ===== -->
-<!-- ARIA attributes removed -->
-<div id="auth-modal" class="modal-overlay">
-  <div class="modal-box modal-auth">
-    <button type="button" class="modal-close" id="auth-close">✕</button>
-
-    <!-- role="tablist" removed -->
-    <div class="auth-tabs">
-      <button type="button" id="tab-li" class="auth-tab auth-tab-on">Нэвтрэх</button>
-      <button type="button" id="tab-re" class="auth-tab">Бүртгүүлэх</button>
-    </div>
-
-    <div id="p-li" class="auth-panel">
-      <h2 class="auth-heading">Тавтай морил!</h2>
-      <p class="auth-sub">Бүртгэлтэй хэрэглэгч нэвтэрнэ үү.</p>
-      <div class="form-group">
-        <label for="li-email">Имэйл</label>
-        <!-- autocomplete removed -->
-        <input type="text" id="li-email" name="li-email" />
-      </div>
-      <div class="form-group">
-        <label for="li-pass">Нууц үг</label>
-        <div class="pw-wrap">
-          <input type="password" id="li-pass" name="li-pass" />
-          <button type="button" class="pw-eye" id="li-eye">👁️</button>
+          <input type="text" id="search" name="search" placeholder="хайх" />
         </div>
+        <a href="index.html" class="nav-link">Нүүр</a>
+        <a href="renter.html" class="nav-link nav-active">Түрээслэгч</a>
+        <a href="booking.html" class="nav-link">Захиалга</a>
+        <a href="host.html" class="nav-link">+ Байр нэмэх</a>
+        <button type="button" class="icon-btn">&#9829;</button>
+        <!-- aria-label removed -->
+        <button type="button" id="dark-toggle" class="dark-toggle">☾</button>
+        <a href="auth.html" class="icon-btn" title="Нэвтрэх / Бүртгүүлэх">&#128100;</a>
       </div>
-      <button type="button" class="auth-btn" id="li-sub">Нэвтрэх</button>
     </div>
+    <!-- /HEADER -->
 
-    <div id="p-re" class="auth-panel auth-hide">
-      <h2 class="auth-heading">Бүртгүүлэх</h2>
-      <p class="auth-sub">Шинэ бүртгэл үүсгэнэ үү.</p>
+    <!-- main replaced by div -->
+    <div id="main-content">
+      <div class="host-dashboard">
+
+        <!-- Dashboard header -->
+        <div class="dashboard-header">
+          <div>
+            <h1>Түрээслэгчийн самбар</h1>
+            <p class="dashboard-subtitle">Өөрийн байрнууд болон захиалгуудыг эндээс удирд.</p>
+          </div>
+          <button type="button" class="add-property-btn" id="add-btn">+ Шинэ байр нэмэх</button>
+        </div>
+
+        <!-- Stats grid – aria-label removed -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-label">Нийт байр</p>
+            <p class="stat-value">2</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Нийт захиалга</p>
+            <p class="stat-value">42</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Нийт орлого</p>
+            <p class="stat-value stat-value-highlight">&#8366;22,500,000</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Дундаж үнэлгээ</p>
+            <p class="stat-value">4.96 <span class="stat-star">★</span></p>
+          </div>
+        </div>
+
+        <!-- Property list -->
+        <div class="host-properties">
+          <h2>Таны байрнууд</h2>
+
+          <div class="host-property-card" id="hp1">
+            <div class="host-property-image">
+              <img
+                src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+                alt="Тансаг уулын амралтын байр" width="800" height="160" />
+            </div>
+            <div class="host-property-content">
+              <div class="host-property-header">
+                <div>
+                  <h3>Тансаг зэрэглэлийн байр</h3>
+                  <p class="host-property-location">Улаанбаатар</p>
+                </div>
+                <span class="status-pill status-active">Идэвхтэй</span>
+              </div>
+              <div class="host-property-meta">
+                <div>
+                  <p class="meta-label">Захиалга</p>
+                  <p class="meta-value">24</p>
+                </div>
+                <div>
+                  <p class="meta-label">Үнэлгээ</p>
+                  <p class="meta-value">4.95 <span class="stat-star">★</span></p>
+                </div>
+                <div>
+                  <p class="meta-label">Сэтгэгдэл</p>
+                  <p class="meta-value">128</p>
+                </div>
+              </div>
+              <div class="host-property-footer">
+                <div class="host-property-price">
+                  <span class="price-amount">450.000&#8366;</span>
+                  <span class="price-unit"> / шөнө</span>
+                </div>
+                <div class="property-actions">
+                  <button type="button" class="property-btn">Харах</button>
+                  <button type="button" class="property-btn" id="edit-hp1">Засах</button>
+                  <button type="button" class="property-btn property-btn-danger" id="del-hp1">Устгах</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /host-properties -->
+
+      </div>
+      <!-- /host-dashboard -->
+    </div>
+    <!-- /main-content -->
+  </div>
+  <!-- /CONTAINER -->
+
+
+
+  <!-- ===== FOOTER ===== -->
+  <div class="footer">
+    <div class="footer-container">
+      <div>
+        <h4>Тусламж</h4>
+        <p>Тусламжийн центр</p>
+        <p>Аюулгүй байдал</p>
+        <p>Цуцлах сонголт</p>
+        <p>Асуудал мэдээлэх</p>
+      </div>
+      <div>
+        <h4>Байршуулалт</h4>
+        <p>Байршуулж үзэх</p>
+        <p>Хариуцлагатай түрээслэгчид</p>
+      </div>
+      <div>
+        <h4>AmraltRent</h4>
+        <p>Мэдэгдэл</p>
+        <p>Зохиогчид</p>
+        <p>Бидний тухай</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2025 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </div>
+    <p class="created-by">Made with ❤️ in Mongolia</p>
+  </div>
+  <!-- /FOOTER -->
+
+
+  <!-- Auth modal removed — see auth.html -->
+
+
+  <!-- ===== ADD / EDIT MODAL ===== -->
+  <!-- ARIA attributes removed -->
+  <div id="add-modal" class="modal-overlay">
+    <div class="modal-box modal-auth">
+      <button type="button" class="modal-close" id="add-close">✕</button>
+      <h2 class="auth-heading" id="add-heading">Шинэ байр нэмэх</h2>
       <div class="form-group">
-        <label for="r-email">Имэйл</label>
-        <input type="text" id="r-email" name="r-email" />
+        <label for="ap-title">Байрны нэр</label>
+        <input type="text" id="ap-title" name="ap-title" />
       </div>
       <div class="form-group">
-        <label for="r-pass">Нууц үг</label>
-        <input type="password" id="r-pass" name="r-pass" />
+        <label for="ap-loc">Байршил</label>
+        <input type="text" id="ap-loc" name="ap-loc" />
       </div>
-      <button type="button" class="auth-btn" id="r-sub">Бүртгүүлэх</button>
-    </div>
-
-  </div>
-</div>
-<!-- /AUTH MODAL -->
-
-
-<!-- ===== ADD / EDIT MODAL ===== -->
-<!-- ARIA attributes removed -->
-<div id="add-modal" class="modal-overlay">
-  <div class="modal-box modal-auth">
-    <button type="button" class="modal-close" id="add-close">✕</button>
-    <h2 class="auth-heading" id="add-heading">Шинэ байр нэмэх</h2>
-    <div class="form-group">
-      <label for="ap-title">Байрны нэр</label>
-      <input type="text" id="ap-title" name="ap-title" />
-    </div>
-    <div class="form-group">
-      <label for="ap-loc">Байршил</label>
-      <input type="text" id="ap-loc" name="ap-loc" />
-    </div>
-    <div class="form-group">
-      <label for="ap-price">Үнэ (&#8366;/шөнө)</label>
-      <input type="text" id="ap-price" name="ap-price" />
-    </div>
-    <div class="form-group">
-      <label for="ap-desc">Тайлбар</label>
-      <textarea id="ap-desc" name="ap-desc" rows="3" cols="30"></textarea>
-    </div>
-    <button type="button" class="auth-btn" id="ap-sub">Нэмэх</button>
-  </div>
-</div>
-<!-- /ADD MODAL -->
-
-
-<!-- ===== DELETE CONFIRM MODAL ===== -->
-<!-- ARIA attributes removed -->
-<div id="del-modal" class="modal-overlay">
-  <div class="modal-box modal-confirm">
-    <h2 class="auth-heading">Байрыг устгах уу?</h2>
-    <p class="auth-sub">Энэ үйлдлийг буцаах боломжгүй.</p>
-    <div class="confirm-btns">
-      <button type="button" class="property-btn" id="del-no">Цуцлах</button>
-      <button type="button" class="property-btn property-btn-danger" id="del-yes">Устгах</button>
+      <div class="form-group">
+        <label for="ap-price">Үнэ (&#8366;/шөнө)</label>
+        <input type="text" id="ap-price" name="ap-price" />
+      </div>
+      <div class="form-group">
+        <label for="ap-desc">Тайлбар</label>
+        <textarea id="ap-desc" name="ap-desc" rows="3" cols="30"></textarea>
+      </div>
+      <button type="button" class="auth-btn" id="ap-sub">Нэмэх</button>
     </div>
   </div>
-</div>
-<!-- /DELETE MODAL -->
+  <!-- /ADD MODAL -->
 
 
-<script type="text/javascript">
-//<![CDATA[
-function g(id) { return document.getElementById(id); }
-function openM(id) { g(id).classList.add('m-open'); document.body.style.overflow = 'hidden'; }
-function closeM(id) { g(id).classList.remove('m-open'); document.body.style.overflow = ''; }
+  <!-- ===== DELETE CONFIRM MODAL ===== -->
+  <!-- ARIA attributes removed -->
+  <div id="del-modal" class="modal-overlay">
+    <div class="modal-box modal-confirm">
+      <h2 class="auth-heading">Байрыг устгах уу?</h2>
+      <p class="auth-sub">Энэ үйлдлийг буцаах боломжгүй.</p>
+      <div class="confirm-btns">
+        <button type="button" class="property-btn" id="del-no">Цуцлах</button>
+        <button type="button" class="property-btn property-btn-danger" id="del-yes">Устгах</button>
+      </div>
+    </div>
+  </div>
+  <!-- /DELETE MODAL -->
 
-// Auth Modal
-g('open-login-btn').onclick = function() { openM('auth-modal'); };
-g('auth-close').onclick = function() { closeM('auth-modal'); };
-g('auth-modal').onclick = function(e) { if (e.target === this) closeM('auth-modal'); };
 
-g('tab-li').onclick = function() {
-  g('tab-li').classList.add('auth-tab-on');
-  g('tab-re').classList.remove('auth-tab-on');
-  g('p-li').classList.remove('auth-hide');
-  g('p-re').classList.add('auth-hide');
-};
-g('tab-re').onclick = function() {
-  g('tab-re').classList.add('auth-tab-on');
-  g('tab-li').classList.remove('auth-tab-on');
-  g('p-re').classList.remove('auth-hide');
-  g('p-li').classList.add('auth-hide');
-};
+  <script type="text/javascript">
+    //<![CDATA[
+    function g(id) { return document.getElementById(id); }
+    function openM(id) { g(id).classList.add('m-open'); document.body.style.overflow = 'hidden'; }
+    function closeM(id) { g(id).classList.remove('m-open'); document.body.style.overflow = ''; }
 
-g('li-sub').onclick = function() {
-  var email = g('li-email').value.trim();
-  var pass = g('li-pass').value;
-  if (!email || !pass) { alert('Имэйл болон нууц үгээ оруулна уу.'); return; }
-  alert('Нэвтрэх амжилттай!');
-  closeM('auth-modal');
-};
-g('r-sub').onclick = function() {
-  var email = g('r-email').value.trim();
-  var pass = g('r-pass').value;
-  if (!email || !pass) { alert('Бүх талбаруудыг бөглөнө үү.'); return; }
-  alert('Бүртгэл амжилттай!');
-  closeM('auth-modal');
-};
+    // Auth modal removed — login redirects to auth.html
 
-// Add / Edit Modal
-g('add-btn').onclick = function() {
-  g('add-heading').textContent = 'Шинэ байр нэмэх';
-  openM('add-modal');
-};
-g('add-close').onclick = function() { closeM('add-modal'); };
-g('add-modal').onclick = function(e) { if (e.target === this) closeM('add-modal'); };
-g('ap-sub').onclick = function() {
-  var title = g('ap-title').value.trim();
-  var loc = g('ap-loc').value.trim();
-  var price = g('ap-price').value.trim();
-  if (!title || !loc || !price) { alert('Заавал талбаруудыг бөглөнө үү.'); return; }
-  if (isNaN(price) || Number(price) <= 0) { alert('Үнэ зөвхөн эерэг тоо байх ёстой.'); return; }
-  alert('Байр амжилттай нэмэгдлээ!');
-  closeM('add-modal');
-};
+    // Add / Edit Modal
+    g('add-btn').onclick = function () {
+      g('add-heading').textContent = 'Шинэ байр нэмэх';
+      openM('add-modal');
+    };
+    g('add-close').onclick = function () { closeM('add-modal'); };
+    g('add-modal').onclick = function (e) { if (e.target === this) closeM('add-modal'); };
+    g('ap-sub').onclick = function () {
+      var title = g('ap-title').value.trim();
+      var loc = g('ap-loc').value.trim();
+      var price = g('ap-price').value.trim();
+      if (!title || !loc || !price) { alert('Заавал талбаруудыг бөглөнө үү.'); return; }
+      if (isNaN(price) || Number(price) <= 0) { alert('Үнэ зөвхөн эерэг тоо байх ёстой.'); return; }
+      alert('Байр амжилттай нэмэгдлээ!');
+      closeM('add-modal');
+    };
 
-// Edit (prefill heading)
-g('edit-hp1').onclick = function() {
-  g('add-heading').textContent = 'Байр засах';
-  openM('add-modal');
-};
+    // Edit (prefill heading)
+    g('edit-hp1').onclick = function () {
+      g('add-heading').textContent = 'Байр засах';
+      openM('add-modal');
+    };
 
-// Delete
-var delTarget = null;
-g('del-hp1').onclick = function() { delTarget = 'hp1'; openM('del-modal'); };
-g('del-no').onclick = function() { closeM('del-modal'); delTarget = null; };
-g('del-modal').onclick = function(e) { if (e.target === this) { closeM('del-modal'); delTarget = null; } };
-g('del-yes').onclick = function() {
-  if (delTarget) {
-    var card = g(delTarget);
-    if (card) {
-      card.style.opacity = '0';
-      card.style.transition = 'opacity 0.3s';
-      setTimeout(function() { if (card.parentNode) card.parentNode.removeChild(card); }, 300);
-    }
-  }
-  closeM('del-modal');
-  delTarget = null;
-};
+    // Delete
+    var delTarget = null;
+    g('del-hp1').onclick = function () { delTarget = 'hp1'; openM('del-modal'); };
+    g('del-no').onclick = function () { closeM('del-modal'); delTarget = null; };
+    g('del-modal').onclick = function (e) { if (e.target === this) { closeM('del-modal'); delTarget = null; } };
+    g('del-yes').onclick = function () {
+      if (delTarget) {
+        var card = g(delTarget);
+        if (card) {
+          card.style.opacity = '0';
+          card.style.transition = 'opacity 0.3s';
+          setTimeout(function () { if (card.parentNode) card.parentNode.removeChild(card); }, 300);
+        }
+      }
+      closeM('del-modal');
+      delTarget = null;
+    };
 
-// Password toggle
-g('li-eye').onclick = function() {
-  var inp = g('li-pass');
-  inp.type = (inp.type === 'password') ? 'text' : 'password';
-};
+    // Password toggle
+    g('li-eye').onclick = function () {
+      var inp = g('li-pass');
+      inp.type = (inp.type === 'password') ? 'text' : 'password';
+    };
 
-// Dark mode toggle
-g('dark-toggle').onclick = function() {
-  document.body.classList.toggle('dark-mode');
-  this.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '☾';
-};
+    // Dark mode toggle
+    g('dark-toggle').onclick = function () {
+      document.body.classList.toggle('dark-mode');
+      this.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '☾';
+    };
 
-// ESC key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeM('auth-modal');
-    closeM('add-modal');
-    closeM('del-modal');
-  }
-});
-//]]>
-</script>
+    // ESC key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeM('auth-modal');
+        closeM('add-modal');
+        closeM('del-modal');
+      }
+    });
+    //]]>
+  </script>
 
 </body>
+
 </html>
