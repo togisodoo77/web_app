@@ -1,10 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!-- auth.html
+     CHANGES:
+     - Added missing <?xml version?> declaration (required for XHTML Strict)
+     - Fixed <meta charset="UTF-8"> → <meta http-equiv="Content-Type"> (XHTML Strict)
+     - Uncommented the script block
+     - Fixed dark mode JS: Unicode \u2600 / \u263E instead of HTML entity strings
+     - Changed input type="text" for email fields → type="email" (better semantics)
+     - Register panel has class="hidden" so CSS hides it on load
+-->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="mn" lang="mn">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AmraltRent — Нэвтрэх / Бүртгүүлэх</title>
+  <title>AmraltRent &#8212; Нэвтрэх / Бүртгүүлэх</title>
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -24,35 +36,40 @@
         <a href="renter.html" class="nav-link">Түрээслэгч</a>
         <a href="booking.html" class="nav-link">Захиалга</a>
         <a href="host.html" class="nav-link">+ Байр нэмэх</a>
-        <button type="button" class="icon-btn">&#9829;</button>
-        <button type="button" id="dark-toggle" class="dark-toggle">&#9790;</button>
+        <button type="button" class="icon-btn" aria-label="Хадгалсан">&#9829;</button>
+        <button type="button" id="dark-toggle" class="dark-toggle" aria-label="Харанхуй горим">&#9790;</button>
         <a href="auth.html" class="icon-btn" title="Нэвтрэх / Бүртгүүлэх">&#128100;</a>
       </div>
     </div>
 
     <!-- ===== MAIN CONTENT ===== -->
     <div id="main-content" class="auth-page-container">
-      
-      <div class="auth-box">
-        <div class="at-tabs">
-          <button type="button" id="tab-li" class="at-tab on">Нэвтрэх</button>
-          <button type="button" id="tab-re" class="at-tab">Бүртгүүлэх</button>
+
+      <div class="auth-box modal-auth">
+        <div class="at-tabs" role="tablist">
+          <button type="button" id="tab-li" class="at-tab on"
+            role="tab" aria-selected="true" aria-controls="p-li">Нэвтрэх</button>
+          <button type="button" id="tab-re" class="at-tab"
+            role="tab" aria-selected="false" aria-controls="p-re">Бүртгүүлэх</button>
         </div>
 
         <!-- Login panel -->
-        <div id="p-li">
+        <div id="p-li" role="tabpanel" aria-labelledby="tab-li">
           <h2 class="at-heading">Тавтай морил!</h2>
           <p class="at-sub">Бүртгэлтэй хэрэглэгч нэвтэрнэ үү.</p>
           <div class="at-form">
             <div class="fg">
               <label for="li-email">Имэйл хаяг</label>
-              <input type="text" id="li-email" name="li-email" />
+              <input type="email" id="li-email" name="li-email"
+                placeholder="tailan@email.com" autocomplete="email" required="required" />
             </div>
             <div class="fg">
               <label for="li-pass">Нууц үг</label>
               <div class="pw-box">
-                <input type="password" id="li-pass" name="li-pass" />
-                <button type="button" class="pw-eye" id="li-eye">&#128065;</button>
+                <input type="password" id="li-pass" name="li-pass"
+                  placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                  autocomplete="current-password" required="required" />
+                <button type="button" class="pw-eye" id="li-eye" aria-label="Нууц үг харуулах">&#128065;</button>
               </div>
             </div>
             <div class="frow">
@@ -63,50 +80,58 @@
               <a href="#forgot" class="lnk">Нууц үг мартсан?</a>
             </div>
             <button type="button" class="sub-btn" id="li-sub">Нэвтрэх</button>
-            <div class="or-div">эсвэл</div>
+            <div class="or-div"><span>эсвэл</span></div>
             <button type="button" class="g-btn">
-              <span class="g-icon">G</span> Google-ээр нэвтрэх
+              <span class="g-icon" aria-hidden="true">G</span> Google-ээр нэвтрэх
             </button>
           </div>
         </div>
 
-        <!-- Register panel -->
-        <div id="p-re" class="hidden">
+        <!-- Register panel — hidden class hides it via CSS .hidden { display:none } -->
+        <div id="p-re" class="hidden" role="tabpanel" aria-labelledby="tab-re">
           <h2 class="at-heading">Бүртгүүлэх</h2>
           <p class="at-sub">Шинэ бүртгэл үүсгэнэ үү.</p>
           <div class="at-form">
             <div class="fg2">
               <div class="fg">
                 <label for="r-fn">Нэр</label>
-                <input type="text" id="r-fn" name="r-fn" />
+                <input type="text" id="r-fn" name="r-fn"
+                  placeholder="Нэр" autocomplete="given-name" required="required" />
               </div>
               <div class="fg">
                 <label for="r-ln">Овог</label>
-                <input type="text" id="r-ln" name="r-ln" />
+                <input type="text" id="r-ln" name="r-ln"
+                  placeholder="Овог" autocomplete="family-name" required="required" />
               </div>
             </div>
             <div class="fg">
               <label for="r-email">Имэйл</label>
-              <input type="text" id="r-email" name="r-email" />
+              <input type="email" id="r-email" name="r-email"
+                placeholder="tailan@email.com" autocomplete="email" required="required" />
             </div>
             <div class="fg">
               <label for="r-phone">Утас</label>
-              <input type="text" id="r-phone" name="r-phone" />
+              <input type="tel" id="r-phone" name="r-phone"
+                placeholder="+976 9999 0000" autocomplete="tel" />
             </div>
             <div class="fg">
               <label for="r-pass">Нууц үг</label>
               <div class="pw-box">
-                <input type="password" id="r-pass" name="r-pass" />
-                <button type="button" class="pw-eye" id="r-eye">&#128065;</button>
+                <input type="password" id="r-pass" name="r-pass"
+                  placeholder="8+ тэмдэгт"
+                  autocomplete="new-password" required="required" />
+                <button type="button" class="pw-eye" id="r-eye" aria-label="Нууц үг харуулах">&#128065;</button>
               </div>
             </div>
             <div class="fg">
               <label for="r-pass2">Нууц үг давтах</label>
-              <input type="password" id="r-pass2" name="r-pass2" />
+              <input type="password" id="r-pass2" name="r-pass2"
+                placeholder="Нууц үгийг давтах"
+                autocomplete="new-password" required="required" />
             </div>
             <div class="fg">
               <label class="chk">
-                <input type="checkbox" id="r-agree" name="r-agree" />
+                <input type="checkbox" id="r-agree" name="r-agree" required="required" />
                 <a href="#terms" class="lnk">Үйлчилгээний нөхцөл</a>-ийг зөвшөөрч байна
               </label>
             </div>
@@ -117,6 +142,7 @@
 
     </div>
 
+    <!-- ===== FOOTER ===== -->
     <div class="footer">
       <div class="footer-container">
         <div>
@@ -136,60 +162,79 @@
         </div>
       </div>
       <div class="footer-bottom">
-        &copy; 2026 AmraltRent. All rights reserved.
+        <p>&#169; 2026 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
       </div>
     </div>
 
   </div>
-<!-- 
+
   <script type="text/javascript">
-    //<![CDATA[
+  //<![CDATA[
     function el(id) { return document.getElementById(id); }
 
-    el("tab-li").onclick = function () {
-      el("tab-li").className = "at-tab on";
-      el("tab-re").className = "at-tab";
-      el("p-li").classList.remove("hidden");
-      el("p-re").classList.add("hidden");
+    /* ---- Auth tabs ---- */
+    el('tab-li').onclick = function() {
+      el('tab-li').className = 'at-tab on';
+      el('tab-li').setAttribute('aria-selected', 'true');
+      el('tab-re').className = 'at-tab';
+      el('tab-re').setAttribute('aria-selected', 'false');
+      el('p-li').classList.remove('hidden');
+      el('p-re').classList.add('hidden');
     };
-    el("tab-re").onclick = function () {
-      el("tab-re").className = "at-tab on";
-      el("tab-li").className = "at-tab";
-      el("p-re").classList.remove("hidden");
-      el("p-li").classList.add("hidden");
+    el('tab-re').onclick = function() {
+      el('tab-re').className = 'at-tab on';
+      el('tab-re').setAttribute('aria-selected', 'true');
+      el('tab-li').className = 'at-tab';
+      el('tab-li').setAttribute('aria-selected', 'false');
+      el('p-re').classList.remove('hidden');
+      el('p-li').classList.add('hidden');
     };
 
     function validEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
-    el("li-sub").onclick = function () {
-      var e = el("li-email").value.trim(), p = el("li-pass").value;
-      if (!e || !p) { alert("Имэйл болон нууц үгээ оруулна уу."); return; }
-      if (!validEmail(e)) { alert("Зөв имэйл хаяг оруулна уу."); return; }
-      alert("Нэвтрэх амжилттай! Тавтай морил.");
-      window.location.href = "index.html";
+    /* ---- Login ---- */
+    el('li-sub').onclick = function() {
+      var e = el('li-email').value.trim();
+      var p = el('li-pass').value;
+      if (!e || !p) { alert('\u0418\u043c\u044d\u0439\u043b \u0431\u043e\u043b\u043e\u043d \u043d\u0443\u0443\u0446 \u04af\u0433\u044d\u044d \u043e\u0440\u0443\u0443\u043b\u043d\u0430 \u0443\u0443.'); return; }
+      if (!validEmail(e)) { alert('\u0417\u04e9\u0432 \u0438\u043c\u044d\u0439\u043b \u0445\u0430\u044f\u0433 \u043e\u0440\u0443\u0443\u043b\u043d\u0430 \u0443\u0443.'); return; }
+      alert('\u041d\u044d\u0432\u0442\u0440\u044d\u0445 \u0430\u043c\u0436\u0438\u043b\u0442\u0442\u0430\u0439! \u0422\u0430\u0432\u0442\u0430\u0439 \u043c\u043e\u0440\u0438\u043b.');
+      window.location.href = 'index.html';
     };
 
-    el("r-sub").onclick = function () {
-      var fn = el("r-fn").value.trim(), ln = el("r-ln").value.trim(), em = el("r-email").value.trim(), p = el("r-pass").value, p2 = el("r-pass2").value, ok = el("r-agree").checked;
-      if (!fn || !ln || !em || !p) { alert("Бүх заавал талбаруудыг бөглөнө үү."); return; }
-      if (!validEmail(em)) { alert("Зөв имэйл хаяг оруулна уу."); return; }
-      if (p !== p2) { alert("Нууц үг таарахгүй байна."); return; }
-      if (!ok) { alert("Үйлчилгээний нөхцөлийг зөвшөөрнө үү."); return; }
-      alert("Бүртгэл амжилттай! Тавтай морил, " + fn + "!");
-      window.location.href = "index.html";
+    /* ---- Register ---- */
+    el('r-sub').onclick = function() {
+      var fn = el('r-fn').value.trim();
+      var ln = el('r-ln').value.trim();
+      var em = el('r-email').value.trim();
+      var p  = el('r-pass').value;
+      var p2 = el('r-pass2').value;
+      var ok = el('r-agree').checked;
+      if (!fn || !ln || !em || !p) { alert('\u0411\u04af\u0445 \u0437\u0430\u0430\u0432\u0430\u043b \u0442\u0430\u043b\u0431\u0430\u0440\u0443\u0443\u0434\u044b\u0433 \u0431\u04e9\u0433\u043b\u04e9\u043d\u04e9 \u0443\u0443.'); return; }
+      if (!validEmail(em)) { alert('\u0417\u04e9\u0432 \u0438\u043c\u044d\u0439\u043b \u0445\u0430\u044f\u0433 \u043e\u0440\u0443\u0443\u043b\u043d\u0430 \u0443\u0443.'); return; }
+      if (p !== p2) { alert('\u041d\u0443\u0443\u0446 \u04af\u0433 \u0442\u0430\u0430\u0440\u0430\u0445\u0433\u04af\u0439 \u0431\u0430\u0439\u043d\u0430.'); return; }
+      if (!ok) { alert('\u04ae\u0439\u043b\u0447\u0438\u043b\u0433\u044d\u044d\u043d\u0438\u0439 \u043d\u04e9\u0445\u0446\u04e9\u043b\u0438\u0439\u0433 \u0437\u04e9\u0432\u0448\u04e9\u04e9\u0440\u043d\u04e9 \u0443\u0443.'); return; }
+      alert('\u0411\u04af\u0440\u0442\u0433\u044d\u043b \u0430\u043c\u0436\u0438\u043b\u0442\u0442\u0430\u0439! \u0422\u0430\u0432\u0442\u0430\u0439 \u043c\u043e\u0440\u0438\u043b, ' + fn + '!');
+      window.location.href = 'index.html';
     };
 
-    el("li-eye").onclick = function () { var i = el("li-pass"); i.type = (i.type === "password") ? "text" : "password"; };
-    el("r-eye").onclick = function () { var i = el("r-pass"); i.type = (i.type === "password") ? "text" : "password"; };
-
-    /* ---- Dark mode ---- */
-    el("dark-toggle").onclick = function () {
-      document.body.classList.toggle("dark-mode");
-      this.textContent = document.body.classList.contains("dark-mode") ? "&#9728;" : "&#9790;";
+    /* ---- Password toggles ---- */
+    el('li-eye').onclick = function() {
+      var i = el('li-pass');
+      i.type = (i.type === 'password') ? 'text' : 'password';
     };
-    //]]>
-  </script> -->
+    el('r-eye').onclick = function() {
+      var i = el('r-pass');
+      i.type = (i.type === 'password') ? 'text' : 'password';
+    };
+
+    /* ---- Dark mode (FIX: Unicode instead of HTML entity strings) ---- */
+    el('dark-toggle').onclick = function() {
+      document.body.classList.toggle('dark-mode');
+      this.textContent = document.body.classList.contains('dark-mode') ? '\u2600' : '\u263E';
+    };
+  //]]>
+  </script>
 
 </body>
-
 </html>

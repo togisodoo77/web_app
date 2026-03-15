@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
+<!-- host.html
+     CHANGES:
+     - Fixed logo: was literal "☾;" (stray semicolon + wrong char) → &#8962;
+     - Uncommented the script block
+     - Fixed dark mode JS: Unicode \u2600 / \u263E
+     - form onsubmit: e.preventDefault() kept; action/method attributes kept for XHTML validity
+     - Added aria-label to dark-toggle and icon-btn
+     - input type="text" for price kept (numeric validation done in JS)
+-->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="AmraltRent — Шинэ байр нэмэх хуудас. Амралтын байрандаа зорчигч хүлээн авч орлого олоорой." />
+    content="AmraltRent — Шинэ байр нэмэх хуудас." />
   <meta name="robots" content="noindex, follow" />
-  <title>Байр нэмэх — AmraltRent</title>
+  <title>Байр нэмэх &#8212; AmraltRent</title>
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -20,21 +30,21 @@
   <div class="container">
 
     <!-- ===== HEADER ===== -->
+    <!-- FIX: logo was "☾;" — replaced with proper entity &#8962; -->
     <div class="header">
       <div class="logo">
-        <span class="icon-logo">☾;</span> AmraltRent
+        <span class="icon-logo">&#8962;</span> AmraltRent
       </div>
       <div class="header-right">
         <a href="index.html" class="nav-link">Нүүр</a>
         <a href="renter.html" class="nav-link">Түрээслэгч</a>
         <a href="booking.html" class="nav-link">Захиалга</a>
         <a href="host.html" class="nav-link nav-active">+ Байр нэмэх</a>
-        <button type="button" class="icon-btn">&#9829;</button>
-        <button type="button" id="dark-toggle" class="dark-toggle">&#9790;</button>
+        <button type="button" class="icon-btn" aria-label="Хадгалсан">&#9829;</button>
+        <button type="button" id="dark-toggle" class="dark-toggle" aria-label="Харанхуй горим">&#9790;</button>
         <a href="auth.html" class="icon-btn" title="Нэвтрэх / Бүртгүүлэх">&#128100;</a>
       </div>
     </div>
-    <!-- /HEADER -->
 
     <!-- ===== PAGE HERO ===== -->
     <div class="page-hero">
@@ -51,25 +61,28 @@
           <p class="dashboard-subtitle">Доорх бүх мэдээллийг бөглөн байраа нийтлээрэй.</p>
         </div>
 
-        <form class="host-form" id="host-form" action="host.html" method="post" enctype="multipart/form-data">
+        <!-- action/method kept for XHTML validity; JS prevents actual submit -->
+        <form class="host-form" id="host-form" action="host.html" method="post"
+          enctype="multipart/form-data">
 
-          <!-- Row 1: Title + Location -->
           <div class="fg2">
             <div class="fg">
               <label for="h-title">Байрны нэр *</label>
-              <input type="text" id="h-title" name="h-title" />
+              <input type="text" id="h-title" name="h-title"
+                placeholder="Байрны нэр" required="required" />
             </div>
             <div class="fg">
               <label for="h-loc">Байршил / Аймаг *</label>
-              <input type="text" id="h-loc" name="h-loc" />
+              <input type="text" id="h-loc" name="h-loc"
+                placeholder="Хөвсгөл далай" required="required" />
             </div>
           </div>
 
-          <!-- Row 2: Price + Category -->
           <div class="fg2">
             <div class="fg">
               <label for="h-price">&#8366; Үнэ / шөнө *</label>
-              <input type="text" id="h-price" name="h-price" />
+              <input type="text" id="h-price" name="h-price"
+                placeholder="350000" required="required" />
             </div>
             <div class="fg">
               <label for="h-cat">Ангилал *</label>
@@ -83,7 +96,6 @@
             </div>
           </div>
 
-          <!-- Row 3: Guests + Beds + Baths -->
           <div class="host-form-row3">
             <div class="fg">
               <label for="h-guests">Хамгийн их хүн *</label>
@@ -122,15 +134,12 @@
             </div>
           </div>
 
-          <!-- Description -->
           <div class="fg">
             <label for="h-desc">Тайлбар *</label>
-            <textarea id="h-desc" name="h-desc" rows="5" cols="40">
-          </textarea>
+            <textarea id="h-desc" name="h-desc" rows="5" cols="40"></textarea>
             <p class="host-form-hint">Байрныхаа онцлог, орчин тойрон, тохиромжлолыг дэлгэрэнгүй бичнэ үү.</p>
           </div>
 
-          <!-- Amenities checkboxes -->
           <div class="fg">
             <label class="form-section-lbl">Тохиромжлол</label>
             <div class="amenities-grid">
@@ -145,7 +154,6 @@
             </div>
           </div>
 
-          <!-- Image upload -->
           <div class="fg">
             <label for="h-img">&#128247; Байрны зураг оруулах *</label>
             <div class="upload-area" id="upload-area">
@@ -161,22 +169,18 @@
             </div>
           </div>
 
-          <!-- Rules -->
           <div class="fg">
             <label for="h-rules">Дүрэм / Тэмдэглэл</label>
-            <textarea id="h-rules" name="h-rules" rows="3" cols="40">
-          </textarea>
+            <textarea id="h-rules" name="h-rules" rows="3" cols="40"></textarea>
           </div>
 
-          <!-- Terms agreement -->
           <div class="fg">
             <label class="chk">
-              <input type="checkbox" id="h-agree" name="h-agree" />
+              <input type="checkbox" id="h-agree" name="h-agree" required="required" />
               <a href="#terms" class="lnk">Үйлчилгээний нөхцөл</a>-ийг уншиж зөвшөөрч байна *
             </label>
           </div>
 
-          <!-- Submit button (исправлено: обёрнут в block-контейнер) -->
           <div class="fg">
             <button type="submit" class="sub-btn" id="h-sub">&#128640; Байр нийтлэх</button>
           </div>
@@ -185,13 +189,8 @@
 
       </div>
     </div>
-    <!-- /main-content -->
 
   </div>
-  <!-- /CONTAINER -->
-
-
-
 
   <!-- ===== FOOTER ===== -->
   <div class="footer">
@@ -224,52 +223,62 @@
     <div class="footer-bottom">
       <p>&#169; 2025 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
     </div>
-    <p class="created-by">Made with &#10084; in Mongolia — T.Sodnomdamba · T.Erdenedalai · D.Ariuntuya</p>
+    <p class="created-by">Made with &#10084; in Mongolia &#8212; T.Sodnomdamba &#183; T.Erdenedalai &#183; D.Ariuntuya</p>
   </div>
 
-
-  <!-- <script type="text/javascript">
-    //<![CDATA[
+  <script type="text/javascript">
+  //<![CDATA[
     function el(id) { return document.getElementById(id); }
 
-    /* Form submit */
-    el("host-form").onsubmit = function (e) {
+    /* ---- Form submit validation ---- */
+    el('host-form').onsubmit = function(e) {
       e.preventDefault();
-      var t = el("h-title").value.trim();
-      var l = el("h-loc").value.trim();
-      var p = el("h-price").value.trim();
-      var cat = el("h-cat").value;
-      var d = el("h-desc").value.trim();
-      var img = el("h-img").value;
-      var ok = el("h-agree").checked;
-      if (!t || !l || !p || !cat || !d) { alert("Заавал (*) талбаруудыг бөглөнө үү."); return; }
-      if (isNaN(p) || Number(p) <= 0) { alert("Үнэ зөвхөн эерэг тоо байх ёстой."); return; }
-      if (!img) { alert("Байрны зураг оруулна уу."); return; }
-      if (!ok) { alert("Үйлчилгээний нөхцөлийг зөвшөөрнө үү."); return; }
-      alert("Байр амжилттай нийтлэгдлээ! Хянагдсаны дараа харагдах болно.");
+      var t   = el('h-title').value.trim();
+      var l   = el('h-loc').value.trim();
+      var p   = el('h-price').value.trim();
+      var cat = el('h-cat').value;
+      var d   = el('h-desc').value.trim();
+      var img = el('h-img').value;
+      var ok  = el('h-agree').checked;
+      if (!t || !l || !p || !cat || !d) {
+        alert('\u0417\u0430\u0430\u0432\u0430\u043b (*) \u0442\u0430\u043b\u0431\u0430\u0440\u0443\u0443\u0434\u044b\u0433 \u0431\u04e9\u0433\u043b\u04e9\u043d\u04e9 \u0443\u0443.');
+        return;
+      }
+      if (isNaN(p) || Number(p) <= 0) {
+        alert('\u04ae\u043d\u044d \u0437\u04e9\u0432\u0445\u04e9\u043d \u044d\u044d\u0440\u044d\u0433 \u0442\u043e\u043e \u0431\u0430\u0439\u0445 \u0451\u0441\u0442\u043e\u0439.');
+        return;
+      }
+      if (!img) {
+        alert('\u0411\u0430\u0439\u0440\u043d\u044b \u0437\u0443\u0440\u0430\u0433 \u043e\u0440\u0443\u0443\u043b\u043d\u0430 \u0443\u0443.');
+        return;
+      }
+      if (!ok) {
+        alert('\u04ae\u0439\u043b\u0447\u0438\u043b\u0433\u044d\u044d\u043d\u0438\u0439 \u043d\u04e9\u0445\u0446\u04e9\u043b\u0438\u0439\u0433 \u0437\u04e9\u0432\u0448\u04e9\u04e9\u0440\u043d\u04e9 \u0443\u0443.');
+        return;
+      }
+      alert('\u0411\u0430\u0439\u0440 \u0430\u043c\u0436\u0438\u043b\u0442\u0442\u0430\u0439 \u043d\u0438\u0439\u0442\u043b\u044d\u0433\u0434\u043b\u044d\u044d! \u0425\u044f\u043d\u0430\u0433\u0434\u0441\u0430\u043d\u044b \u0434\u0430\u0440\u0430\u0430 \u0445\u0430\u0440\u0430\u0433\u0434\u0430\u0445 \u0431\u043e\u043b\u043d\u043e.');
     };
 
-    /* Image preview */
-    el("h-img").onchange = function () {
+    /* ---- Image preview ---- */
+    el('h-img').onchange = function() {
       var file = this.files[0];
       if (file) {
         var reader = new FileReader();
-        reader.onload = function (ev) {
-          el("img-preview").src = ev.target.result;
-          el("img-preview-wrap").classList.remove("hidden");
+        reader.onload = function(ev) {
+          el('img-preview').src = ev.target.result;
+          el('img-preview-wrap').classList.remove('hidden');
         };
         reader.readAsDataURL(file);
       }
     };
 
-    /* Dark mode */
-    el("dark-toggle").onclick = function () {
-      document.body.classList.toggle("dark-mode");
-      this.innerHTML = document.body.classList.contains("dark-mode") ? "&#9728;" : "&#9790;";
+    /* ---- Dark mode (FIX: Unicode instead of HTML entity strings) ---- */
+    el('dark-toggle').onclick = function() {
+      document.body.classList.toggle('dark-mode');
+      this.textContent = document.body.classList.contains('dark-mode') ? '\u2600' : '\u263E';
     };
-    //]]>
-  </script> -->
+  //]]>
+  </script>
 
 </body>
-
 </html>
