@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <!-- index.html
      CHANGES:
@@ -11,194 +10,270 @@
      - Removed stray //]]> that appeared outside CDATA
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AmraltRent — Монголын хамгийн тохилог амралтын байруудыг олж шуурхай захиалаарай."
+    />
+    <meta
+      name="keywords"
+      content="амралт, байр, түрээс, vacation rental, Хөвсгөл, Тэрэлж, Монгол"
+    />
+    <meta name="robots" content="index, follow" />
+    <title>AmraltRent &#8212; Амралтын байр хайх</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="AmraltRent — Монголын хамгийн тохилог амралтын байруудыг олж шуурхай захиалаарай." />
-  <meta name="keywords" content="амралт, байр, түрээс, vacation rental, Хөвсгөл, Тэрэлж, Монгол" />
-  <meta name="robots" content="index, follow" />
-  <title>AmraltRent &#8212; Амралтын байр хайх</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-
-<body>
-
-  <div><a href="#main-content" class="skip-link">Үндсэн агуулга руу очих</a></div>
-
-  <div class="container">
-
-    <!-- ===== HEADER ===== -->
-    <div class="header">
-      <div class="logo">
-        <span class="icon-logo">&#8962;</span> AmraltRent
-      </div>
-      <div class="header-right">
-        <a href="index.html" class="nav-link nav-active">Нүүр</a>
-        <a href="renter.html" class="nav-link">Түрээслэгч</a>
-        <a href="booking.html" class="nav-link">Захиалга</a>
-        <a href="host.html" class="nav-link">+ Байр нэмэх</a>
-        <button type="button" class="icon-btn" aria-label="Хадгалсан">&#9829;</button>
-        <button type="button" id="dark-toggle" class="dark-toggle" aria-label="Харанхуй горим">&#9790;</button>
-        <a href="auth.html" class="icon-btn" title="Нэвтрэх / Бүртгүүлэх">&#128100;</a>
-      </div>
+  <body>
+    <div>
+      <a href="#main-content" class="skip-link">Үндсэн агуулга руу очих</a>
     </div>
 
-    <!-- ===== HERO + SEARCH ===== -->
-    <div class="hero-section">
-      <div class="hero-text">
-        <h1>Хаана амрахаа олоорой</h1>
-        <p class="hero-sub">Монголын алдарт газруудад тохилог амралт &#8212; хурдан, хялбар захиалга.</p>
-      </div>
-
-      <!-- Search: type="text" kept for checkin/checkout per original design -->
-      <form class="search-form" action="index.html" method="get" id="search-form">
-        <div class="search-fields">
-
-          <div class="search-field">
-            <label for="s-dest" class="search-label">&#128205; Байршил</label>
-            <input type="text" id="s-dest" name="destination" class="search-input" />
-          </div>
-
-          <div class="search-sep"></div>
-
-          <div class="search-field">
-            <label for="s-checkin" class="search-label">&#128197; Ирэх огноо</label>
-            <input type="text" id="s-checkin" name="checkin" class="search-input" />
-          </div>
-
-          <div class="search-sep"></div>
-
-          <div class="search-field">
-            <label for="s-checkout" class="search-label">&#128197; Явах огноо</label>
-            <input type="text" id="s-checkout" name="checkout" class="search-input" />
-          </div>
-
-          <div class="search-sep"></div>
-
-          <div class="search-field">
-            <label for="s-guests" class="search-label">&#128101; Хүний тоо</label>
-            <select id="s-guests" name="guests" class="search-input search-select">
-              <option value="">Сонгоно уу</option>
-              <option value="1">1 хүн</option>
-              <option value="2">2 хүн</option>
-              <option value="3">3 хүн</option>
-              <option value="4">4 хүн</option>
-              <option value="5">5 хүн</option>
-              <option value="6">6+ хүн</option>
-            </select>
-          </div>
-
+    <div class="container">
+      <!-- ===== HEADER ===== -->
+      <div class="header">
+        <div class="logo">
+          <span class="icon-logo">&#8962;</span> AmraltRent
         </div>
-
-        <div class="search-btn-wrapper">
-          <button type="submit" class="search-btn">&#128269; Хайх</button>
-        </div>
-      </form>
-    </div>
-
-    <!-- ===== MAIN CONTENT ===== -->
-    <div id="main-content">
-
-      <!-- ===== CATEGORIES ===== -->
-      <div class="categories">
-        <h2>Гол цэс</h2>
-        <div class="category-grid">
-
-          <div class="category-card filter-гол" tabindex="0" role="button" aria-pressed="false">
-            <span class="cat-emoji">&#127754;</span>
-            <p>Гол</p>
-          </div>
-
-          <div class="category-card filter-уул" tabindex="0" role="button" aria-pressed="false">
-            <span class="cat-emoji">&#9968;</span>
-            <p>Уул</p>
-          </div>
-
-          <div class="category-card filter-vip" tabindex="0" role="button" aria-pressed="false">
-            <span class="cat-emoji">&#11088;</span>
-            <p>Vip</p>
-          </div>
-
-          <div class="category-card filter-хөдөө" tabindex="0" role="button" aria-pressed="false">
-            <span class="cat-emoji">&#127807;</span>
-            <p>Хөдөө</p>
-          </div>
-
+        <div class="header-right">
+          <a href="index.html" class="nav-link nav-active">Нүүр</a>
+          <a href="renter.html" class="nav-link">Түрээслэгч</a>
+          <a href="booking.html" class="nav-link">Захиалга</a>
+          <a href="host.html" class="nav-link">+ Байр нэмэх</a>
+          <button type="button" class="icon-btn" aria-label="Хадгалсан">
+            &#9829;
+          </button>
+          <button
+            type="button"
+            id="dark-toggle"
+            class="dark-toggle"
+            aria-label="Харанхуй горим"
+          >
+            &#9790;
+          </button>
+          <a href="auth.html" class="icon-btn" title="Нэвтрэх / Бүртгүүлэх"
+            >&#128100;</a
+          >
         </div>
       </div>
 
-      <!-- ===== FEATURED PROPERTIES ===== -->
-      <div class="featured">
-        <div class="featured-top">
-          <h2 id="featured-title">Онцлох байр</h2>
-          <button type="button" class="view-btn hidden" id="clear-filter">&#10005; Бүгдийг харах</button>
+      <!-- ===== HERO + SEARCH ===== -->
+      <div class="hero-section">
+        <div class="hero-text">
+          <h1>Хаана амрахаа олоорой</h1>
+          <p class="hero-sub">
+            Монголын алдарт газруудад тохилог амралт &#8212; хурдан, хялбар
+            захиалга.
+          </p>
         </div>
 
-        <div class="property-grid" id="property-grid">
+        <!-- Search: type="text" kept for checkin/checkout per original design -->
+        <form
+          class="search-form"
+          action="index.html"
+          method="get"
+          id="search-form"
+        >
+          <div class="search-fields">
+            <div class="search-field">
+              <label for="s-dest" class="search-label">&#128205; Байршил</label>
+              <input
+                type="text"
+                id="s-dest"
+                name="destination"
+                class="search-input"
+              />
+            </div>
 
-          <div id="no-results" class="empty-state hidden">
-            <p class="empty-state-icon">&#127968;</p>
-            <p class="empty-state-title">Байр олдсонгүй</p>
-            <p class="empty-state-desc">Энэ ангилалд байр байхгүй байна.</p>
+            <div class="search-sep"></div>
+
+            <div class="search-field">
+              <label for="s-checkin" class="search-label"
+                >&#128197; Ирэх огноо</label
+              >
+              <input
+                type="text"
+                id="s-checkin"
+                name="checkin"
+                class="search-input"
+              />
+            </div>
+
+            <div class="search-sep"></div>
+
+            <div class="search-field">
+              <label for="s-checkout" class="search-label"
+                >&#128197; Явах огноо</label
+              >
+              <input
+                type="text"
+                id="s-checkout"
+                name="checkout"
+                class="search-input"
+              />
+            </div>
+
+            <div class="search-sep"></div>
+
+            <div class="search-field">
+              <label for="s-guests" class="search-label"
+                >&#128101; Хүний тоо</label
+              >
+              <select
+                id="s-guests"
+                name="guests"
+                class="search-input search-select"
+              >
+                <option value="">Сонгоно уу</option>
+                <option value="1">1 хүн</option>
+                <option value="2">2 хүн</option>
+                <option value="3">3 хүн</option>
+                <option value="4">4 хүн</option>
+                <option value="5">5 хүн</option>
+                <option value="6">6+ хүн</option>
+              </select>
+            </div>
           </div>
 
+          <div class="search-btn-wrapper">
+            <button type="submit" class="search-btn">&#128269; Хайх</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ===== MAIN CONTENT ===== -->
+      <div id="main-content">
+        <!-- ===== CATEGORIES ===== -->
+        <div class="categories">
+          <h2>Гол цэс</h2>
+          <div class="category-grid">
+            <div
+              class="category-card filter-гол"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <span class="cat-emoji">&#127754;</span>
+              <p>Гол</p>
+            </div>
+
+            <div
+              class="category-card filter-уул"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <span class="cat-emoji">&#9968;</span>
+              <p>Уул</p>
+            </div>
+
+            <div
+              class="category-card filter-vip"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <span class="cat-emoji">&#11088;</span>
+              <p>Vip</p>
+            </div>
+
+            <div
+              class="category-card filter-хөдөө"
+              tabindex="0"
+              role="button"
+              aria-pressed="false"
+            >
+              <span class="cat-emoji">&#127807;</span>
+              <p>Хөдөө</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== FEATURED PROPERTIES ===== -->
+        <div class="featured">
+          <div class="featured-top">
+            <h2 id="featured-title">Онцлох байр</h2>
+            <button type="button" class="view-btn hidden" id="clear-filter">
+              &#10005; Бүгдийг харах
+            </button>
+          </div>
+
+          <div class="property-grid" id="property-grid">
+            <div id="no-results" class="empty-state hidden">
+              <p class="empty-state-icon">&#127968;</p>
+              <p class="empty-state-title">Байр олдсонгүй</p>
+              <p class="empty-state-desc">Энэ ангилалд байр байхгүй байна.</p>
+            </div>
+          </div>
         </div>
       </div>
-
+      <!-- /main-content -->
     </div>
-    <!-- /main-content -->
+    <!-- /container -->
 
-  </div>
-  <!-- /container -->
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+      <div class="footer-container">
+        <div>
+          <h4>Тусламж</h4>
+          <p>Тусламжийн центр</p>
+          <p>Аюулгүй байдал</p>
+          <p>Цуцлах сонголт</p>
+          <p>Асуудал мэдээлэх</p>
+        </div>
+        <div>
+          <h4>Байршуулалт</h4>
+          <p>Байршуулж үзэх</p>
+          <p>Хариуцлагатай түрээслэгчид</p>
+          <p>Нөөцийн төв</p>
+        </div>
+        <div>
+          <h4>AmraltRent</h4>
+          <p>Мэдэгдэл</p>
+          <p>Бидний тухай</p>
+          <p>Нийгмийн хариуцлага</p>
+        </div>
+        <div>
+          <h4>Холбоос</h4>
+          <p><a href="index.html">Нүүр</a></p>
+          <p><a href="booking.html">Захиалга</a></p>
+          <p><a href="host.html">Байр нэмэх</a></p>
+          <p><a href="renter.html">Түрээслэгч</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&#169; 2025 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
+      </div>
+      <p class="created-by">
+        Made with &#10084; in Mongolia &#8212; T.Sodnomdamba &#183;
+        T.Erdenedalai &#183; D.Ariuntuya
+      </p>
+    </div>
 
-  <!-- ===== FOOTER ===== -->
-  <div class="footer">
-    <div class="footer-container">
-      <div>
-        <h4>Тусламж</h4>
-        <p>Тусламжийн центр</p>
-        <p>Аюулгүй байдал</p>
-        <p>Цуцлах сонголт</p>
-        <p>Асуудал мэдээлэх</p>
-      </div>
-      <div>
-        <h4>Байршуулалт</h4>
-        <p>Байршуулж үзэх</p>
-        <p>Хариуцлагатай түрээслэгчид</p>
-        <p>Нөөцийн төв</p>
-      </div>
-      <div>
-        <h4>AmraltRent</h4>
-        <p>Мэдэгдэл</p>
-        <p>Бидний тухай</p>
-        <p>Нийгмийн хариуцлага</p>
-      </div>
-      <div>
-        <h4>Холбоос</h4>
-        <p><a href="index.html">Нүүр</a></p>
-        <p><a href="booking.html">Захиалга</a></p>
-        <p><a href="host.html">Байр нэмэх</a></p>
-        <p><a href="renter.html">Түрээслэгч</a></p>
+    <!-- ===== PROPERTY DETAIL MODAL ===== -->
+    <div
+      id="prop-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="prop-modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-box">
+        <button
+          type="button"
+          id="prop-close"
+          class="modal-close"
+          aria-label="Хаах"
+        >
+          &#10005;
+        </button>
+        <div id="prop-body"></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&#169; 2025 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
-    </div>
-    <p class="created-by">Made with &#10084; in Mongolia &#8212; T.Sodnomdamba &#183; T.Erdenedalai &#183; D.Ariuntuya</p>
-  </div>
 
-  <!-- ===== PROPERTY DETAIL MODAL ===== -->
-  <div id="prop-modal" class="modal-overlay" role="dialog" aria-modal="true"
-    aria-labelledby="prop-modal-title" aria-hidden="true">
-    <div class="modal-box">
-      <button type="button" id="prop-close" class="modal-close" aria-label="Хаах">&#10005;</button>
-      <div id="prop-body"></div>
-    </div>
-  </div>
-
-  <script type="module" src="js/main.js"></script>
-
-</body>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>
