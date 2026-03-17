@@ -2,13 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<!-- booking.html
-     CHANGES:
-     - Uncommented the script block
-     - Fixed dark mode JS: Unicode \u2600 / \u263E
-     - Added aria-label to dark-toggle
-     - Moved footer outside .container (it has its own full-width styling)
--->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
 
 <head>
@@ -55,166 +48,17 @@
       <!-- Filter tabs -->
       <div class="booking-tabs" role="tablist">
         <button type="button" class="btab btab-on" id="btab-all"
-          role="tab" aria-selected="true">Бүгд (3)</button>
+          role="tab" aria-selected="true">Бүгд</button>
         <button type="button" class="btab" id="btab-upcoming"
-          role="tab" aria-selected="false">&#8594; Ирэх (1)</button>
+          role="tab" aria-selected="false">&#8594; Ирэх</button>
         <button type="button" class="btab" id="btab-active"
-          role="tab" aria-selected="false">&#10003; Идэвхтэй (1)</button>
+          role="tab" aria-selected="false">&#10003; Идэвхтэй</button>
         <button type="button" class="btab" id="btab-done"
-          role="tab" aria-selected="false">&#10003; Дууссан (1)</button>
+          role="tab" aria-selected="false">&#10003; Дууссан</button>
       </div>
 
-      <!-- Booking list -->
+      <!-- Booking list — динамикаар үүснэ -->
       <div id="booking-list">
-
-        <!-- BOOKING 1 — Upcoming -->
-        <div class="booking-card bstatus-upcoming" id="bk-1">
-          <div class="booking-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=70"
-              alt="Тансаг зэрэглэлийн байшин — Хөвсгөл далай" width="600" height="200" />
-            <span class="booking-badge badge-upcoming">&#8594; Ирэх</span>
-          </div>
-          <div class="booking-info">
-            <div class="booking-header">
-              <div>
-                <h3 class="booking-title">Тансаг зэрэглэлийн байшин</h3>
-                <p class="booking-location">&#128205; Хөвсгөл далай</p>
-              </div>
-              <div class="booking-price-block">
-                <p class="booking-price">350,000&#8366;</p>
-                <p class="booking-price-unit">/ шөнө</p>
-              </div>
-            </div>
-            <div class="booking-meta">
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128197; Ирэх огноо</span>
-                <span class="meta-val">2025-08-10</span>
-              </div>
-              <span class="meta-arrow" aria-hidden="true">&#8594;</span>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128197; Явах огноо</span>
-                <span class="meta-val">2025-08-15</span>
-              </div>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128101; Хүн</span>
-                <span class="meta-val">4 хүн</span>
-              </div>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128176; Нийт дүн</span>
-                <span class="meta-val meta-total">1,750,000&#8366;</span>
-              </div>
-            </div>
-            <div class="booking-footer-row">
-              <span class="booking-id">&#35;AR-2025-001</span>
-              <span class="bstatus-label upcoming-label">&#8226; Баталгаажсан</span>
-            </div>
-            <div class="booking-actions">
-              <button type="button" class="baction-btn baction-view">&#128065; Дэлгэрэнгүй</button>
-              <button type="button" class="baction-btn baction-cancel">&#10005; Цуцлах</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- BOOKING 2 — Active -->
-        <div class="booking-card bstatus-active" id="bk-2">
-          <div class="booking-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=70"
-              alt="VIP Вилла — Архангай" width="600" height="200" />
-            <span class="booking-badge badge-active">&#10003; Идэвхтэй</span>
-          </div>
-          <div class="booking-info">
-            <div class="booking-header">
-              <div>
-                <h3 class="booking-title">VIP Вилла</h3>
-                <p class="booking-location">&#128205; Архангай аймаг</p>
-              </div>
-              <div class="booking-price-block">
-                <p class="booking-price">400,000&#8366;</p>
-                <p class="booking-price-unit">/ шөнө</p>
-              </div>
-            </div>
-            <div class="booking-meta">
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128197; Ирэх огноо</span>
-                <span class="meta-val">2025-07-01</span>
-              </div>
-              <span class="meta-arrow" aria-hidden="true">&#8594;</span>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128197; Явах огноо</span>
-                <span class="meta-val">2025-07-07</span>
-              </div>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128101; Хүн</span>
-                <span class="meta-val">6 хүн</span>
-              </div>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128176; Нийт дүн</span>
-                <span class="meta-val meta-total">2,400,000&#8366;</span>
-              </div>
-            </div>
-            <div class="booking-footer-row">
-              <span class="booking-id">&#35;AR-2025-002</span>
-              <span class="bstatus-label active-label">&#8226; Одоо байгаа</span>
-            </div>
-            <div class="booking-actions">
-              <button type="button" class="baction-btn baction-view">&#128065; Дэлгэрэнгүй</button>
-              <button type="button" class="baction-btn baction-review">&#9733; Үнэлгээ өгөх</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- BOOKING 3 — Done -->
-        <div class="booking-card bstatus-done" id="bk-3">
-          <div class="booking-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=600&amp;q=70"
-              alt="Уулын байшин — Тэрэлж" width="600" height="200" />
-            <span class="booking-badge badge-done">&#10003; Дууссан</span>
-          </div>
-          <div class="booking-info">
-            <div class="booking-header">
-              <div>
-                <h3 class="booking-title">Уулын байшин</h3>
-                <p class="booking-location">&#128205; Тэрэлж, Төв аймаг</p>
-              </div>
-              <div class="booking-price-block">
-                <p class="booking-price">200,000&#8366;</p>
-                <p class="booking-price-unit">/ шөнө</p>
-              </div>
-            </div>
-            <div class="booking-meta">
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128197; Ирэх огноо</span>
-                <span class="meta-val">2025-05-20</span>
-              </div>
-              <span class="meta-arrow" aria-hidden="true">&#8594;</span>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128197; Явах огноо</span>
-                <span class="meta-val">2025-05-24</span>
-              </div>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128101; Хүн</span>
-                <span class="meta-val">2 хүн</span>
-              </div>
-              <div class="booking-meta-item">
-                <span class="meta-lbl">&#128176; Нийт дүн</span>
-                <span class="meta-val meta-total">800,000&#8366;</span>
-              </div>
-            </div>
-            <div class="booking-footer-row">
-              <span class="booking-id">&#35;AR-2025-003</span>
-              <span class="bstatus-label done-label">&#8226; Амжилттай дууссан</span>
-            </div>
-            <div class="booking-actions">
-              <button type="button" class="baction-btn baction-view">&#128065; Дэлгэрэнгүй</button>
-              <button type="button" class="baction-btn baction-review">&#9733; Үнэлгээ өгөх</button>
-              <button type="button" class="baction-btn baction-rebook">&#8635; Дахин захиалах</button>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <!-- Empty state -->
@@ -263,76 +107,7 @@
     <p class="created-by">Made with &#10084; in Mongolia &#8212; T.Sodnomdamba &#183; T.Erdenedalai &#183; D.Ariuntuya</p>
   </div>
 
-  <script type="text/javascript">
-  //<![CDATA[
-    function el(id) { return document.getElementById(id); }
-
-    var tabs = ['btab-all', 'btab-upcoming', 'btab-active', 'btab-done'];
-    var statusMap = {
-      'btab-upcoming': 'bstatus-upcoming',
-      'btab-active':   'bstatus-active',
-      'btab-done':     'bstatus-done'
-    };
-
-    function filterBookings(tabId) {
-      var cards = document.querySelectorAll('.booking-card');
-      var n = 0;
-      for (var i = 0; i < cards.length; i++) {
-        var show = (tabId === 'btab-all') ||
-                   (cards[i].className.indexOf(statusMap[tabId]) !== -1);
-        cards[i].style.display = show ? '' : 'none';
-        if (show) { n++; }
-      }
-      el('booking-empty').className = (n === 0) ? 'empty-state' : 'empty-state hidden';
-      for (var j = 0; j < tabs.length; j++) {
-        var isOn = tabs[j] === tabId;
-        el(tabs[j]).className = isOn ? 'btab btab-on' : 'btab';
-        el(tabs[j]).setAttribute('aria-selected', isOn ? 'true' : 'false');
-      }
-    }
-
-    for (var t = 0; t < tabs.length; t++) {
-      (function(tid) {
-        el(tid).onclick = function() { filterBookings(tid); };
-      })(tabs[t]);
-    }
-
-    /* ---- Button actions ---- */
-    var cancelBtns = document.querySelectorAll('.baction-cancel');
-    for (var c = 0; c < cancelBtns.length; c++) {
-      cancelBtns[c].onclick = function() {
-        if (window.confirm('\u0417\u0430\u0445\u0438\u0430\u043b\u0433\u044b\u0433 \u0446\u0443\u0446\u043b\u0430\u0445 \u0443\u0443?')) {
-          alert('\u0417\u0430\u0445\u0438\u0430\u043b\u0433\u0430 \u0446\u0443\u0446\u043b\u0430\u0433\u0434\u043b\u0430\u0430.');
-        }
-      };
-    }
-
-    var reviewBtns = document.querySelectorAll('.baction-review');
-    for (var r = 0; r < reviewBtns.length; r++) {
-      reviewBtns[r].onclick = function() {
-        alert('\u04ae\u043d\u044d\u043b\u0433\u044d\u044d\u043d\u0438\u0439 \u0441\u0438\u0441\u0442\u0435\u043c \u0443\u0434\u0430\u0445\u0433\u04af\u0439!');
-      };
-    }
-
-    var rebookBtns = document.querySelectorAll('.baction-rebook');
-    for (var rb = 0; rb < rebookBtns.length; rb++) {
-      rebookBtns[rb].onclick = function() { window.location.href = 'index.html'; };
-    }
-
-    var viewBtns = document.querySelectorAll('.baction-view');
-    for (var v = 0; v < viewBtns.length; v++) {
-      viewBtns[v].onclick = function() {
-        alert('\u0414\u044d\u043b\u0433\u044d\u0440\u044d\u043d\u0433\u04af\u0439 \u0445\u0443\u0443\u0434\u0430\u0441 \u0443\u0434\u0430\u0445\u0433\u04af\u0439!');
-      };
-    }
-
-    /* ---- Dark mode (FIX: Unicode instead of HTML entity strings) ---- */
-    el('dark-toggle').onclick = function() {
-      document.body.classList.toggle('dark-mode');
-      this.textContent = document.body.classList.contains('dark-mode') ? '\u2600' : '\u263E';
-    };
-  //]]>
-  </script>
+  <script type="module" src="booking.js"></script>
 
 </body>
 </html>
