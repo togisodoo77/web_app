@@ -15,7 +15,7 @@ export async function fetchProperties() {
       "X-Bin-Meta": "false",
     },
   })
-
+   
   if (!response.ok) {
     throw new Error(`Өгөгдөл татахад алдаа: ${response.status}`)
   }

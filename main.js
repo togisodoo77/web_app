@@ -36,10 +36,10 @@ let activeCategory = 'all';
 
 // ── Категорийн гарчгууд ───────────────────────────────────
 const CAT_LABELS = {
-  '\u0433\u043e\u043b':   '\u0413\u043e\u043b\u044b\u043d \u0431\u0430\u0439\u0440\u0443\u0443\u0434',
-  '\u0443\u0443\u043b':   '\u0423\u0443\u043b\u044b\u043d \u0431\u0430\u0439\u0440\u0443\u0443\u0434',
-  'vip':                   'VIP \u0431\u0430\u0439\u0440\u0443\u0443\u0434',
-  '\u0445\u04e9\u0434\u04e9\u04e9': '\u0425\u04e9\u0434\u04e9\u04e9\u0433\u0438\u0439\u043d \u0431\u0430\u0439\u0440\u0443\u0443\u0434'
+  'гол':   'Гол',
+  'уул':   'Уул',
+  'vip':   'VIP',
+  'хөдөө': 'Хөдөө'
 };
 
 // ── ЭХЛЭЛ ─────────────────────────────────────────────────
@@ -50,14 +50,14 @@ async function init() {
 
   // 2. Ачааллагдаж байгааг мэдэгдэнэ
   grid.innerHTML = '<p style="text-align:center;padding:2rem;color:#999">'
-    + '\u0410\u0447\u0430\u0430\u043b\u043b\u0430\u0436 \u0431\u0430\u0439\u043d\u0430...</p>';
+    + 'Ачааллаж байна...</p>';
 
   // 3. JSONBin-с өгөгдөл татна
   try {
     allProperties = await fetchProperties();
   } catch (err) {
     grid.innerHTML = '<p style="text-align:center;padding:2rem;color:red">'
-      + '\u04e8\u0433\u04e9\u0434\u04e9\u043b \u0430\u0447\u0430\u0430\u043b\u0430\u0445\u0430\u0434 \u0430\u043b\u0434\u0430\u0430 \u0433\u0430\u0440\u043b\u0430\u0430. '
+      + 'Өгөгдөл ачаалахад алдаа гарлаа. '
       + err.message + '</p>';
     console.error(err);
     return;
@@ -84,7 +84,7 @@ function applyFilter(category) {
   updateCategoryTabs(category);
 
   // Гарчиг шинэчлэнэ
-  featTitle.textContent = CAT_LABELS[category] || '\u041e\u043d\u0446\u043b\u043e\u0445 \u0431\u0430\u0439\u0440';
+  featTitle.textContent = CAT_LABELS[category] || 'Онцлох байр';
 
   // "Бүгдийг харах" товч харуулах/нуух
   clearBtn.classList.toggle('hidden', category === 'all');
@@ -140,10 +140,10 @@ function bindEvents() {
     const dest = document.getElementById('s-dest').value.trim();
     const ci   = document.getElementById('s-checkin').value.trim();
     const g    = document.getElementById('s-guests').value;
-    if (!dest) { alert('\u0411\u0430\u0439\u0440\u0448\u0438\u043b \u043e\u0440\u0443\u0443\u043b\u043d\u0430 \u0443\u0443.'); return; }
-    if (!ci)   { alert('\u0418\u0440\u044d\u0445 \u043e\u0433\u043d\u043e\u043e\u0433 \u043e\u0440\u0443\u0443\u043b\u043d\u0430 \u0443\u0443.'); return; }
-    if (!g)    { alert('\u0425\u04af\u043d\u0438\u0439 \u0442\u043e\u043e\u0433 \u0441\u043e\u043d\u0433\u043e\u043d\u043e \u0443\u0443.'); return; }
-    alert(`\u0425\u0430\u0439\u0436 \u0431\u0430\u0439\u043d\u0430: ${dest} | ${ci} | ${g} \u0445\u04af\u043d`);
+    if (!dest) { alert('Байршил оруулна уу.'); return; }
+    if (!ci)   { alert('Ирэх огноо оруулна уу.'); return; }
+    if (!g)    { alert('Хүний тоо сонгоно уу.'); return; }
+    alert(`Хайж байна: ${dest} | ${ci} | ${g} хүн`);
   };
 
   // — Dark mode —
