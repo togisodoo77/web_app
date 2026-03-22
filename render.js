@@ -1,47 +1,111 @@
 // ============================================================
 // js/render.js
-// Property өгөгдлөөс HTML карт үүсгэж DOM-д оруулах логик.
-// Харагдах байдал нь өмнөх hardcoded карттай яг ижил байна.
+// UI компонентууд — PropertyCard, renderModal, renderProperties
 // ============================================================
 
+// ── FAVORITE STATE ─────────────────────────────────────────
+// Хаях/хадгалах тоог санах ойд хадгална
+const favoriteState = {};
+
+// ── PropertyCard КОМПОНЕНТ ─────────────────────────────────
 /**
- * Нэг Property объектоос property-card HTML string үүсгэнэ.
- * @param {Property} p
- * @returns {string} HTML string
+ * Нэг байрны карт DOM элемент үүсгэнэ.
+ * Өгөгдөл аргументаар авна — өөрөө fetch хийхгүй.
+ * Favorite товч дарахад тоо нэмэгдэнэ/хасагдана.
+ *
+ * @param {Property} property  - байрны өгөгдөл
+ * @param {Function} onClick   - карт дарахад дуудах функц (modal нээх)
+ * @returns {HTMLElement}
  */
-function createCardHTML(p) {
-  return `
-    <div class="property-card cat-${p.category}"
-         id="card-${p.id}"
-         tabindex="0"
-         role="button"
-         aria-label="${p.title} — дэлгэрэнгүй харах"
-         data-id="${p.id}">
-      <img
-        src="${p.img}"
-        alt="${p.alt}"
-        width="800"
-        height="250"
-        loading="lazy" />
-      <div class="property-info">
-        <h3>${p.title}</h3>
-        <p>${p.loc}</p>
-        <p class="price">${p.price} / шөнө</p>
-        <p class="rating">&#9733; ${p.rat} (${p.rev} сэтгэгдэл)</p>
-        <p class="card-hint">Дэлгэрэнгүй харах &#8594;</p>
-      </div>
+export function PropertyCard(property, onClick) {
+  // Favorite state эхлүүлнэ
+  if (!favoriteState[property.id]) {
+    favoriteState[property.id] = { liked: false, count: 0 };
+  }
+
+  const div = document.createElement('div');
+  div.className = `property-card cat-${property.category}`;
+  div.id        = `card-${property.id}`;
+  div.setAttribute('tabindex', '0');
+  div.setAttribute('role', 'button');
+  div.setAttribute('aria-label', `${property.title} — дэлгэрэнгүй харах`);
+  div.setAttribute('data-id', property.id);
+
+  div.innerHTML = `
+    <img
+      src="${property.img}"
+      alt="${property.alt}"
+      width="800"
+      height="250"
+      loading="lazy" />
+    <div class="property-info">
+      <h3>${property.title}</h3>
+      <p>${property.loc}</p>
+      <p class="price">${property.price} / шөнө</p>
+      <p class="rating">&#9733; ${property.rat} (${property.rev} сэтгэгдэл)</p>
+      <p class="card-hint">Дэлгэрэнгүй харах &#8594;</p>
+      <button class="fav-btn" aria-label="Хадгалах" data-id="${property.id}">
+        <span class="fav-icon">&#9825;</span>
+        <span class="fav-count">${favoriteState[property.id].count}</span>
+      </button>
     </div>`;
+
+  // ── Favorite товч ─────────────────────────────────────────
+  const favBtn   = div.querySelector('.fav-btn');
+  const favIcon  = div.querySelector('.fav-icon');
+  const favCount = div.querySelector('.fav-count');
+
+  favBtn.onclick = function(e) {
+    // Карт дарагдахаас тусгаарлана
+    e.stopPropagation();
+
+    const state = favoriteState[property.id];
+
+    if (state.liked) {
+      // Хасах
+      state.liked = false;
+      state.count -= 1;
+      favIcon.innerHTML  = '&#9825;';   // хоосон зүрх
+      favIcon.style.color = '';
+      favBtn.style.background = '';
+    } else {
+      // Нэмэх
+      state.liked = true;
+      state.count += 1;
+      favIcon.innerHTML  = '&#9829;';   // дүүрэн зүрх
+      favIcon.style.color = '#ff5a5f';
+      favBtn.style.background = 'rgba(255,90,95,0.08)';
+    }
+
+    favCount.textContent = state.count;
+  };
+
+  // ── Карт дарахад modal нээнэ ───────────────────────────────
+  div.onclick = function(e) {
+    // Favorite товч дарвал modal нээхгүй
+    if (e.target.closest('.fav-btn')) { return; }
+    onClick(property);
+  };
+
+  div.onkeypress = function(e) {
+    if (e.key === 'Enter') { onClick(property); }
+  };
+
+  return div;
 }
 
+// ── renderProperties ───────────────────────────────────────
 /**
- * Property массивыг property-grid div-д карт болгон оруулна.
+ * Property массивыг grid-д PropertyCard компонент болгон оруулна.
  * Өмнөх карт бүрийг устгаж, шинээр зурна.
- * @param {Property[]} properties - харуулах байрнуудын жагсаалт
- * @param {HTMLElement} gridEl    - #property-grid div
- * @param {HTMLElement} noResultsEl - #no-results div
+ *
+ * @param {Property[]} properties
+ * @param {HTMLElement} gridEl
+ * @param {HTMLElement} noResultsEl
+ * @param {Function}    onCardClick
  */
-export function renderProperties(properties, gridEl, noResultsEl) {
-  // Өмнөх карт бүрийг устгана (no-results мөр хэвээр үлдэнэ)
+export function renderProperties(properties, gridEl, noResultsEl, onCardClick) {
+  // Өмнөх карт бүрийг устгана
   gridEl.querySelectorAll('.property-card').forEach(c => c.remove());
 
   if (properties.length === 0) {
@@ -51,40 +115,45 @@ export function renderProperties(properties, gridEl, noResultsEl) {
 
   noResultsEl.classList.add('hidden');
 
-  // Property бүрийг HTML болгож grid-д нэмнэ
+  // PropertyCard компонент бүрийг үүсгэж grid-д нэмнэ
   properties.forEach(p => {
-    gridEl.insertAdjacentHTML('beforeend', createCardHTML(p));
+    const card = PropertyCard(p, onCardClick);
+    gridEl.appendChild(card);
   });
 }
 
+// ── updateCategoryTabs ─────────────────────────────────────
 /**
- * Category карт дээрх active төлөвийг шинэчлэнэ.
- * @param {string} activeCategory - идэвхтэй category
+ * Category tab-уудын active төлөв шинэчлэнэ.
+ *
+ * @param {string} activeCategory
  */
 export function updateCategoryTabs(activeCategory) {
   document.querySelectorAll('.category-card').forEach(tab => {
-    // "filter-гол" → "гол" гэж гаргаж авна
     const cls   = [...tab.classList].find(c => c.startsWith('filter-'));
     const value = cls ? cls.replace('filter-', '') : 'all';
-
-    const isOn = (activeCategory === 'all')
-      ? false
-      : value === activeCategory;
+    const isOn  = activeCategory !== 'all' && value === activeCategory;
 
     tab.classList.toggle('category-active', isOn);
     tab.setAttribute('aria-pressed', isOn ? 'true' : 'false');
   });
 }
 
+// ── renderModal ────────────────────────────────────────────
 /**
  * Property modal-д дэлгэрэнгүй мэдээлэл оруулна.
- * @param {Property} p    - сонгосон байр
- * @param {HTMLElement} bodyEl - #prop-body div
+ *
+ * @param {Property}    p
+ * @param {HTMLElement} bodyEl
  */
 export function renderModal(p, bodyEl) {
   const amsHTML = p.ams
     .map(a => `<span class="pm-am">${a}</span>`)
     .join('');
+
+  const state     = favoriteState[p.id] || { liked: false, count: 0 };
+  const heartIcon = state.liked ? '&#9829;' : '&#9825;';
+  const heartClr  = state.liked ? '#ff5a5f' : '';
 
   bodyEl.innerHTML = `
     <img src="${p.img}" alt="${p.alt}"
@@ -118,10 +187,55 @@ export function renderModal(p, bodyEl) {
         <div class="pm-price">
           ${p.price} <small>/ шөнө</small>
         </div>
-        <button type="button" class="pm-book-btn"
-          onclick="alert('Захиалгын систем удахгүй!')">
-          Захиалах
-        </button>
+        <div class="pm-book-actions">
+          <button type="button" class="fav-btn modal-fav-btn"
+            data-id="${p.id}"
+            style="color:${heartClr}">
+            <span class="fav-icon">${heartIcon}</span>
+            <span class="fav-count">${state.count}</span>
+          </button>
+          <button type="button" class="pm-book-btn"
+            onclick="alert('Захиалгын систем удахгүй!')">
+            Захиалах
+          </button>
+        </div>
       </div>
     </div>`;
+
+  // Modal дотрох favorite товч
+  const modalFav   = bodyEl.querySelector('.modal-fav-btn');
+  const modalIcon  = modalFav.querySelector('.fav-icon');
+  const modalCount = modalFav.querySelector('.fav-count');
+
+  modalFav.onclick = function() {
+    const s = favoriteState[p.id] || { liked: false, count: 0 };
+    favoriteState[p.id] = s;
+
+    if (s.liked) {
+      s.liked        = false;
+      s.count       -= 1;
+      modalIcon.innerHTML    = '&#9825;';
+      modalFav.style.color   = '';
+    } else {
+      s.liked        = true;
+      s.count       += 1;
+      modalIcon.innerHTML    = '&#9829;';
+      modalFav.style.color   = '#ff5a5f';
+    }
+
+    modalCount.textContent = s.count;
+
+    // Grid дээрх карт дахь тоог шинэчлэнэ
+    const cardFavCount = document.querySelector(
+      `.property-card[data-id="${p.id}"] .fav-count`
+    );
+    const cardFavIcon = document.querySelector(
+      `.property-card[data-id="${p.id}"] .fav-icon`
+    );
+    if (cardFavCount) { cardFavCount.textContent = s.count; }
+    if (cardFavIcon)  {
+      cardFavIcon.innerHTML = s.liked ? '&#9829;' : '&#9825;';
+      cardFavIcon.style.color = s.liked ? '#ff5a5f' : '';
+    }
+  };
 }
