@@ -30,7 +30,7 @@ function createCardHTML(p) {
         <p class="rating">&#9733; ${p.rat} (${p.rev} сэтгэгдэл)</p>
         <p class="card-hint">Дэлгэрэнгүй харах &#8594;</p>
       </div>
-    </div>`;
+    </div>`
 }
 
 /**
@@ -42,19 +42,19 @@ function createCardHTML(p) {
  */
 export function renderProperties(properties, gridEl, noResultsEl) {
   // Өмнөх карт бүрийг устгана (no-results мөр хэвээр үлдэнэ)
-  gridEl.querySelectorAll('.property-card').forEach(c => c.remove());
+  gridEl.querySelectorAll(".property-card").forEach((c) => c.remove())
 
   if (properties.length === 0) {
-    noResultsEl.classList.remove('hidden');
-    return;
+    noResultsEl.classList.remove("hidden")
+    return
   }
 
-  noResultsEl.classList.add('hidden');
+  noResultsEl.classList.add("hidden")
 
   // Property бүрийг HTML болгож grid-д нэмнэ
-  properties.forEach(p => {
-    gridEl.insertAdjacentHTML('beforeend', createCardHTML(p));
-  });
+  properties.forEach((p) => {
+    gridEl.insertAdjacentHTML("beforeend", createCardHTML(p))
+  })
 }
 
 /**
@@ -62,18 +62,16 @@ export function renderProperties(properties, gridEl, noResultsEl) {
  * @param {string} activeCategory - идэвхтэй category
  */
 export function updateCategoryTabs(activeCategory) {
-  document.querySelectorAll('.category-card').forEach(tab => {
+  document.querySelectorAll(".category-card").forEach((tab) => {
     // "filter-гол" → "гол" гэж гаргаж авна
-    const cls   = [...tab.classList].find(c => c.startsWith('filter-'));
-    const value = cls ? cls.replace('filter-', '') : 'all';
+    const cls = [...tab.classList].find((c) => c.startsWith("filter-"))
+    const value = cls ? cls.replace("filter-", "") : "all"
 
-    const isOn = (activeCategory === 'all')
-      ? false
-      : value === activeCategory;
+    const isOn = activeCategory === "all" ? false : value === activeCategory
 
-    tab.classList.toggle('category-active', isOn);
-    tab.setAttribute('aria-pressed', isOn ? 'true' : 'false');
-  });
+    tab.classList.toggle("category-active", isOn)
+    tab.setAttribute("aria-pressed", isOn ? "true" : "false")
+  })
 }
 
 /**
@@ -82,9 +80,7 @@ export function updateCategoryTabs(activeCategory) {
  * @param {HTMLElement} bodyEl - #prop-body div
  */
 export function renderModal(p, bodyEl) {
-  const amsHTML = p.ams
-    .map(a => `<span class="pm-am">${a}</span>`)
-    .join('');
+  const amsHTML = p.ams.map((a) => `<span class="pm-am">${a}</span>`).join("")
 
   bodyEl.innerHTML = `
     <img src="${p.img}" alt="${p.alt}"
@@ -123,5 +119,5 @@ export function renderModal(p, bodyEl) {
           Захиалах
         </button>
       </div>
-    </div>`;
+    </div>`
 }

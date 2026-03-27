@@ -1,299 +1,372 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<!-- renter.html
-     CHANGES:
-     - Logo: raw emoji 🏠 → &#8962; (XHTML Strict does not allow raw emoji outside UTF-8 text nodes;
-       using the standard house character entity is safer and consistent with other pages)
-     - Dark toggle: raw ☾ → &#9790; in HTML; Unicode in JS
-     - Uncommented the script block
-     - Fixed dark mode JS: Unicode \u2600 / \u263E
-     - Restored aria-modal, aria-labelledby, aria-hidden on modals (were stripped with comment)
-     - Modal open/close uses classList.add('m-open') which CSS already handles:
-       .modal-overlay.m-open { display: flex }
-     - Removed li-eye onclick (no li-pass input on this page — was a leftover from old auth modal)
-     - Fixed star ★ → &#9733; for XHTML strict (raw Unicode star is valid but entity is safer)
--->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Түрээслэгчийн самбар — байр, захиалга, орлогоо удирдах хэсэг."
+    />
+    <meta name="robots" content="noindex, follow" />
+    <title>Түрээслэгч &#8212; AmraltRent</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Түрээслэгчийн самбар — байр, захиалга, орлогоо удирдах хэсэг." />
-  <meta name="robots" content="noindex, follow" />
-  <title>Түрээслэгч &#8212; AmraltRent</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-</head>
+  <body>
+    <div>
+      <a href="#main-content" class="skip-link">Үндсэн агуулга руу очих</a>
+    </div>
 
-<body>
-
-  <div><a href="#main-content" class="skip-link">Үндсэн агуулга руу очих</a></div>
-
-  <div class="container">
-
-    <!-- ===== HEADER ===== -->
-    <div class="header">
-      <!-- FIX: was raw emoji 🏠, replaced with &#8962; -->
-      <div class="logo">
-        <span class="icon-logo">&#8962;</span> AmraltRent
-      </div>
-      <div class="header-right">
-        <div class="header-search">
-          <label for="search" class="hidden">Хайх</label>
-          <input type="text" id="search" name="search" placeholder="хайх" />
+    <div class="container">
+      <!-- ===== HEADER ===== -->
+      <div class="header">
+        <!-- FIX: was raw emoji 🏠, replaced with &#8962; -->
+        <div class="logo">
+          <span class="icon-logo">&#8962;</span> AmraltRent
         </div>
-        <a href="index.html" class="nav-link">Нүүр</a>
-        <a href="renter.html" class="nav-link nav-active">Түрээслэгч</a>
-        <a href="booking.html" class="nav-link">Захиалга</a>
-        <a href="host.html" class="nav-link">+ Байр нэмэх</a>
-        <button type="button" class="icon-btn" aria-label="Хадгалсан">&#9829;</button>
-        <!-- FIX: was raw ☾ → &#9790; -->
-        <button type="button" id="dark-toggle" class="dark-toggle" aria-label="Харанхуй горим">&#9790;</button>
-        <a href="auth.html" class="icon-btn" title="Нэвтрэх / Бүртгүүлэх">&#128100;</a>
+        <div class="header-right">
+          <div class="header-search">
+            <label for="search" class="hidden">Хайх</label>
+            <input type="text" id="search" name="search" placeholder="хайх" />
+          </div>
+          <a href="index.html" class="nav-link">Нүүр</a>
+          <a href="renter.html" class="nav-link nav-active">Түрээслэгч</a>
+          <a href="booking.html" class="nav-link">Захиалга</a>
+          <a href="host.html" class="nav-link">+ Байр нэмэх</a>
+          <button type="button" class="icon-btn" aria-label="Хадгалсан">
+            &#9829;
+          </button>
+          <!-- FIX: was raw ☾ → &#9790; -->
+          <button
+            type="button"
+            id="dark-toggle"
+            class="dark-toggle"
+            aria-label="Харанхуй горим"
+          >
+            &#9790;
+          </button>
+          <a href="auth.html" class="icon-btn" title="Нэвтрэх / Бүртгүүлэх"
+            >&#128100;</a
+          >
+        </div>
+      </div>
+
+      <!-- ===== MAIN CONTENT ===== -->
+      <div id="main-content">
+        <div class="host-dashboard">
+          <div class="dashboard-header">
+            <div>
+              <h1>Түрээслэгчийн самбар</h1>
+              <p class="dashboard-subtitle">
+                Өөрийн байрнууд болон захиалгуудыг эндээс удирд.
+              </p>
+            </div>
+            <button type="button" class="add-property-btn" id="add-btn">
+              + Шинэ байр нэмэх
+            </button>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <p class="stat-label">Нийт байр</p>
+              <p class="stat-value">2</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-label">Нийт захиалга</p>
+              <p class="stat-value">42</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-label">Нийт орлого</p>
+              <p class="stat-value stat-value-highlight">&#8366;22,500,000</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-label">Дундаж үнэлгээ</p>
+              <!-- FIX: raw ★ → &#9733; -->
+              <p class="stat-value">
+                4.96 <span class="stat-star">&#9733;</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="host-properties">
+            <h2>Таны байрнууд</h2>
+
+            <div class="host-property-card" id="hp1">
+              <div class="host-property-image">
+                <img
+                  src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
+                  alt="Тансаг уулын амралтын байр"
+                  width="800"
+                  height="160"
+                />
+              </div>
+              <div class="host-property-content">
+                <div class="host-property-header">
+                  <div>
+                    <h3>Тансаг зэрэглэлийн байр</h3>
+                    <p class="host-property-location">Улаанбаатар</p>
+                  </div>
+                  <span class="status-pill status-active">Идэвхтэй</span>
+                </div>
+                <div class="host-property-meta">
+                  <div>
+                    <p class="meta-label">Захиалга</p>
+                    <p class="meta-value">24</p>
+                  </div>
+                  <div>
+                    <p class="meta-label">Үнэлгээ</p>
+                    <p class="meta-value">
+                      4.95 <span class="stat-star">&#9733;</span>
+                    </p>
+                  </div>
+                  <div>
+                    <p class="meta-label">Сэтгэгдэл</p>
+                    <p class="meta-value">128</p>
+                  </div>
+                </div>
+                <div class="host-property-footer">
+                  <div class="host-property-price">
+                    <span class="price-amount">450,000&#8366;</span>
+                    <span class="price-unit"> / шөнө</span>
+                  </div>
+                  <div class="property-actions">
+                    <button type="button" class="property-btn">Харах</button>
+                    <button type="button" class="property-btn" id="edit-hp1">
+                      Засах
+                    </button>
+                    <button
+                      type="button"
+                      class="property-btn property-btn-danger"
+                      id="del-hp1"
+                    >
+                      Устгах
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <div id="main-content">
-      <div class="host-dashboard">
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+      <div class="footer-container">
+        <div>
+          <h4>Тусламж</h4>
+          <p>Тусламжийн центр</p>
+          <p>Аюулгүй байдал</p>
+          <p>Цуцлах сонголт</p>
+          <p>Асуудал мэдээлэх</p>
+        </div>
+        <div>
+          <h4>Байршуулалт</h4>
+          <p>Байршуулж үзэх</p>
+          <p>Хариуцлагатай түрээслэгчид</p>
+        </div>
+        <div>
+          <h4>AmraltRent</h4>
+          <p>Мэдэгдэл</p>
+          <p>Зохиогчид</p>
+          <p>Бидний тухай</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&#169; 2025 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
+      </div>
+      <p class="created-by">Made with &#10084; in Mongolia</p>
+    </div>
 
-        <div class="dashboard-header">
-          <div>
-            <h1>Түрээслэгчийн самбар</h1>
-            <p class="dashboard-subtitle">Өөрийн байрнууд болон захиалгуудыг эндээс удирд.</p>
-          </div>
-          <button type="button" class="add-property-btn" id="add-btn">
-            + Шинэ байр нэмэх
+    <!-- ===== ADD / EDIT MODAL =====
+       FIX: aria-modal, aria-labelledby, aria-hidden restored -->
+    <div
+      id="add-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="add-heading"
+      aria-hidden="true"
+    >
+      <div class="modal-box modal-auth">
+        <button
+          type="button"
+          class="modal-close"
+          id="add-close"
+          aria-label="Хаах"
+        >
+          &#10005;
+        </button>
+        <h2 class="auth-heading" id="add-heading">Шинэ байр нэмэх</h2>
+        <div class="form-group">
+          <label for="ap-title">Байрны нэр</label>
+          <input
+            type="text"
+            id="ap-title"
+            name="ap-title"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <label for="ap-loc">Байршил</label>
+          <input type="text" id="ap-loc" name="ap-loc" required="required" />
+        </div>
+        <div class="form-group">
+          <label for="ap-price">Үнэ (&#8366;/шөнө)</label>
+          <input
+            type="text"
+            id="ap-price"
+            name="ap-price"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <label for="ap-desc">Тайлбар</label>
+          <textarea id="ap-desc" name="ap-desc" rows="3" cols="30"></textarea>
+        </div>
+        <button type="button" class="auth-btn" id="ap-sub">Нэмэх</button>
+      </div>
+    </div>
+
+    <!-- ===== DELETE CONFIRM MODAL =====
+       FIX: aria-modal, aria-labelledby, aria-hidden restored -->
+    <div
+      id="del-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="del-heading"
+      aria-hidden="true"
+    >
+      <div class="modal-box modal-confirm">
+        <h2 class="auth-heading" id="del-heading">Байрыг устгах уу?</h2>
+        <p class="auth-sub">Энэ үйлдлийг буцаах боломжгүй.</p>
+        <div class="confirm-btns">
+          <button type="button" class="property-btn" id="del-no">Цуцлах</button>
+          <button
+            type="button"
+            class="property-btn property-btn-danger"
+            id="del-yes"
+          >
+            Устгах
           </button>
         </div>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <p class="stat-label">Нийт байр</p>
-            <p class="stat-value">2</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-label">Нийт захиалга</p>
-            <p class="stat-value">42</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-label">Нийт орлого</p>
-            <p class="stat-value stat-value-highlight">&#8366;22,500,000</p>
-          </div>
-          <div class="stat-card">
-            <p class="stat-label">Дундаж үнэлгээ</p>
-            <!-- FIX: raw ★ → &#9733; -->
-            <p class="stat-value">4.96 <span class="stat-star">&#9733;</span></p>
-          </div>
-        </div>
-
-        <div class="host-properties">
-          <h2>Таны байрнууд</h2>
-
-          <div class="host-property-card" id="hp1">
-            <div class="host-property-image">
-              <img
-                src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60"
-                alt="Тансаг уулын амралтын байр" width="800" height="160" />
-            </div>
-            <div class="host-property-content">
-              <div class="host-property-header">
-                <div>
-                  <h3>Тансаг зэрэглэлийн байр</h3>
-                  <p class="host-property-location">Улаанбаатар</p>
-                </div>
-                <span class="status-pill status-active">Идэвхтэй</span>
-              </div>
-              <div class="host-property-meta">
-                <div>
-                  <p class="meta-label">Захиалга</p>
-                  <p class="meta-value">24</p>
-                </div>
-                <div>
-                  <p class="meta-label">Үнэлгээ</p>
-                  <p class="meta-value">4.95 <span class="stat-star">&#9733;</span></p>
-                </div>
-                <div>
-                  <p class="meta-label">Сэтгэгдэл</p>
-                  <p class="meta-value">128</p>
-                </div>
-              </div>
-              <div class="host-property-footer">
-                <div class="host-property-price">
-                  <span class="price-amount">450,000&#8366;</span>
-                  <span class="price-unit"> / шөнө</span>
-                </div>
-                <div class="property-actions">
-                  <button type="button" class="property-btn">Харах</button>
-                  <button type="button" class="property-btn" id="edit-hp1">Засах</button>
-                  <button type="button" class="property-btn property-btn-danger" id="del-hp1">
-                    Устгах
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </div>
 
-  </div>
-
-  <!-- ===== FOOTER ===== -->
-  <div class="footer">
-    <div class="footer-container">
-      <div>
-        <h4>Тусламж</h4>
-        <p>Тусламжийн центр</p>
-        <p>Аюулгүй байдал</p>
-        <p>Цуцлах сонголт</p>
-        <p>Асуудал мэдээлэх</p>
-      </div>
-      <div>
-        <h4>Байршуулалт</h4>
-        <p>Байршуулж үзэх</p>
-        <p>Хариуцлагатай түрээслэгчид</p>
-      </div>
-      <div>
-        <h4>AmraltRent</h4>
-        <p>Мэдэгдэл</p>
-        <p>Зохиогчид</p>
-        <p>Бидний тухай</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&#169; 2025 AmraltRent. Бүх эрх хуулиар хамгаалагдсан.</p>
-    </div>
-    <p class="created-by">Made with &#10084; in Mongolia</p>
-  </div>
-
-  <!-- ===== ADD / EDIT MODAL =====
-       FIX: aria-modal, aria-labelledby, aria-hidden restored -->
-  <div id="add-modal" class="modal-overlay" role="dialog" aria-modal="true"
-    aria-labelledby="add-heading" aria-hidden="true">
-    <div class="modal-box modal-auth">
-      <button type="button" class="modal-close" id="add-close" aria-label="Хаах">&#10005;</button>
-      <h2 class="auth-heading" id="add-heading">Шинэ байр нэмэх</h2>
-      <div class="form-group">
-        <label for="ap-title">Байрны нэр</label>
-        <input type="text" id="ap-title" name="ap-title" required="required" />
-      </div>
-      <div class="form-group">
-        <label for="ap-loc">Байршил</label>
-        <input type="text" id="ap-loc" name="ap-loc" required="required" />
-      </div>
-      <div class="form-group">
-        <label for="ap-price">Үнэ (&#8366;/шөнө)</label>
-        <input type="text" id="ap-price" name="ap-price" required="required" />
-      </div>
-      <div class="form-group">
-        <label for="ap-desc">Тайлбар</label>
-        <textarea id="ap-desc" name="ap-desc" rows="3" cols="30"></textarea>
-      </div>
-      <button type="button" class="auth-btn" id="ap-sub">Нэмэх</button>
-    </div>
-  </div>
-
-  <!-- ===== DELETE CONFIRM MODAL =====
-       FIX: aria-modal, aria-labelledby, aria-hidden restored -->
-  <div id="del-modal" class="modal-overlay" role="dialog" aria-modal="true"
-    aria-labelledby="del-heading" aria-hidden="true">
-    <div class="modal-box modal-confirm">
-      <h2 class="auth-heading" id="del-heading">Байрыг устгах уу?</h2>
-      <p class="auth-sub">Энэ үйлдлийг буцаах боломжгүй.</p>
-      <div class="confirm-btns">
-        <button type="button" class="property-btn" id="del-no">Цуцлах</button>
-        <button type="button" class="property-btn property-btn-danger" id="del-yes">Устгах</button>
-      </div>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-  //<![CDATA[
-    function g(id) { return document.getElementById(id); }
-
-    /* ---- Modal helpers ---- */
-    function openM(id) {
-      g(id).classList.add('m-open');
-      g(id).setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeM(id) {
-      g(id).classList.remove('m-open');
-      g(id).setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    /* ---- Add / Edit modal ---- */
-    g('add-btn').onclick = function() {
-      g('add-heading').textContent = '\u0428\u0438\u043d\u044d \u0431\u0430\u0439\u0440 \u043d\u044d\u043c\u044d\u0445';
-      openM('add-modal');
-    };
-    g('add-close').onclick = function() { closeM('add-modal'); };
-    g('add-modal').onclick = function(e) { if (e.target === this) { closeM('add-modal'); } };
-
-    g('ap-sub').onclick = function() {
-      var title = g('ap-title').value.trim();
-      var loc   = g('ap-loc').value.trim();
-      var price = g('ap-price').value.trim();
-      if (!title || !loc || !price) {
-        alert('\u0417\u0430\u0430\u0432\u0430\u043b \u0442\u0430\u043b\u0431\u0430\u0440\u0443\u0443\u0434\u044b\u0433 \u0431\u04e9\u0433\u043b\u04e9\u043d\u04e9 \u0443\u0443.');
-        return;
+    <script type="text/javascript">
+      //<![CDATA[
+      function g(id) {
+        return document.getElementById(id)
       }
-      if (isNaN(price) || Number(price) <= 0) {
-        alert('\u04ae\u043d\u044d \u0437\u04e9\u0432\u0445\u04e9\u043d \u044d\u044d\u0440\u044d\u0433 \u0442\u043e\u043e \u0431\u0430\u0439\u0445 \u0451\u0441\u0442\u043e\u0439.');
-        return;
+
+      /* ---- Modal helpers ---- */
+      function openM(id) {
+        g(id).classList.add("m-open")
+        g(id).setAttribute("aria-hidden", "false")
+        document.body.style.overflow = "hidden"
       }
-      alert('\u0411\u0430\u0439\u0440 \u0430\u043c\u0436\u0438\u043b\u0442\u0442\u0430\u0439 \u043d\u044d\u043c\u044d\u0433\u0434\u043b\u044d\u044d!');
-      closeM('add-modal');
-    };
+      function closeM(id) {
+        g(id).classList.remove("m-open")
+        g(id).setAttribute("aria-hidden", "true")
+        document.body.style.overflow = ""
+      }
 
-    /* ---- Edit (prefill heading) ---- */
-    g('edit-hp1').onclick = function() {
-      g('add-heading').textContent = '\u0411\u0430\u0439\u0440 \u0437\u0430\u0441\u0430\u0445';
-      openM('add-modal');
-    };
-
-    /* ---- Delete modal ---- */
-    var delTarget = null;
-    g('del-hp1').onclick = function() { delTarget = 'hp1'; openM('del-modal'); };
-    g('del-no').onclick  = function() { closeM('del-modal'); delTarget = null; };
-    g('del-modal').onclick = function(e) {
-      if (e.target === this) { closeM('del-modal'); delTarget = null; }
-    };
-    g('del-yes').onclick = function() {
-      if (delTarget) {
-        var card = g(delTarget);
-        if (card) {
-          card.style.opacity    = '0';
-          card.style.transition = 'opacity 0.3s';
-          setTimeout(function() {
-            if (card.parentNode) { card.parentNode.removeChild(card); }
-          }, 300);
+      /* ---- Add / Edit modal ---- */
+      g("add-btn").onclick = function () {
+        g("add-heading").textContent =
+          "\u0428\u0438\u043d\u044d \u0431\u0430\u0439\u0440 \u043d\u044d\u043c\u044d\u0445"
+        openM("add-modal")
+      }
+      g("add-close").onclick = function () {
+        closeM("add-modal")
+      }
+      g("add-modal").onclick = function (e) {
+        if (e.target === this) {
+          closeM("add-modal")
         }
       }
-      closeM('del-modal');
-      delTarget = null;
-    };
 
-    /* ---- Dark mode (FIX: Unicode instead of HTML entity strings) ---- */
-    g('dark-toggle').onclick = function() {
-      document.body.classList.toggle('dark-mode');
-      this.textContent = document.body.classList.contains('dark-mode') ? '\u2600' : '\u263E';
-    };
-
-    /* ---- Escape closes all modals ---- */
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeM('add-modal');
-        closeM('del-modal');
+      g("ap-sub").onclick = function () {
+        var title = g("ap-title").value.trim()
+        var loc = g("ap-loc").value.trim()
+        var price = g("ap-price").value.trim()
+        if (!title || !loc || !price) {
+          alert(
+            "\u0417\u0430\u0430\u0432\u0430\u043b \u0442\u0430\u043b\u0431\u0430\u0440\u0443\u0443\u0434\u044b\u0433 \u0431\u04e9\u0433\u043b\u04e9\u043d\u04e9 \u0443\u0443.",
+          )
+          return
+        }
+        if (isNaN(price) || Number(price) <= 0) {
+          alert(
+            "\u04ae\u043d\u044d \u0437\u04e9\u0432\u0445\u04e9\u043d \u044d\u044d\u0440\u044d\u0433 \u0442\u043e\u043e \u0431\u0430\u0439\u0445 \u0451\u0441\u0442\u043e\u0439.",
+          )
+          return
+        }
+        alert(
+          "\u0411\u0430\u0439\u0440 \u0430\u043c\u0436\u0438\u043b\u0442\u0442\u0430\u0439 \u043d\u044d\u043c\u044d\u0433\u0434\u043b\u044d\u044d!",
+        )
+        closeM("add-modal")
       }
-    });
-  //]]>
-  </script>
 
-</body>
+      /* ---- Edit (prefill heading) ---- */
+      g("edit-hp1").onclick = function () {
+        g("add-heading").textContent =
+          "\u0411\u0430\u0439\u0440 \u0437\u0430\u0441\u0430\u0445"
+        openM("add-modal")
+      }
+
+      /* ---- Delete modal ---- */
+      var delTarget = null
+      g("del-hp1").onclick = function () {
+        delTarget = "hp1"
+        openM("del-modal")
+      }
+      g("del-no").onclick = function () {
+        closeM("del-modal")
+        delTarget = null
+      }
+      g("del-modal").onclick = function (e) {
+        if (e.target === this) {
+          closeM("del-modal")
+          delTarget = null
+        }
+      }
+      g("del-yes").onclick = function () {
+        if (delTarget) {
+          var card = g(delTarget)
+          if (card) {
+            card.style.opacity = "0"
+            card.style.transition = "opacity 0.3s"
+            setTimeout(function () {
+              if (card.parentNode) {
+                card.parentNode.removeChild(card)
+              }
+            }, 300)
+          }
+        }
+        closeM("del-modal")
+        delTarget = null
+      }
+
+      /* ---- Dark mode (FIX: Unicode instead of HTML entity strings) ---- */
+      g("dark-toggle").onclick = function () {
+        document.body.classList.toggle("dark-mode")
+        this.textContent = document.body.classList.contains("dark-mode")
+          ? "\u2600"
+          : "\u263E"
+      }
+
+      /* ---- Escape closes all modals ---- */
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeM("add-modal")
+          closeM("del-modal")
+        }
+      })
+      //]]>
+    </script>
+  </body>
 </html>

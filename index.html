@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<!-- index.html
-     CHANGES:
-     - Uncommented the script block (was entirely commented out — nothing worked)
-     - Fixed dark mode JS: replaced "&#9728;" string with Unicode "\u2600" so
-       textContent actually updates (HTML entities don't work in JS strings)
-     - Added aria-hidden="true" and aria-label to prop-modal
-     - Removed stray //]]> that appeared outside CDATA
--->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -250,28 +242,6 @@
         Made with &#10084; in Mongolia &#8212; T.Sodnomdamba &#183;
         T.Erdenedalai &#183; D.Ariuntuya
       </p>
-    </div>
-
-    <!-- ===== PROPERTY DETAIL MODAL ===== -->
-    <div
-      id="prop-modal"
-      class="modal-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="prop-modal-title"
-      aria-hidden="true"
-    >
-      <div class="modal-box">
-        <button
-          type="button"
-          id="prop-close"
-          class="modal-close"
-          aria-label="Хаах"
-        >
-          &#10005;
-        </button>
-        <div id="prop-body"></div>
-      </div>
     </div>
 
     <script type="module" src="main.js"></script>

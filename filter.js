@@ -1,44 +1,31 @@
-// ============================================================
-// js/filter.js
-// URL параметр уншиж, Property массиваас шүүлт хийх логик.
-// index.html?category=уул → зөвхөн уулын байрууд харагдана
-// ============================================================
+const DEFAULT_CATEGORY = "all"
 
-/**
- * URL-с ?category=... параметр уншина.
- * Байхгүй бол "all" буцаана.
- * @returns {string}
- */
-export function getCategoryFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get('category') || 'all';
+function normalizeCategory(category) {
+  if (category == null) {
+    return DEFAULT_CATEGORY
+  }
+  const trimmed = String(category).trim()
+  return trimmed || DEFAULT_CATEGORY
 }
 
-/**
- * Property массиваас category-ын дагуу шүүнэ.
- * Браузер дотор хийгдэх шүүлт — сүлжээ ашиглахгүй.
- * @param {Property[]} properties - бүх байрнуудын массив
- * @param {string} category - "гол" | "уул" | "vip" | "хөдөө" | "all"
- * @returns {Property[]}
- */
+export function getCategoryFromURL(search = window.location.search) {
+  const params = new URLSearchParams(search)
+  return normalizeCategory(params.get("category"))
+}
+
 export function filterProperties(properties, category) {
-  return properties.filter(p => p.matchesFilter(category));
+  return properties.filter((p) => p.matchesFilter(normalizeCategory(category)))
 }
 
-/**
- * Category сонгоход URL-г хуудас дахин ачааллагдахгүйгээр шинэчлэнэ.
- * history.pushState ашиглана — back товч ажиллана.
- * @param {string} category
- */
 export function updateURLCategory(category) {
-  const url = new URL(window.location.href);
+  const next = normalizeCategory(category)
+  const url = new URL(window.location.href)
 
-  if (category && category !== 'all') {
-    url.searchParams.set('category', category);
+  if (next === DEFAULT_CATEGORY) {
+    url.searchParams.delete("category")
   } else {
-    url.searchParams.delete('category');
+    url.searchParams.set("category", next)
   }
 
-  // Хуудас дахин ачааллагдахгүй, зөвхөн URL өөрчлөгдөнө
-  window.history.pushState({ category }, '', url.toString());
+  window.history.pushState({ category: next }, "", url.toString())
 }
