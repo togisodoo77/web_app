@@ -1,22 +1,5 @@
-// ============================================================
-// js/render.js
-// UI компонентууд — PropertyCard, renderModal, renderProperties
-// ============================================================
-
-// ── FAVORITE STATE ─────────────────────────────────────────
-// Хаях/хадгалах тоог санах ойд хадгална
 const favoriteState = {};
 
-// ── PropertyCard КОМПОНЕНТ ─────────────────────────────────
-/**
- * Нэг байрны карт DOM элемент үүсгэнэ.
- * Өгөгдөл аргументаар авна — өөрөө fetch хийхгүй.
- * Favorite товч дарахад тоо нэмэгдэнэ/хасагдана.
- *
- * @param {Property} property  - байрны өгөгдөл
- * @param {Function} onClick   - карт дарахад дуудах функц (modal нээх)
- * @returns {HTMLElement}
- */
 export function PropertyCard(property, onClick) {
   // Favorite state эхлүүлнэ
   if (!favoriteState[property.id]) {
@@ -94,16 +77,6 @@ export function PropertyCard(property, onClick) {
   return div;
 }
 
-// ── renderProperties ───────────────────────────────────────
-/**
- * Property массивыг grid-д PropertyCard компонент болгон оруулна.
- * Өмнөх карт бүрийг устгаж, шинээр зурна.
- *
- * @param {Property[]} properties
- * @param {HTMLElement} gridEl
- * @param {HTMLElement} noResultsEl
- * @param {Function}    onCardClick
- */
 export function renderProperties(properties, gridEl, noResultsEl, onCardClick) {
   // Өмнөх карт бүрийг устгана
   gridEl.querySelectorAll('.property-card').forEach(c => c.remove());
@@ -122,12 +95,6 @@ export function renderProperties(properties, gridEl, noResultsEl, onCardClick) {
   });
 }
 
-// ── updateCategoryTabs ─────────────────────────────────────
-/**
- * Category tab-уудын active төлөв шинэчлэнэ.
- *
- * @param {string} activeCategory
- */
 export function updateCategoryTabs(activeCategory) {
   document.querySelectorAll('.category-card').forEach(tab => {
     const cls   = [...tab.classList].find(c => c.startsWith('filter-'));
@@ -139,13 +106,6 @@ export function updateCategoryTabs(activeCategory) {
   });
 }
 
-// ── renderModal ────────────────────────────────────────────
-/**
- * Property modal-д дэлгэрэнгүй мэдээлэл оруулна.
- *
- * @param {Property}    p
- * @param {HTMLElement} bodyEl
- */
 export function renderModal(p, bodyEl) {
   const amsHTML = p.ams
     .map(a => `<span class="pm-am">${a}</span>`)

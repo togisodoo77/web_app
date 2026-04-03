@@ -26,7 +26,7 @@ const STATUS_CONFIG = {
 }
 
 function createBookingCard(b) {
-  const cfg = STATUS_CONFIG[b.status] || STATUS_CONFIG.done
+  const cfg = STATUS_CONFIG[b.status] 
 
   const actionBtns = {
     upcoming: `
@@ -140,12 +140,12 @@ function bindButtons() {
 async function init() {
   const list = document.getElementById('booking-list')
   const tabs = ['btab-all', 'btab-upcoming', 'btab-active', 'btab-done']
-
-  list.innerHTML = '<p style="text-align:center;padding:2rem;color:#999">Ачааллаж байна...</p>'
+ 
 
   let bookings = []
   try {
     bookings = await fetchBookings()
+    console.log(bookings)
   } catch (err) {
     list.innerHTML = `<p style="text-align:center;color:red">Өгөгдөл ачааллахад алдаа: ${err.message}</p>`
     return

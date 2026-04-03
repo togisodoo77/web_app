@@ -1,7 +1,3 @@
-// ============================================================
-// js/main.js — Гол entry point модуль
-// ============================================================
-
 import { fetchProperties }             from './api.js';
 import { getCategoryFromURL,
          filterProperties,
@@ -10,7 +6,6 @@ import { renderProperties,
          updateCategoryTabs,
          renderModal }                 from './render.js';
 
-// ── DOM элементүүд ────────────────────────────────────────
 const grid       = document.getElementById('property-grid');
 const noResults  = document.getElementById('no-results');
 const featTitle  = document.getElementById('featured-title');
@@ -21,11 +16,9 @@ const propClose  = document.getElementById('prop-close');
 const darkToggle = document.getElementById('dark-toggle');
 const searchForm = document.getElementById('search-form');
 
-// ── Санах ойн хүснэгт ─────────────────────────────────────
 let allProperties  = [];
 let activeCategory = 'all';
 
-// ── Категорийн гарчгууд ───────────────────────────────────
 const CAT_LABELS = {
   'гол':   'Голын байрууд',
   'уул':   'Уулын байрууд',
@@ -33,13 +26,8 @@ const CAT_LABELS = {
   'хөдөө': 'Хөдөөгийн байрууд'
 };
 
-// ── ЭХЛЭЛ ─────────────────────────────────────────────────
 async function init() {
   activeCategory = getCategoryFromURL();
-
-  // Ачааллаж байгааг мэдэгдэнэ
-  grid.innerHTML =
-    '<p style="text-align:center;padding:2rem;color:#999">Ачааллаж байна...</p>';
 
   try {
     allProperties = await fetchProperties();
@@ -138,7 +126,6 @@ function bindEvents() {
   };
 }
 
-// ── MODAL ─────────────────────────────────────────────────
 function openModal() {
   propModal.style.display = 'flex';
   propModal.setAttribute('aria-hidden', 'false');

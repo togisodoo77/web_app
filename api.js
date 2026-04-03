@@ -21,7 +21,7 @@ export async function fetchProperties() {
   }
 
   const data = await response.json()
-  console.log("Татсан өгөгдөл:", data)
+  console.log("Татсан өгөгдөл:", data)//Хариуг JSON болгон задлаж, data хувьсагчид хадгалж, консолд хэвлэнэ.
 
   // Шинэ бүтэц: { properties: [...], bookings: [...] }
   // Хуучин бүтэц: [ ... ] массив — хоёуланд нь ажиллана
