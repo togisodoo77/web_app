@@ -4,20 +4,15 @@ import {
   filterProperties,
   updateURLCategory,
 } from "./filter.js"
-import { renderProperties, updateCategoryTabs, renderModal } from "./render.js"
+import { renderProperties, updateCategoryTabs } from "./render.js"
+import { initDarkModeToggle } from "./theme.js"
+import { getState, dispatch } from "./store.js"
 
 const grid = document.getElementById("property-grid")
 const noResults = document.getElementById("no-results")
 const featTitle = document.getElementById("featured-title")
 const clearBtn = document.getElementById("clear-filter")
-const propModal = document.getElementById("prop-modal")
-const propBody = document.getElementById("prop-body")
-const propClose = document.getElementById("prop-close")
-const darkToggle = document.getElementById("dark-toggle")
 const searchForm = document.getElementById("search-form")
-
-let allProperties = []
-let activeCategory = "all"
 
 const CAT_LABELS = {
   гол: "Голын байрууд",
@@ -26,12 +21,38 @@ const CAT_LABELS = {
   хөдөө: "Хөдөөгийн байрууд",
 }
 
+function setGridLoading(message) {
+  grid.querySelectorAll(".property-card").forEach((c) => c.remove())
+  const existing = grid.querySelector(".grid-loading")
+  if (existing) {
+    existing.textContent = message
+    return
+  }
+  const p = document.createElement("p")
+  p.className = "grid-loading"
+  p.style.cssText = "text-align:center;padding:2rem;opacity:0.85"
+  p.textContent = message
+  grid.appendChild(p)
+}
+
+function clearGridLoading() {
+  grid.querySelector(".grid-loading")?.remove()
+}
+
 async function init() {
-  activeCategory = getCategoryFromURL()
+  const initialCategory = getCategoryFromURL()
+  dispatch("SET_CATEGORY", initialCategory)
+  dispatch("SET_LOADING", true)
+  setGridLoading("Ачааллаж байна…")
 
   try {
-    allProperties = await fetchProperties()
+    const properties = await fetchProperties()
+    dispatch("SET_PROPERTIES", properties)
+    dispatch("SET_LOADING", false)
   } catch (err) {
+    dispatch("SET_LOADING", false)
+    dispatch("SET_ERROR", err.message)
+    clearGridLoading()
     grid.innerHTML = `<p style="text-align:center;padding:2rem;color:red">
         Өгөгдөл ачаалахад алдаа гарлаа: ${err.message}
       </p>`
@@ -39,78 +60,58 @@ async function init() {
     return
   }
 
-  applyFilter(activeCategory)
+  clearGridLoading()
+  applyFilter(getState().activeCategory)
   bindEvents()
 }
 
 // ── ШҮҮЛТ ─────────────────────────────────────────────────
 function applyFilter(category) {
-  activeCategory = category
+  dispatch("SET_CATEGORY", category)
 
-  const filtered = filterProperties(allProperties, category)
-
-  // PropertyCard компонент ашиглан зурна
-  // onCardClick функцийг аргументаар дамжуулна
+  const { properties } = getState()
+  const filtered = filterProperties(properties, category)
   renderProperties(filtered, grid, noResults, handleCardClick)
-
   updateCategoryTabs(category)
 
   featTitle.textContent = CAT_LABELS[category] || "Онцлох байр"
-
   clearBtn.classList.toggle("hidden", category === "all")
 }
 
-// ── КАРТ ДАРАХАД ──────────────────────────────────────────
-// PropertyCard компонентоос дуудагдах callback функц
+// ── КАРТ ДАРАХАД → ДЭЛГЭРЭНГҮЙ ХУУДАС РУУ ШИЛЖИНЭ ──────
 function handleCardClick(property) {
-  renderModal(property, propBody)
-  openModal()
+  window.location.href = `product_detail.html?id=${encodeURIComponent(property.id)}`
 }
 
 // ── EVENT LISTENERS ───────────────────────────────────────
 function bindEvents() {
-  // Category карт
   document.querySelectorAll(".category-card").forEach((tab) => {
     tab.onclick = () => {
       const cls = [...tab.classList].find((c) => c.startsWith("filter-"))
       const filter = cls ? cls.replace("filter-", "") : "all"
-      const next = activeCategory === filter ? "all" : filter
+      const current = getState().activeCategory
+      const next = current === filter ? "all" : filter
       updateURLCategory(next)
       applyFilter(next)
     }
-    tab.onkeypress = (e) => {
+    tab.onkeydown = (e) => {
       if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault()
         tab.click()
       }
     }
   })
 
-  // Бүгдийг харах
   clearBtn.onclick = () => {
     updateURLCategory("all")
     applyFilter("all")
   }
 
-  // Browser back/forward
   window.addEventListener("popstate", (e) => {
     const cat = e.state?.category || "all"
     applyFilter(cat)
   })
 
-  // Modal хаах
-  propClose.onclick = closeModal
-  propModal.onclick = (e) => {
-    if (e.target === propModal) {
-      closeModal()
-    }
-  }
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeModal()
-    }
-  })
-
-  // Хайлт
   searchForm.onsubmit = (e) => {
     e.preventDefault()
     const dest = document.getElementById("s-dest").value.trim()
@@ -130,27 +131,8 @@ function bindEvents() {
     }
     alert(`Хайж байна: ${dest} | ${ci} | ${g} хүн`)
   }
-
-  // Dark mode
-  darkToggle.onclick = () => {
-    document.body.classList.toggle("dark-mode")
-    darkToggle.textContent = document.body.classList.contains("dark-mode")
-      ? "\u2600"
-      : "\u263e"
-  }
-}
-
-function openModal() {
-  propModal.style.display = "flex"
-  propModal.setAttribute("aria-hidden", "false")
-  document.body.style.overflow = "hidden"
-}
-
-function closeModal() {
-  propModal.style.display = "none"
-  propModal.setAttribute("aria-hidden", "true")
-  document.body.style.overflow = ""
 }
 
 // ── АЖИЛЛУУЛНА ────────────────────────────────────────────
+initDarkModeToggle()
 init()

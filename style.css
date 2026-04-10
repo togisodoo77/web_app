@@ -28,11 +28,10 @@
 
 
 /* ============================================================
-   1. GOOGLE FONTS IMPORT
-   Noto Sans — broad Unicode coverage including Mongolian Cyrillic
-   Sora       — geometric display font for headings
+   1. GOOGLE FONTS
+   Noto Sans + Sora — HTML <head> дотор <link> ашиглан ачаална.
+   style.css-д @import ашиглахгүй (render-blocking-ээс зайлсхийх).
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@600;700;800&display=swap');
 
 
 /* ============================================================
@@ -197,6 +196,27 @@ ul, ol { list-style: none; }
 
 /* Utility — hide elements (replaces inline style="display:none") */
 .hidden { display: none; }
+
+/* Empty state — байр олдсонгүй */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  grid-column: 1 / -1;
+}
+.empty-state-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.empty-state-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.empty-state-desc {
+  color: var(--clr-text-light, #6b7280);
+  font-size: 0.95rem;
+}
 
 
 /* ============================================================

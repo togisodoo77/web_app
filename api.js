@@ -1,39 +1,57 @@
 // ============================================================
-// api.js
+// api.js — JSONBin-аас өгөгдөл татах
 // ============================================================
 
 import { Property } from "./Property.js"
 
-const BIN_ID  = "69b553a6aa77b81da9e3b886"
-const API_KEY = "$2a$10$JfbWhp19jhTPOB5ZpkShLeUksa7J2IlXw2Q0seUEKNo5qnwARe.JW"
-const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`  
+const BIN_ID = "69b553a6aa77b81da9e3b886"
+const API_KEY =
+  "$2a$10$JfbWhp19jhTPOB5ZpkShLeUksa7J2IlXw2Q0seUEKNo5qnwARe.JW"
+const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`
 
-export async function fetchProperties() {
-  const response = await fetch(BIN_URL, {
-    headers: {
-      "X-Master-Key": API_KEY,
-      "X-Bin-Meta": "false",
-    },
-  })
-   
-  if (!response.ok) {
-    throw new Error(`Өгөгдөл татахад алдаа: ${response.status}`)
+/**
+ * JSONBin v3: { record: ... }, шууд массив, эсвэл { properties } гэх мэт
+ */
+function unwrapPayload(data) {
+  if (data == null) {
+    return null
   }
-
-  const data = await response.json()
-  console.log("Татсан өгөгдөл:", data)//Хариуг JSON болгон задлаж, data хувьсагчид хадгалж, консолд хэвлэнэ.
-
-  // Шинэ бүтэц: { properties: [...], bookings: [...] }
-  // Хуучин бүтэц: [ ... ] массив — хоёуланд нь ажиллана
-  const list = Array.isArray(data)
-    ? data
-    : (data.properties || data.record?.properties || data.record)
-
-  return list.map((item) => new Property(item))
+  if (Array.isArray(data)) {
+    return data
+  }
+  if (typeof data === "object" && "record" in data) {
+    return data.record
+  }
+  return data
 }
 
-// Захиалга татах функц — booking.js ашиглана
-export async function fetchBookings() {
+function extractPropertiesList(data) {
+  const inner = unwrapPayload(data)
+
+  if (Array.isArray(inner)) {
+    return inner
+  }
+  if (inner && typeof inner === "object") {
+    if (Array.isArray(inner.properties)) {
+      return inner.properties
+    }
+  }
+  return []
+}
+
+function extractBookingsList(data) {
+  const inner = unwrapPayload(data)
+
+  if (Array.isArray(inner)) {
+    return inner
+  }
+  if (inner && typeof inner === "object" && Array.isArray(inner.bookings)) {
+    return inner.bookings
+  }
+  return []
+}
+
+async function fetchBinJson() {
   const response = await fetch(BIN_URL, {
     headers: {
       "X-Master-Key": API_KEY,
@@ -45,11 +63,29 @@ export async function fetchBookings() {
     throw new Error(`Өгөгдөл татахад алдаа: ${response.status}`)
   }
 
-  const data = await response.json()
+  return response.json()
+}
 
-  const list = Array.isArray(data)
-    ? data
-    : (data.bookings || data.record?.bookings || [])
+export async function fetchProperties() {
+  const data = await fetchBinJson()
+  const list = extractPropertiesList(data)
+
+  if (!Array.isArray(list)) {
+    return []
+  }
+
+  return list
+    .filter((item) => item && typeof item === "object")
+    .map((item) => new Property(item))
+}
+
+export async function fetchBookings() {
+  const data = await fetchBinJson()
+  const list = extractBookingsList(data)
+
+  if (!Array.isArray(list)) {
+    return []
+  }
 
   return list
 }

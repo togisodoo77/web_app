@@ -27,6 +27,16 @@
       content="AmraltRent — амралтын байрны дэлгэрэнгүй."
     />
     <title>Байрны дэлгэрэнгүй — AmraltRent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Sora:wght@600;700;800&amp;display=swap"
+    />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
@@ -73,6 +83,47 @@
     </div>
     <!-- /container -->
 
+    <div id="detail-template" class="hidden">
+      <img class="pm-img" width="1200" height="500" src="" alt="" />
+      <div class="pm-body">
+        <div class="pm-row">
+          <div>
+            <h2 class="pm-title"></h2>
+            <p class="pm-loc"></p>
+          </div>
+          <div class="pm-rat">
+            <span class="pm-rat-star">&#9733;</span>
+            <span class="pm-rat-val"></span>
+            <small class="pm-rat-rev"></small>
+          </div>
+        </div>
+        <div class="pm-stats">
+          <div class="pm-stat"><b class="pm-guests"></b><small>Хүн</small></div>
+          <div class="pm-stat">
+            <b class="pm-beds"></b><small>Унтлагын өрөө</small>
+          </div>
+          <div class="pm-stat">
+            <b class="pm-baths"></b><small>Угаалгын өрөө</small>
+          </div>
+        </div>
+        <p class="pm-desc"></p>
+        <p class="pm-ams-title">Нэмэлт</p>
+        <div class="pm-ams"></div>
+        <div class="pm-book">
+          <div class="pm-price">
+            <span class="pm-price-val"></span> <small>/ шөнө</small>
+          </div>
+          <div class="pm-book-actions">
+            <button type="button" class="fav-btn modal-fav-btn">
+              <span class="fav-icon">&#9825;</span>
+              <span class="fav-count">0</span>
+            </button>
+            <button type="button" class="pm-book-btn">Захиалах</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="footer">
       <div class="footer-container">
         <div>
@@ -111,6 +162,6 @@
       </p>
     </div>
 
-    <script type="module" src="product_cart.js"></script>
+    <script type="module" src="product_detail.js"></script>
   </body>
 </html>

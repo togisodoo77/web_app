@@ -3,6 +3,8 @@
 // ============================================================
 
 import { fetchBookings } from './api.js'
+import { escapeHtml } from './product_card.js'
+import { initDarkModeToggle } from './theme.js'
 
 const STATUS_CONFIG = {
   upcoming: {
@@ -26,7 +28,17 @@ const STATUS_CONFIG = {
 }
 
 function createBookingCard(b) {
-  const cfg = STATUS_CONFIG[b.status] 
+  const cfg = STATUS_CONFIG[b.status]
+  const img = escapeHtml(b.img)
+  const title = escapeHtml(b.title)
+  const location = escapeHtml(b.location)
+  const price = escapeHtml(b.price)
+  const checkin = escapeHtml(b.checkin)
+  const checkout = escapeHtml(b.checkout)
+  const guests = escapeHtml(b.guests)
+  const total = escapeHtml(b.total)
+  const id = escapeHtml(b.id)
+  const status = escapeHtml(b.status)
 
   const actionBtns = {
     upcoming: `
@@ -42,43 +54,43 @@ function createBookingCard(b) {
   }
 
   return `
-    <div class="booking-card bstatus-${b.status}">
+    <div class="booking-card bstatus-${status}">
       <div class="booking-img-wrap">
-        <img src="${b.img}" alt="${b.title}" width="600" height="200" />
+        <img src="${img}" alt="${title}" width="600" height="200" />
         <span class="booking-badge ${cfg.badgeClass}">${cfg.label}</span>
       </div>
       <div class="booking-info">
         <div class="booking-header">
           <div>
-            <h3 class="booking-title">${b.title}</h3>
-            <p class="booking-location">&#128205; ${b.location}</p>
+            <h3 class="booking-title">${title}</h3>
+            <p class="booking-location">&#128205; ${location}</p>
           </div>
           <div class="booking-price-block">
-            <p class="booking-price">${b.price}&#8366;</p>
+            <p class="booking-price">${price}&#8366;</p>
             <p class="booking-price-unit">/ шөнө</p>
           </div>
         </div>
         <div class="booking-meta">
           <div class="booking-meta-item">
             <span class="meta-lbl">&#128197; Ирэх огноо</span>
-            <span class="meta-val">${b.checkin}</span>
+            <span class="meta-val">${checkin}</span>
           </div>
           <span class="meta-arrow" aria-hidden="true">&#8594;</span>
           <div class="booking-meta-item">
             <span class="meta-lbl">&#128197; Явах огноо</span>
-            <span class="meta-val">${b.checkout}</span>
+            <span class="meta-val">${checkout}</span>
           </div>
           <div class="booking-meta-item">
             <span class="meta-lbl">&#128101; Хүн</span>
-            <span class="meta-val">${b.guests} хүн</span>
+            <span class="meta-val">${guests} хүн</span>
           </div>
           <div class="booking-meta-item">
             <span class="meta-lbl">&#128176; Нийт дүн</span>
-            <span class="meta-val meta-total">${b.total}&#8366;</span>
+            <span class="meta-val meta-total">${total}&#8366;</span>
           </div>
         </div>
         <div class="booking-footer-row">
-          <span class="booking-id">&#35;${b.id}</span>
+          <span class="booking-id">&#35;${id}</span>
           <span class="bstatus-label ${cfg.labelClass}">${cfg.statusLabel}</span>
         </div>
         <div class="booking-actions">
@@ -145,7 +157,6 @@ async function init() {
   let bookings = []
   try {
     bookings = await fetchBookings()
-    console.log(bookings)
   } catch (err) {
     list.innerHTML = `<p style="text-align:center;color:red">Өгөгдөл ачааллахад алдаа: ${err.message}</p>`
     return
@@ -167,11 +178,7 @@ async function init() {
     document.getElementById(t).onclick = () => filterAndRender(bookings, t)
   })
 
-  // Dark mode
-  document.getElementById('dark-toggle').onclick = function () {
-    document.body.classList.toggle('dark-mode')
-    this.textContent = document.body.classList.contains('dark-mode') ? '\u2600' : '\u263E'
-  }
 }
 
+initDarkModeToggle()
 init()
