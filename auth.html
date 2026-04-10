@@ -2,15 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<!-- auth.html
-     CHANGES:
-     - Added missing <?xml version?> declaration (required for XHTML Strict)
-     - Fixed <meta charset="UTF-8"> → <meta http-equiv="Content-Type"> (XHTML Strict)
-     - Uncommented the script block
-     - Fixed dark mode JS: Unicode \u2600 / \u263E instead of HTML entity strings
-     - Changed input type="text" for email fields → type="email" (better semantics)
-     - Register panel has class="hidden" so CSS hides it on load
--->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="mn" lang="mn">
 
 <head>
@@ -29,7 +20,6 @@
 
   <div class="container">
 
-    <!-- ===== HEADER ===== -->
     <div class="header">
       <div class="logo">
         <span class="icon-logo">&#8962;</span> AmraltRent
@@ -45,7 +35,6 @@
       </div>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
     <div id="main-content" class="auth-page-container">
 
       <div class="auth-box modal-auth">
@@ -56,7 +45,6 @@
             role="tab" aria-selected="false" aria-controls="p-re">Бүртгүүлэх</button>
         </div>
 
-        <!-- Login panel -->
         <div id="p-li" role="tabpanel" aria-labelledby="tab-li">
           <h2 class="at-heading">Тавтай морил!</h2>
           <p class="at-sub">Бүртгэлтэй хэрэглэгч нэвтэрнэ үү.</p>
@@ -90,7 +78,6 @@
           </div>
         </div>
 
-        <!-- Register panel — hidden class hides it via CSS .hidden { display:none } -->
         <div id="p-re" class="hidden" role="tabpanel" aria-labelledby="tab-re">
           <h2 class="at-heading">Бүртгүүлэх</h2>
           <p class="at-sub">Шинэ бүртгэл үүсгэнэ үү.</p>
@@ -145,7 +132,6 @@
 
     </div>
 
-    <!-- ===== FOOTER ===== -->
     <div class="footer">
       <div class="footer-container">
         <div>
@@ -172,10 +158,8 @@
   </div>
 
   <script type="text/javascript">
-  //<![CDATA[
     function el(id) { return document.getElementById(id); }
 
-    /* ---- Auth tabs ---- */
     el('tab-li').onclick = function() {
       el('tab-li').className = 'at-tab on';
       el('tab-li').setAttribute('aria-selected', 'true');
@@ -195,7 +179,6 @@
 
     function validEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
-    /* ---- Login ---- */
     el('li-sub').onclick = function() {
       var e = el('li-email').value.trim();
       var p = el('li-pass').value;
@@ -205,7 +188,6 @@
       window.location.href = 'index.html';
     };
 
-    /* ---- Register ---- */
     el('r-sub').onclick = function() {
       var fn = el('r-fn').value.trim();
       var ln = el('r-ln').value.trim();
@@ -221,7 +203,6 @@
       window.location.href = 'index.html';
     };
 
-    /* ---- Password toggles ---- */
     el('li-eye').onclick = function() {
       var i = el('li-pass');
       i.type = (i.type === 'password') ? 'text' : 'password';

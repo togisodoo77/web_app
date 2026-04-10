@@ -1,18 +1,26 @@
-const DEFAULT_CATEGORY = "all"
+// ============================================================
+// js/filter.js
+// URL параметр уншиж, Property массиваас шүүлт хийх логик.
+// index.html?category=уул → зөвхөн уулын байрууд харагдана
+// ============================================================
 
-function normalizeCategory(category) {
-  if (category == null) {
-    return DEFAULT_CATEGORY
-  }
-  const trimmed = String(category).trim()
-  return trimmed || DEFAULT_CATEGORY
+/**
+ * URL-с ?category=... параметр уншина.
+ * Байхгүй бол "all" буцаана.
+ * @returns {string}
+ */
+export function getCategoryFromURL() {
+  const params = new URLSearchParams(window.location.search)
+  return params.get("category") || "all"
 }
 
-export function getCategoryFromURL(search = window.location.search) {
-  const params = new URLSearchParams(search)
-  return normalizeCategory(params.get("category"))
-}
-
+/**
+ * Property массиваас category-ын дагуу шүүнэ.
+ * Браузер дотор хийгдэх шүүлт — сүлжээ ашиглахгүй.
+ * @param {Property[]} properties - бүх байрнуудын массив
+ * @param {string} category - "гол" | "уул" | "vip" | "хөдөө" | "all"
+ * @returns {Property[]}
+ */
 export function filterProperties(properties, category) {
   return properties.filter((p) => p.matchesFilter(normalizeCategory(category)))
 }

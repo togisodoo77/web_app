@@ -1,7 +1,3 @@
-// ============================================================
-// booking.js
-// ============================================================
-
 import { fetchBookings } from './api.js'
 import { escapeHtml } from './product_card.js'
 import { initDarkModeToggle } from './theme.js'

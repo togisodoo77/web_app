@@ -5,8 +5,7 @@
 import { Property } from "./Property.js"
 
 const BIN_ID = "69b553a6aa77b81da9e3b886"
-const API_KEY =
-  "$2a$10$JfbWhp19jhTPOB5ZpkShLeUksa7J2IlXw2Q0seUEKNo5qnwARe.JW"
+const API_KEY = "$2a$10$JfbWhp19jhTPOB5ZpkShLeUksa7J2IlXw2Q0seUEKNo5qnwARe.JW"
 const BIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}/latest`
 
 /**

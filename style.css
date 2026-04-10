@@ -26,124 +26,115 @@
      19. Media Queries
    ============================================================ */
 
-
 /* ============================================================
    1. GOOGLE FONTS
    Noto Sans + Sora — HTML <head> дотор <link> ашиглан ачаална.
    style.css-д @import ашиглахгүй (render-blocking-ээс зайлсхийх).
    ============================================================ */
 
-
-/* ============================================================
-   2. CUSTOM PROPERTIES (VARIABLES)
-   All colors, spacing, type, shadow and radius values
-   live here — no hard-coded values elsewhere.
-   ============================================================ */
 :root {
-
   /* -- Brand palette -- */
-  --clr-brand:        #ff5a5f;
-  --clr-brand-hover:  #e0484d;
-  --clr-brand-light:  rgba(255, 90, 95, 0.12);
-  --clr-brand-glow:   rgba(255, 90, 95, 0.28);
+  --clr-brand: #ff5a5f;
+  --clr-brand-hover: #e0484d;
+  --clr-brand-light: rgba(255, 90, 95, 0.12);
+  --clr-brand-glow: rgba(255, 90, 95, 0.28);
 
   /* -- Neutral surface (light mode) -- */
-  --clr-bg:           #f7f5f2;
-  --clr-surface:      #ffffff;
-  --clr-surface-alt:  #f2f0ed;
-  --clr-border:       #e6e2de;
+  --clr-bg: #f7f5f2;
+  --clr-surface: #ffffff;
+  --clr-surface-alt: #f2f0ed;
+  --clr-border: #e6e2de;
   --clr-border-light: #edeae6;
 
   /* -- Text (light mode) -- */
-  --clr-text:         #1a1817;
-  --clr-text-muted:   #6b6560;
-  --clr-text-faint:   #9e9890;
+  --clr-text: #1a1817;
+  --clr-text-muted: #6b6560;
+  --clr-text-faint: #9e9890;
 
   /* -- Semantic -- */
-  --clr-success:      #128c4a;
-  --clr-success-bg:   #e6f7ed;
-  --clr-warning:      #f5b50a;
-  --clr-overlay:      rgba(10, 8, 6, 0.56);
+  --clr-success: #128c4a;
+  --clr-success-bg: #e6f7ed;
+  --clr-warning: #f5b50a;
+  --clr-overlay: rgba(10, 8, 6, 0.56);
 
   /* -- Spacing scale (rem) -- */
-  --sp-1:  0.25rem;
-  --sp-2:  0.5rem;
-  --sp-3:  0.75rem;
-  --sp-4:  1rem;
-  --sp-5:  1.25rem;
-  --sp-6:  1.5rem;
-  --sp-7:  1.75rem;
-  --sp-8:  2rem;
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-7: 1.75rem;
+  --sp-8: 2rem;
   --sp-10: 2.5rem;
   --sp-12: 3rem;
   --sp-16: 4rem;
   --sp-20: 5rem;
 
   /* -- Font families -- */
-  --ff-display: 'Sora', 'Noto Sans', sans-serif;
-  --ff-body:    'Noto Sans', sans-serif;
+  --ff-display: "Sora", "Noto Sans", sans-serif;
+  --ff-body: "Noto Sans", sans-serif;
 
   /* -- Font sizes (rem) -- */
-  --fs-xs:   0.75rem;    /* 12px */
-  --fs-sm:   0.875rem;   /* 14px */
-  --fs-base: 1rem;       /* 16px */
-  --fs-lg:   1.125rem;   /* 18px */
-  --fs-xl:   1.25rem;    /* 20px */
-  --fs-2xl:  1.5rem;     /* 24px */
-  --fs-3xl:  1.875rem;   /* 30px */
-  --fs-4xl:  2.25rem;    /* 36px */
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-sm: 0.875rem; /* 14px */
+  --fs-base: 1rem; /* 16px */
+  --fs-lg: 1.125rem; /* 18px */
+  --fs-xl: 1.25rem; /* 20px */
+  --fs-2xl: 1.5rem; /* 24px */
+  --fs-3xl: 1.875rem; /* 30px */
+  --fs-4xl: 2.25rem; /* 36px */
 
   /* -- Font weights -- */
-  --fw-normal:    400;
-  --fw-medium:    500;
-  --fw-semibold:  600;
-  --fw-bold:      700;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
   --fw-extrabold: 800;
 
   /* -- Line heights -- */
-  --lh-tight:   1.2;
-  --lh-snug:    1.4;
-  --lh-normal:  1.65;
+  --lh-tight: 1.2;
+  --lh-snug: 1.4;
+  --lh-normal: 1.65;
   --lh-relaxed: 1.85;
 
   /* -- Letter spacing -- */
-  --ls-tight:  -0.03em;
-  --ls-snug:   -0.01em;
-  --ls-normal:  0em;
-  --ls-wide:    0.05em;
-  --ls-wider:   0.10em;
+  --ls-tight: -0.03em;
+  --ls-snug: -0.01em;
+  --ls-normal: 0em;
+  --ls-wide: 0.05em;
+  --ls-wider: 0.1em;
 
   /* -- Border radius -- */
-  --r-xs:   0.375rem;
-  --r-sm:   0.625rem;
-  --r-md:   1rem;
-  --r-lg:   1.25rem;
-  --r-xl:   1.75rem;
-  --r-2xl:  2.5rem;
+  --r-xs: 0.375rem;
+  --r-sm: 0.625rem;
+  --r-md: 1rem;
+  --r-lg: 1.25rem;
+  --r-xl: 1.75rem;
+  --r-2xl: 2.5rem;
   --r-full: 999px;
 
   /* -- Shadows -- */
-  --sh-xs:    0 1px 4px rgba(0, 0, 0, 0.04);
-  --sh-sm:    0 4px 14px rgba(0, 0, 0, 0.06);
-  --sh-md:    0 8px 28px rgba(0, 0, 0, 0.08);
-  --sh-lg:    0 16px 44px rgba(0, 0, 0, 0.10);
-  --sh-xl:    0 24px 64px rgba(0, 0, 0, 0.13);
+  --sh-xs: 0 1px 4px rgba(0, 0, 0, 0.04);
+  --sh-sm: 0 4px 14px rgba(0, 0, 0, 0.06);
+  --sh-md: 0 8px 28px rgba(0, 0, 0, 0.08);
+  --sh-lg: 0 16px 44px rgba(0, 0, 0, 0.1);
+  --sh-xl: 0 24px 64px rgba(0, 0, 0, 0.13);
   --sh-brand: 0 8px 22px var(--clr-brand-glow);
 
   /* -- Transitions -- */
   --tr-fast: 0.15s ease;
   --tr-base: 0.25s ease;
-  --tr-slow: 0.40s ease;
+  --tr-slow: 0.4s ease;
 
   /* -- Gradients -- */
   --grad-brand: linear-gradient(135deg, #ff5a5f 0%, #ff7c5c 100%);
-  --grad-hero:  linear-gradient(150deg, #fff8f7 0%, #f7f5f2 55%, #fff3ee 100%);
+  --grad-hero: linear-gradient(150deg, #fff8f7 0%, #f7f5f2 55%, #fff3ee 100%);
 
   /* -- Layout -- */
   --max-w: 75rem;
   --pad-x: var(--sp-6);
 }
-
 
 /* ============================================================
    3. CSS RESET & BASE
@@ -188,14 +179,23 @@ a {
   transition: color var(--tr-fast);
 }
 
-a:hover { color: var(--clr-brand-hover); }
+a:hover {
+  color: var(--clr-brand-hover);
+}
 
-button { font-family: var(--ff-body); }
+button {
+  font-family: var(--ff-body);
+}
 
-ul, ol { list-style: none; }
+ul,
+ol {
+  list-style: none;
+}
 
 /* Utility — hide elements (replaces inline style="display:none") */
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 /* Empty state — байр олдсонгүй */
 .empty-state {
@@ -218,11 +218,12 @@ ul, ol { list-style: none; }
   font-size: 0.95rem;
 }
 
-
 /* ============================================================
    4. TYPOGRAPHY
    ============================================================ */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--ff-display);
   font-weight: var(--fw-bold);
   line-height: var(--lh-tight);
@@ -236,7 +237,9 @@ h1 {
   font-weight: var(--fw-extrabold);
 }
 
-h2 { font-size: var(--fs-2xl); }
+h2 {
+  font-size: var(--fs-2xl);
+}
 
 h3 {
   font-size: var(--fs-xl);
@@ -249,8 +252,9 @@ p {
   transition: color var(--tr-base);
 }
 
-small { font-size: var(--fs-sm); }
-
+small {
+  font-size: var(--fs-sm);
+}
 
 /* ============================================================
    5. LAYOUT
@@ -276,8 +280,9 @@ small { font-size: var(--fs-sm); }
   transition: top var(--tr-base);
 }
 
-.skip-link:focus { top: var(--sp-3); }
-
+.skip-link:focus {
+  top: var(--sp-3);
+}
 
 /* ============================================================
    6. HEADER & NAVIGATION
@@ -365,7 +370,9 @@ small { font-size: var(--fs-sm); }
   white-space: nowrap;
 }
 
-.header-right a:hover { color: var(--clr-brand); }
+.header-right a:hover {
+  color: var(--clr-brand);
+}
 
 /* Icon button (heart, dark toggle) */
 .icon-btn,
@@ -428,7 +435,6 @@ small { font-size: var(--fs-sm); }
   box-shadow: 0 12px 28px var(--clr-brand-glow);
 }
 
-
 /* ============================================================
    7. CATEGORY SECTION
    ============================================================ */
@@ -437,7 +443,9 @@ small { font-size: var(--fs-sm); }
   animation: fadeSlideUp 0.45s ease 0.05s both;
 }
 
-.categories h2 { margin-bottom: var(--sp-6); }
+.categories h2 {
+  margin-bottom: var(--sp-6);
+}
 
 .category-grid {
   display: grid;
@@ -519,7 +527,6 @@ small { font-size: var(--fs-sm); }
   line-height: 1;
 }
 
-
 /* ============================================================
    8. PROPERTY GRID & CARDS
    ============================================================ */
@@ -536,7 +543,9 @@ small { font-size: var(--fs-sm); }
   gap: var(--sp-4);
 }
 
-.featured-top h2 { margin-bottom: 0; }
+.featured-top h2 {
+  margin-bottom: 0;
+}
 
 .view-btn {
   padding: var(--sp-2) var(--sp-5);
@@ -584,14 +593,30 @@ small { font-size: var(--fs-sm); }
 }
 
 /* Staggered card entrance */
-.property-card:nth-child(1) { animation-delay: 0.08s; }
-.property-card:nth-child(2) { animation-delay: 0.16s; }
-.property-card:nth-child(3) { animation-delay: 0.24s; }
-.property-card:nth-child(4) { animation-delay: 0.32s; }
-.property-card:nth-child(5) { animation-delay: 0.40s; }
-.property-card:nth-child(6) { animation-delay: 0.48s; }
-.property-card:nth-child(7) { animation-delay: 0.56s; }
-.property-card:nth-child(8) { animation-delay: 0.64s; }
+.property-card:nth-child(1) {
+  animation-delay: 0.08s;
+}
+.property-card:nth-child(2) {
+  animation-delay: 0.16s;
+}
+.property-card:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.property-card:nth-child(4) {
+  animation-delay: 0.32s;
+}
+.property-card:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.property-card:nth-child(6) {
+  animation-delay: 0.48s;
+}
+.property-card:nth-child(7) {
+  animation-delay: 0.56s;
+}
+.property-card:nth-child(8) {
+  animation-delay: 0.64s;
+}
 
 .property-card:hover {
   transform: translateY(-8px);
@@ -607,7 +632,9 @@ small { font-size: var(--fs-sm); }
   transition: transform var(--tr-slow);
 }
 
-.property-card:hover img { transform: scale(1.05); }
+.property-card:hover img {
+  transform: scale(1.05);
+}
 
 .property-info {
   padding: var(--sp-5) var(--sp-6) var(--sp-6);
@@ -642,7 +669,6 @@ small { font-size: var(--fs-sm); }
   margin-top: var(--sp-2);
   letter-spacing: var(--ls-wide);
 }
-
 
 /* ============================================================
    9. BUTTONS
@@ -774,7 +800,9 @@ small { font-size: var(--fs-sm); }
     color var(--tr-fast);
 }
 
-.property-btn:hover { background: var(--clr-surface-alt); }
+.property-btn:hover {
+  background: var(--clr-surface-alt);
+}
 
 .property-btn-danger {
   border-color: var(--clr-brand);
@@ -786,7 +814,6 @@ small { font-size: var(--fs-sm); }
   background: var(--clr-brand);
   color: var(--clr-surface);
 }
-
 
 /* ============================================================
    10. FORMS & INPUTS
@@ -913,7 +940,7 @@ small { font-size: var(--fs-sm); }
 .or-div::after,
 .auth-or::before,
 .auth-or::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
   background: var(--clr-border);
@@ -948,8 +975,9 @@ small { font-size: var(--fs-sm); }
 }
 
 .pw-eye:hover,
-.pw-toggle:hover { color: var(--clr-brand); }
-
+.pw-toggle:hover {
+  color: var(--clr-brand);
+}
 
 /* ============================================================
    11. MODALS
@@ -985,7 +1013,9 @@ small { font-size: var(--fs-sm); }
 }
 
 /* Thin scrollbar */
-.modal-box::-webkit-scrollbar { width: 0.3rem; }
+.modal-box::-webkit-scrollbar {
+  width: 0.3rem;
+}
 .modal-box::-webkit-scrollbar-thumb {
   background: var(--clr-border);
   border-radius: var(--r-full);
@@ -1196,7 +1226,6 @@ small { font-size: var(--fs-sm); }
   margin-top: var(--sp-6);
 }
 
-
 /* ============================================================
    12. AUTH PANEL
    ============================================================ */
@@ -1246,7 +1275,9 @@ small { font-size: var(--fs-sm); }
   gap: var(--sp-4);
 }
 
-.auth-panel.auth-hide { display: none; }
+.auth-panel.auth-hide {
+  display: none;
+}
 
 .at-heading,
 .auth-heading {
@@ -1265,7 +1296,6 @@ small { font-size: var(--fs-sm); }
   margin-bottom: var(--sp-1);
   line-height: var(--lh-normal);
 }
-
 
 /* ============================================================
    13. HOST DASHBOARD
@@ -1292,7 +1322,9 @@ small { font-size: var(--fs-sm); }
   gap: var(--sp-4);
 }
 
-.dashboard-header h1 { margin-bottom: var(--sp-2); }
+.dashboard-header h1 {
+  margin-bottom: var(--sp-2);
+}
 
 .dashboard-subtitle {
   color: var(--clr-text-muted);
@@ -1345,8 +1377,12 @@ small { font-size: var(--fs-sm); }
   transition: color var(--tr-base);
 }
 
-.stat-value-highlight { color: var(--clr-brand); }
-.stat-star            { color: var(--clr-warning); }
+.stat-value-highlight {
+  color: var(--clr-brand);
+}
+.stat-star {
+  color: var(--clr-warning);
+}
 
 /* Host property list */
 .host-properties h2 {
@@ -1465,7 +1501,9 @@ small { font-size: var(--fs-sm); }
   gap: var(--sp-4);
 }
 
-.host-property-price { line-height: 1.2; }
+.host-property-price {
+  line-height: 1.2;
+}
 
 .price-amount {
   font-family: var(--ff-display);
@@ -1484,7 +1522,6 @@ small { font-size: var(--fs-sm); }
   gap: var(--sp-2);
   flex-wrap: wrap;
 }
-
 
 /* ============================================================
    14. FOOTER
@@ -1526,7 +1563,9 @@ footer,
   transition: color var(--tr-fast);
 }
 
-.footer-container p:hover { color: var(--clr-brand); }
+.footer-container p:hover {
+  color: var(--clr-brand);
+}
 
 .footer-bottom {
   text-align: center;
@@ -1545,7 +1584,6 @@ footer,
   color: var(--clr-brand);
   font-weight: var(--fw-semibold);
 }
-
 
 /* ============================================================
    15. SVG ICONS
@@ -1575,7 +1613,6 @@ footer,
 
 /* Category icons handled by .cat-icon above */
 
-
 /* ============================================================
    16. ACCESSIBILITY
    ============================================================ */
@@ -1589,24 +1626,22 @@ textarea:focus-visible {
   border-radius: 2px;
 }
 
-
 /* ============================================================
    17. DARK MODE
    Toggle via: document.body.classList.toggle('dark-mode')
    ============================================================ */
 body.dark-mode {
-  --clr-bg:           #111110;
-  --clr-surface:      #1c1b1a;
-  --clr-surface-alt:  #252422;
-  --clr-border:       #2e2c2a;
+  --clr-bg: #111110;
+  --clr-surface: #1c1b1a;
+  --clr-surface-alt: #252422;
+  --clr-border: #2e2c2a;
   --clr-border-light: #272523;
-  --clr-text:         #f0eee9;
-  --clr-text-muted:   #9e9890;
-  --clr-text-faint:   #6b6560;
-  --clr-overlay:      rgba(0, 0, 0, 0.72);
-  --clr-success-bg:   rgba(18, 140, 74, 0.15);
+  --clr-text: #f0eee9;
+  --clr-text-muted: #9e9890;
+  --clr-text-faint: #6b6560;
+  --clr-overlay: rgba(0, 0, 0, 0.72);
+  --clr-success-bg: rgba(18, 140, 74, 0.15);
 }
-
 
 /* ============================================================
    18. ANIMATIONS & KEYFRAMES
@@ -1638,8 +1673,15 @@ body.dark-mode {
 
 /* Gentle pulse for brand accent element */
 @keyframes brandPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.7; transform: scale(0.92); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.92);
+  }
 }
 
 /* Section entrance animation helpers */
@@ -1656,11 +1698,18 @@ body.dark-mode {
 }
 
 /* Stats cards stagger */
-.stat-card:nth-child(1) { animation: fadeSlideUp 0.4s ease 0.10s both; }
-.stat-card:nth-child(2) { animation: fadeSlideUp 0.4s ease 0.16s both; }
-.stat-card:nth-child(3) { animation: fadeSlideUp 0.4s ease 0.22s both; }
-.stat-card:nth-child(4) { animation: fadeSlideUp 0.4s ease 0.28s both; }
-
+.stat-card:nth-child(1) {
+  animation: fadeSlideUp 0.4s ease 0.1s both;
+}
+.stat-card:nth-child(2) {
+  animation: fadeSlideUp 0.4s ease 0.16s both;
+}
+.stat-card:nth-child(3) {
+  animation: fadeSlideUp 0.4s ease 0.22s both;
+}
+.stat-card:nth-child(4) {
+  animation: fadeSlideUp 0.4s ease 0.28s both;
+}
 
 /* ============================================================
    19. MEDIA QUERIES
@@ -1673,7 +1722,6 @@ body.dark-mode {
 
 /* ---- B) Tablet / Mobile landscape (480px – 900px) ---- */
 @media (max-width: 56.25rem) {
-
   :root {
     --pad-x: var(--sp-5);
     --fs-4xl: 1.875rem;
@@ -1687,7 +1735,9 @@ body.dark-mode {
     gap: var(--sp-3);
   }
 
-  .header-search input { width: 12rem; }
+  .header-search input {
+    width: 12rem;
+  }
 
   /* 2-column property grid */
   .property-grid {
@@ -1713,7 +1763,9 @@ body.dark-mode {
     gap: var(--sp-8);
   }
 
-  .host-dashboard { padding: var(--sp-8); }
+  .host-dashboard {
+    padding: var(--sp-8);
+  }
 
   /* Two-column form row collapses */
   .fg2,
@@ -1729,13 +1781,18 @@ body.dark-mode {
 
 /* ---- Landscape orientation override for stats ---- */
 @media (max-width: 56.25rem) and (orientation: landscape) {
-
-  .property-card img { height: 11rem; }
+  .property-card img {
+    height: 11rem;
+  }
 
   .pm-img,
-  .mod-img { height: 13rem; }
+  .mod-img {
+    height: 13rem;
+  }
 
-  .modal-box { max-height: 86vh; }
+  .modal-box {
+    max-height: 86vh;
+  }
 
   /* Show 4 stat columns even on landscape mobile */
   .stats-grid {
@@ -1746,7 +1803,6 @@ body.dark-mode {
 
 /* ---- C) Mobile portrait (< 480px) ---- */
 @media (max-width: 30rem) {
-
   :root {
     --pad-x: var(--sp-4);
     --fs-4xl: 1.625rem;
@@ -1772,7 +1828,9 @@ body.dark-mode {
     width: 100%;
   }
 
-  .header-search input { width: 100%; }
+  .header-search input {
+    width: 100%;
+  }
 
   /* Single column property grid */
   .property-grid {
@@ -1786,7 +1844,9 @@ body.dark-mode {
     gap: var(--sp-3);
   }
 
-  .category-card { padding: var(--sp-5) var(--sp-3); }
+  .category-card {
+    padding: var(--sp-5) var(--sp-3);
+  }
 
   /* Stats: 2 columns, smaller text */
   .stats-grid {
@@ -1794,9 +1854,13 @@ body.dark-mode {
     gap: var(--sp-3);
   }
 
-  .stat-value { font-size: var(--fs-2xl); }
+  .stat-value {
+    font-size: var(--fs-2xl);
+  }
 
-  .stat-card { padding: var(--sp-4); }
+  .stat-card {
+    padding: var(--sp-4);
+  }
 
   /* Footer: single column */
   .footer-container {
@@ -1835,7 +1899,9 @@ body.dark-mode {
     flex-wrap: wrap;
   }
 
-  .host-dashboard { padding: var(--sp-5) var(--sp-4); }
+  .host-dashboard {
+    padding: var(--sp-5) var(--sp-4);
+  }
 
   .dashboard-header {
     flex-direction: column;
@@ -1854,7 +1920,9 @@ body.dark-mode {
   }
 
   .pm-img,
-  .mod-img { height: 12rem; }
+  .mod-img {
+    height: 12rem;
+  }
 
   .pm-row,
   .mod-top-row {
@@ -1869,7 +1937,9 @@ body.dark-mode {
     gap: var(--sp-4);
   }
 
-  .pm-book-btn { width: 100%; }
+  .pm-book-btn {
+    width: 100%;
+  }
 
   .pm-stats,
   .mod-meta {
@@ -1900,13 +1970,15 @@ body.dark-mode {
   white-space: nowrap;
 }
 
-.nav-link:hover { color: var(--clr-brand); background: var(--clr-brand-light); }
+.nav-link:hover {
+  color: var(--clr-brand);
+  background: var(--clr-brand-light);
+}
 
 .nav-active {
   color: var(--clr-brand);
   font-weight: var(--fw-bold);
 }
-
 
 /* ============================================================
    21. HERO SEARCH SECTION
@@ -1921,7 +1993,9 @@ body.dark-mode {
   transition: background-color var(--tr-base);
 }
 
-.hero-text { margin-bottom: var(--sp-10); }
+.hero-text {
+  margin-bottom: var(--sp-10);
+}
 
 .hero-text h1 {
   font-size: var(--fs-4xl);
@@ -2023,7 +2097,6 @@ body.dark-mode {
   box-shadow: 0 12px 28px var(--clr-brand-glow);
 }
 
-
 /* ============================================================
    22. PAGE HERO (booking / host pages)
    ============================================================ */
@@ -2037,7 +2110,10 @@ body.dark-mode {
   transition: background-color var(--tr-base);
 }
 
-.page-hero h1 { font-size: var(--fs-4xl); margin-bottom: var(--sp-3); }
+.page-hero h1 {
+  font-size: var(--fs-4xl);
+  margin-bottom: var(--sp-3);
+}
 
 .page-hero-sub {
   font-size: var(--fs-lg);
@@ -2046,7 +2122,6 @@ body.dark-mode {
   margin: 0 auto;
   line-height: var(--lh-relaxed);
 }
-
 
 /* ============================================================
    23. BOOKING HISTORY PAGE
@@ -2076,7 +2151,11 @@ body.dark-mode {
     color var(--tr-fast);
 }
 
-.btab:hover { background: var(--clr-surface-alt); border-color: var(--clr-brand); color: var(--clr-brand); }
+.btab:hover {
+  background: var(--clr-surface-alt);
+  border-color: var(--clr-brand);
+  color: var(--clr-brand);
+}
 
 .btab-on {
   background: var(--clr-brand);
@@ -2086,7 +2165,11 @@ body.dark-mode {
   box-shadow: var(--sh-brand);
 }
 
-.btab-on:hover { background: var(--clr-brand-hover); border-color: var(--clr-brand-hover); color: var(--clr-surface); }
+.btab-on:hover {
+  background: var(--clr-brand-hover);
+  border-color: var(--clr-brand-hover);
+  color: var(--clr-surface);
+}
 
 /* Booking card */
 .booking-card {
@@ -2105,7 +2188,10 @@ body.dark-mode {
     background-color var(--tr-base);
 }
 
-.booking-card:hover { transform: translateY(-3px); box-shadow: var(--sh-md); }
+.booking-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-md);
+}
 
 .booking-img-wrap {
   position: relative;
@@ -2132,9 +2218,18 @@ body.dark-mode {
   text-transform: uppercase;
 }
 
-.badge-upcoming { background: #fff3cd; color: #856404; }
-.badge-active   { background: var(--clr-success-bg); color: var(--clr-success); }
-.badge-done     { background: var(--clr-surface-alt); color: var(--clr-text-faint); }
+.badge-upcoming {
+  background: #fff3cd;
+  color: #856404;
+}
+.badge-active {
+  background: var(--clr-success-bg);
+  color: var(--clr-success);
+}
+.badge-done {
+  background: var(--clr-surface-alt);
+  color: var(--clr-text-faint);
+}
 
 .booking-info {
   flex: 1;
@@ -2164,7 +2259,10 @@ body.dark-mode {
   margin: 0;
 }
 
-.booking-price-block { text-align: right; flex-shrink: 0; }
+.booking-price-block {
+  text-align: right;
+  flex-shrink: 0;
+}
 
 .booking-price {
   font-family: var(--ff-display);
@@ -2212,7 +2310,10 @@ body.dark-mode {
   color: var(--clr-text);
 }
 
-.meta-total { color: var(--clr-brand); font-weight: var(--fw-bold); }
+.meta-total {
+  color: var(--clr-brand);
+  font-weight: var(--fw-bold);
+}
 
 .meta-arrow {
   font-size: var(--fs-lg);
@@ -2241,12 +2342,22 @@ body.dark-mode {
   text-transform: uppercase;
 }
 
-.upcoming-label { color: #856404; }
-.active-label   { color: var(--clr-success); }
-.done-label     { color: var(--clr-text-faint); }
+.upcoming-label {
+  color: #856404;
+}
+.active-label {
+  color: var(--clr-success);
+}
+.done-label {
+  color: var(--clr-text-faint);
+}
 
 /* Action buttons */
-.booking-actions { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+.booking-actions {
+  display: flex;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
 
 .baction-btn {
   padding: var(--sp-2) var(--sp-4);
@@ -2264,17 +2375,35 @@ body.dark-mode {
     color var(--tr-fast);
 }
 
-.baction-btn:hover { background: var(--clr-surface-alt); }
+.baction-btn:hover {
+  background: var(--clr-surface-alt);
+}
 
-.baction-cancel { border-color: var(--clr-brand); color: var(--clr-brand); }
-.baction-cancel:hover { background: var(--clr-brand); color: var(--clr-surface); }
+.baction-cancel {
+  border-color: var(--clr-brand);
+  color: var(--clr-brand);
+}
+.baction-cancel:hover {
+  background: var(--clr-brand);
+  color: var(--clr-surface);
+}
 
-.baction-review { border-color: var(--clr-warning); color: #856404; }
-.baction-review:hover { background: #fff3cd; border-color: var(--clr-warning); }
+.baction-review {
+  border-color: var(--clr-warning);
+  color: #856404;
+}
+.baction-review:hover {
+  background: #fff3cd;
+  border-color: var(--clr-warning);
+}
 
-.baction-rebook { border-color: var(--clr-success); color: var(--clr-success); }
-.baction-rebook:hover { background: var(--clr-success-bg); }
-
+.baction-rebook {
+  border-color: var(--clr-success);
+  color: var(--clr-success);
+}
+.baction-rebook:hover {
+  background: var(--clr-success-bg);
+}
 
 /* ============================================================
    24. HOST PROPERTY ADD PAGE
@@ -2293,9 +2422,13 @@ body.dark-mode {
   transition: background-color var(--tr-base);
 }
 
-.host-form-header { margin-bottom: var(--sp-8); }
+.host-form-header {
+  margin-bottom: var(--sp-8);
+}
 
-.host-form-header h2 { margin-bottom: var(--sp-2); }
+.host-form-header h2 {
+  margin-bottom: var(--sp-2);
+}
 
 .host-form {
   display: flex;
@@ -2382,7 +2515,10 @@ body.dark-mode {
     background-color var(--tr-fast);
 }
 
-.upload-area:hover { border-color: var(--clr-brand); background: var(--clr-brand-light); }
+.upload-area:hover {
+  border-color: var(--clr-brand);
+  background: var(--clr-brand-light);
+}
 
 .upload-input {
   position: absolute;
@@ -2393,7 +2529,11 @@ body.dark-mode {
   cursor: pointer;
 }
 
-.upload-icon { font-size: 2.5rem; display: block; margin-bottom: var(--sp-3); }
+.upload-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: var(--sp-3);
+}
 
 .upload-text {
   font-weight: var(--fw-semibold);
@@ -2401,7 +2541,11 @@ body.dark-mode {
   margin-bottom: var(--sp-1);
 }
 
-.upload-hint { font-size: var(--fs-xs); color: var(--clr-text-faint); margin: 0; }
+.upload-hint {
+  font-size: var(--fs-xs);
+  color: var(--clr-text-faint);
+  margin: 0;
+}
 
 /* Image preview */
 #img-preview-wrap {
@@ -2417,7 +2561,6 @@ body.dark-mode {
   object-fit: cover;
   display: block;
 }
-
 
 /* ============================================================
    25. CREATORS SECTION — Бүтээгчид
@@ -2467,7 +2610,10 @@ body.dark-mode {
     background-color var(--tr-base);
 }
 
-.creator-card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+.creator-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-md);
+}
 
 .creator-avatar {
   width: 4rem;
@@ -2500,7 +2646,6 @@ body.dark-mode {
   margin: 0;
 }
 
-
 /* ============================================================
    26. FOOTER — updated with 4-column grid
    ============================================================ */
@@ -2528,65 +2673,126 @@ body.dark-mode {
   letter-spacing: var(--ls-wide);
 }
 
-.footer-container a { color: var(--clr-text-muted); font-size: var(--fs-sm); }
-.footer-container a:hover { color: var(--clr-brand); }
-
+.footer-container a {
+  color: var(--clr-text-muted);
+  font-size: var(--fs-sm);
+}
+.footer-container a:hover {
+  color: var(--clr-brand);
+}
 
 /* ============================================================
    27. RESPONSIVE ADDITIONS for new sections
    ============================================================ */
 @media (max-width: 56.25rem) {
+  .hero-section {
+    padding: var(--sp-10) var(--sp-6) var(--sp-8);
+  }
 
-  .hero-section { padding: var(--sp-10) var(--sp-6) var(--sp-8); }
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-4);
+  }
 
-  .search-form { flex-direction: column; align-items: stretch; padding: var(--sp-4); }
+  .search-fields {
+    flex-direction: column;
+  }
 
-  .search-fields { flex-direction: column; }
+  .search-sep {
+    width: 100%;
+    height: 1px;
+  }
 
-  .search-sep { width: 100%; height: 1px; }
+  .search-field {
+    min-width: unset;
+    border-bottom: 1px solid var(--clr-border-light);
+    padding: var(--sp-3) var(--sp-2);
+  }
 
-  .search-field { min-width: unset; border-bottom: 1px solid var(--clr-border-light); padding: var(--sp-3) var(--sp-2); }
+  .booking-card {
+    flex-direction: column;
+  }
 
-  .booking-card { flex-direction: column; }
+  .booking-img-wrap {
+    width: 100%;
+    height: 12rem;
+  }
 
-  .booking-img-wrap { width: 100%; height: 12rem; }
+  .host-form-row3 {
+    grid-template-columns: 1fr 1fr;
+  }
 
-  .host-form-row3 { grid-template-columns: 1fr 1fr; }
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+  .creators-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  .creators-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  .footer-container { grid-template-columns: repeat(2, 1fr); }
-
-  .host-form-wrap { padding: var(--sp-8) var(--sp-6); }
+  .host-form-wrap {
+    padding: var(--sp-8) var(--sp-6);
+  }
 }
 
 @media (max-width: 30rem) {
+  .hero-section {
+    padding: var(--sp-8) var(--sp-4) var(--sp-6);
+    border-radius: var(--r-xl);
+  }
 
-  .hero-section { padding: var(--sp-8) var(--sp-4) var(--sp-6); border-radius: var(--r-xl); }
+  .page-hero {
+    padding: var(--sp-8) var(--sp-4);
+    border-radius: var(--r-xl);
+  }
 
-  .page-hero { padding: var(--sp-8) var(--sp-4); border-radius: var(--r-xl); }
+  .page-hero h1 {
+    font-size: var(--fs-3xl);
+  }
 
-  .page-hero h1 { font-size: var(--fs-3xl); }
+  .booking-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-3);
+  }
 
-  .booking-meta { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
+  .meta-arrow {
+    display: none;
+  }
 
-  .meta-arrow { display: none; }
+  .booking-header {
+    flex-direction: column;
+  }
 
-  .booking-header { flex-direction: column; }
+  .booking-price-block {
+    text-align: left;
+  }
 
-  .booking-price-block { text-align: left; }
+  .host-form-row3 {
+    grid-template-columns: 1fr;
+  }
 
-  .host-form-row3 { grid-template-columns: 1fr; }
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+  .creators-grid {
+    grid-template-columns: 1fr;
+    max-width: 20rem;
+  }
 
-  .creators-grid { grid-template-columns: 1fr; max-width: 20rem; }
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
 
-  .footer-container { grid-template-columns: 1fr; }
-
-  .host-form-wrap { padding: var(--sp-5) var(--sp-4); }
+  .host-form-wrap {
+    padding: var(--sp-5) var(--sp-4);
+  }
 }
 /* Favorite товч */
 .fav-btn {
@@ -2608,7 +2814,7 @@ body.dark-mode {
 .fav-btn:hover {
   border-color: #ff5a5f;
   color: #ff5a5f;
-  background: rgba(255,90,95,0.06);
+  background: rgba(255, 90, 95, 0.06);
 }
 
 .pm-book-actions {
