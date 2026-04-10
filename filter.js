@@ -4,6 +4,15 @@
 // index.html?category=уул → зөвхөн уулын байрууд харагдана
 // ============================================================
 
+const DEFAULT_CATEGORY = "all"
+
+function normalizeCategory(cat) {
+  if (!cat || typeof cat !== "string") {
+    return DEFAULT_CATEGORY
+  }
+  return cat.trim().toLowerCase()
+}
+
 /**
  * URL-с ?category=... параметр уншина.
  * Байхгүй бол "all" буцаана.
