@@ -22,8 +22,6 @@ export class Property {
     this.ams      = Array.isArray(data.ams) ? data.ams : [];
   }
 
-  // Тухайн байр дамжуулсан category-тай тохирч байна уу?
-  // "all" эсвэл хоосон бол бүгд харагдана
   matchesFilter(category) {
     if (!category || category === 'all') { return true; }
     return this.category === category;
