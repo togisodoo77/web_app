@@ -2568,3 +2568,36 @@ body.dark-mode {
 
   .host-form-wrap { padding: var(--sp-5) var(--sp-4); }
 }
+/* Favorite товч */
+.fav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  background: none;
+  border: 1.5px solid #e6e2de;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #6b6560;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.fav-btn:hover {
+  border-color: #ff5a5f;
+  color: #ff5a5f;
+  background: rgba(255,90,95,0.06);
+}
+
+.pm-book-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-fav-btn {
+  font-size: 16px;
+  padding: 8px 16px;
+}

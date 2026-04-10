@@ -1,7 +1,6 @@
 // ============================================================
 // js/render.js
-// Property өгөгдлөөс HTML карт үүсгэж DOM-д оруулах логик.
-// Харагдах байдал нь өмнөх hardcoded карттай яг ижил байна.
+// UI компонентууд — PropertyCard, renderModal, renderProperties
 // ============================================================
 
 /**
@@ -36,9 +35,11 @@ function createCardHTML(p) {
 /**
  * Property массивыг property-grid div-д карт болгон оруулна.
  * Өмнөх карт бүрийг устгаж, шинээр зурна.
- * @param {Property[]} properties - харуулах байрнуудын жагсаалт
- * @param {HTMLElement} gridEl    - #property-grid div
- * @param {HTMLElement} noResultsEl - #no-results div
+ *
+ * @param {Property[]} properties
+ * @param {HTMLElement} gridEl
+ * @param {HTMLElement} noResultsEl
+ * @param {Function}    onCardClick
  */
 export function renderProperties(properties, gridEl, noResultsEl) {
   // Өмнөх карт бүрийг устгана (no-results мөр хэвээр үлдэнэ)
@@ -57,9 +58,11 @@ export function renderProperties(properties, gridEl, noResultsEl) {
   })
 }
 
+// ── updateCategoryTabs ─────────────────────────────────────
 /**
- * Category карт дээрх active төлөвийг шинэчлэнэ.
- * @param {string} activeCategory - идэвхтэй category
+ * Category tab-уудын active төлөв шинэчлэнэ.
+ *
+ * @param {string} activeCategory
  */
 export function updateCategoryTabs(activeCategory) {
   document.querySelectorAll(".category-card").forEach((tab) => {
@@ -74,10 +77,12 @@ export function updateCategoryTabs(activeCategory) {
   })
 }
 
+// ── renderModal ────────────────────────────────────────────
 /**
  * Property modal-д дэлгэрэнгүй мэдээлэл оруулна.
- * @param {Property} p    - сонгосон байр
- * @param {HTMLElement} bodyEl - #prop-body div
+ *
+ * @param {Property}    p
+ * @param {HTMLElement} bodyEl
  */
 export function renderModal(p, bodyEl) {
   const amsHTML = p.ams.map((a) => `<span class="pm-am">${a}</span>`).join("")
