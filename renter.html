@@ -2,19 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<!-- renter.html
-     CHANGES:
-     - Logo: raw emoji 🏠 → &#8962; (XHTML Strict does not allow raw emoji outside UTF-8 text nodes;
-       using the standard house character entity is safer and consistent with other pages)
-     - Dark toggle: raw ☾ → &#9790; in HTML; Unicode in JS
-     - Uncommented the script block
-     - Fixed dark mode JS: Unicode \u2600 / \u263E
-     - Restored aria-modal, aria-labelledby, aria-hidden on modals (were stripped with comment)
-     - Modal open/close uses classList.add('m-open') which CSS already handles:
-       .modal-overlay.m-open { display: flex }
-     - Removed li-eye onclick (no li-pass input on this page — was a leftover from old auth modal)
-     - Fixed star ★ → &#9733; for XHTML strict (raw Unicode star is valid but entity is safer)
--->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
 
 <head>
@@ -32,9 +19,7 @@
 
   <div class="container">
 
-    <!-- ===== HEADER ===== -->
     <div class="header">
-      <!-- FIX: was raw emoji 🏠, replaced with &#8962; -->
       <div class="logo">
         <span class="icon-logo">&#8962;</span> AmraltRent
       </div>
@@ -54,7 +39,6 @@
       </div>
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
     <div id="main-content">
       <div class="host-dashboard">
 
@@ -142,7 +126,6 @@
 
   </div>
 
-  <!-- ===== FOOTER ===== -->
   <div class="footer">
     <div class="footer-container">
       <div>
@@ -170,8 +153,6 @@
     <p class="created-by">Made with &#10084; in Mongolia</p>
   </div>
 
-  <!-- ===== ADD / EDIT MODAL =====
-       FIX: aria-modal, aria-labelledby, aria-hidden restored -->
   <div id="add-modal" class="modal-overlay" role="dialog" aria-modal="true"
     aria-labelledby="add-heading" aria-hidden="true">
     <div class="modal-box modal-auth">
@@ -197,8 +178,6 @@
     </div>
   </div>
 
-  <!-- ===== DELETE CONFIRM MODAL =====
-       FIX: aria-modal, aria-labelledby, aria-hidden restored -->
   <div id="del-modal" class="modal-overlay" role="dialog" aria-modal="true"
     aria-labelledby="del-heading" aria-hidden="true">
     <div class="modal-box modal-confirm">
@@ -212,10 +191,8 @@
   </div>
 
   <script type="text/javascript">
-  //<![CDATA[
     function g(id) { return document.getElementById(id); }
 
-    /* ---- Modal helpers ---- */
     function openM(id) {
       g(id).classList.add('m-open');
       g(id).setAttribute('aria-hidden', 'false');
@@ -227,7 +204,6 @@
       document.body.style.overflow = '';
     }
 
-    /* ---- Add / Edit modal ---- */
     g('add-btn').onclick = function() {
       g('add-heading').textContent = '\u0428\u0438\u043d\u044d \u0431\u0430\u0439\u0440 \u043d\u044d\u043c\u044d\u0445';
       openM('add-modal');
@@ -251,13 +227,11 @@
       closeM('add-modal');
     };
 
-    /* ---- Edit (prefill heading) ---- */
     g('edit-hp1').onclick = function() {
       g('add-heading').textContent = '\u0411\u0430\u0439\u0440 \u0437\u0430\u0441\u0430\u0445';
       openM('add-modal');
     };
 
-    /* ---- Delete modal ---- */
     var delTarget = null;
     g('del-hp1').onclick = function() { delTarget = 'hp1'; openM('del-modal'); };
     g('del-no').onclick  = function() { closeM('del-modal'); delTarget = null; };
@@ -279,13 +253,11 @@
       delTarget = null;
     };
 
-    /* ---- Dark mode (FIX: Unicode instead of HTML entity strings) ---- */
     g('dark-toggle').onclick = function() {
       document.body.classList.toggle('dark-mode');
       this.textContent = document.body.classList.contains('dark-mode') ? '\u2600' : '\u263E';
     };
 
-    /* ---- Escape closes all modals ---- */
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeM('add-modal');

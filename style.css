@@ -1,45 +1,6 @@
-/* ============================================================
-   AmraltRent — style.css
-   Modern, minimal Airbnb-style design
-   Author: AmraltRent
-   Version: 2.0
-
-   SECTIONS:
-     1.  Google Fonts Import
-     2.  Custom Properties (Variables)
-     3.  CSS Reset & Base
-     4.  Typography
-     5.  Layout
-     6.  Header & Navigation
-     7.  Category Section
-     8.  Property Grid & Cards
-     9.  Buttons
-     10. Forms & Inputs
-     11. Modals
-     12. Auth Panel
-     13. Host Dashboard
-     14. Footer
-     15. SVG Icons
-     16. Accessibility
-     17. Dark Mode
-     18. Animations & Keyframes
-     19. Media Queries
-   ============================================================ */
-
-
-/* ============================================================
-   1. GOOGLE FONTS IMPORT
-   Noto Sans — broad Unicode coverage including Mongolian Cyrillic
-   Sora       — geometric display font for headings
-   ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@600;700;800&display=swap');
 
 
-/* ============================================================
-   2. CUSTOM PROPERTIES (VARIABLES)
-   All colors, spacing, type, shadow and radius values
-   live here — no hard-coded values elsewhere.
-   ============================================================ */
 :root {
 
   /* -- Brand palette -- */

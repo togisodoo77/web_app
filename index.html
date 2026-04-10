@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<!-- index.html
-     CHANGES:
-     - Uncommented the script block (was entirely commented out — nothing worked)
-     - Fixed dark mode JS: replaced "&#9728;" string with Unicode "\u2600" so
-       textContent actually updates (HTML entities don't work in JS strings)
-     - Added aria-hidden="true" and aria-label to prop-modal
-     - Removed stray //]]> that appeared outside CDATA
--->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="mn" xml:lang="mn">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -32,7 +24,6 @@
     </div>
 
     <div class="container">
-      <!-- ===== HEADER ===== -->
       <div class="header">
         <div class="logo">
           <span class="icon-logo">&#8962;</span> AmraltRent
@@ -59,7 +50,6 @@
         </div>
       </div>
 
-      <!-- ===== HERO + SEARCH ===== -->
       <div class="hero-section">
         <div class="hero-text">
           <h1>Хаана амрахаа олоорой</h1>
@@ -69,7 +59,6 @@
           </p>
         </div>
 
-        <!-- Search: type="text" kept for checkin/checkout per original design -->
         <form
           class="search-form"
           action="index.html"
@@ -143,9 +132,7 @@
         </form>
       </div>
 
-      <!-- ===== MAIN CONTENT ===== -->
       <div id="main-content">
-        <!-- ===== CATEGORIES ===== -->
         <div class="categories">
           <h2>Гол цэс</h2>
           <div class="category-grid">
@@ -248,7 +235,7 @@
       </div>
       <p class="created-by">
         Made with &#10084; in Mongolia &#8212; T.Sodnomdamba &#183;
-        T.Erdenedalai &#183; D.Ariuntuya
+        T.Erdenedalai;
       </p>
     </div>
 
