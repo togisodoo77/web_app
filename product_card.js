@@ -1,9 +1,4 @@
-// ============================================================
-// product_card.js — нүүр хуудсын байрны карт (компонент)
-// Favorite state нь store.js-д төвлөрсөн байна.
-// ============================================================
-
-import { getFavorite, dispatch, subscribe } from "./store.js"
+import { getFavorite, dispatch } from "./store.js"
 
 export function escapeHtml(value) {
   if (value == null) {
@@ -52,78 +47,111 @@ export function syncGridCardFavoriteUI(propertyId, state) {
   }
 }
 
-/**
- * @param {import("./Property.js").Property} property
- * @param {(p: import("./Property.js").Property) => void} onCardClick
- */
-export function createProductCard(property, onCardClick) {
-  const state = getFavorite(property.id)
-  const id = escapeHtml(property.id)
-  const title = escapeHtml(property.title)
-  const loc = escapeHtml(property.loc)
-  const price = escapeHtml(property.price)
-  const rat = escapeHtml(property.rat)
-  const rev = escapeHtml(property.rev)
-  const alt = escapeHtml(property.alt)
-  const imgSrc = escapeHtml(property.img)
-
-  const div = document.createElement("div")
-  div.className = `property-card cat-${property.category}`
-  div.id = `card-${property.id}`
-  div.setAttribute("tabindex", "0")
-  div.setAttribute("role", "button")
-  div.setAttribute("aria-label", `${property.title} — дэлгэрэнгүй харах`)
-  div.setAttribute("data-id", String(property.id))
-
-  div.innerHTML = `
-    <img
-      src="${imgSrc}"
-      alt="${alt}"
-      width="800"
-      height="250"
-      loading="lazy" />
-    <div class="property-info">
-      <h3>${title}</h3>
-      <p>${loc}</p>
-      <p class="price">${price} / шөнө</p>
-      <p class="rating">&#9733; ${rat} (${rev} сэтгэгдэл)</p>
-      <p class="card-hint">Дэлгэрэнгүй харах &#8594;</p>
-      <button type="button" class="fav-btn" aria-label="Хадгалах" data-id="${id}">
-        <span class="fav-icon">&#9825;</span>
-        <span class="fav-count">${state.count}</span>
-      </button>
-    </div>`
-
-  const favBtn = div.querySelector(".fav-btn")
-  const favIcon = div.querySelector(".fav-icon")
-  const favCount = div.querySelector(".fav-count")
-
-  if (state.liked) {
-    applyFavoriteVisuals(favBtn, favIcon, favCount, state)
+export class ProductCardComponent {
+  constructor(property, onCardClick) {
+    this.property = property
+    this.onCardClick = onCardClick
+    this.root = null
+    this.favBtn = null
+    this.favIcon = null
+    this.favCount = null
   }
 
-  favBtn.onclick = function (e) {
-    e.stopPropagation()
-    const next = toggleFavorite(property.id)
-    applyFavoriteVisuals(favBtn, favIcon, favCount, next)
+  getFavoriteState() {
+    return getFavorite(this.property.id)
   }
 
-  div.onclick = function (e) {
-    if (e.target.closest(".fav-btn")) {
-      return
+  buildTemplate() {
+    const state = this.getFavoriteState()
+    const id = escapeHtml(this.property.id)
+    const title = escapeHtml(this.property.title)
+    const loc = escapeHtml(this.property.loc)
+    const price = escapeHtml(this.property.price)
+    const rat = escapeHtml(this.property.rat)
+    const rev = escapeHtml(this.property.rev)
+    const alt = escapeHtml(this.property.alt)
+    const imgSrc = escapeHtml(this.property.img)
+
+    const div = document.createElement("div")
+    div.className = `property-card cat-${this.property.category}`
+    div.id = `card-${this.property.id}`
+    div.setAttribute("tabindex", "0")
+    div.setAttribute("role", "button")
+    div.setAttribute("aria-label", `${this.property.title} — дэлгэрэнгүй харах`)
+    div.setAttribute("data-id", String(this.property.id))
+
+    div.innerHTML = `
+      <img
+        src="${imgSrc}"
+        alt="${alt}"
+        width="800"
+        height="250"
+        loading="lazy" />
+      <div class="property-info">
+        <h3>${title}</h3>
+        <p>${loc}</p>
+        <p class="price">${price} / шөнө</p>
+        <p class="rating">&#9733; ${rat} (${rev} сэтгэгдэл)</p>
+        <p class="card-hint">Дэлгэрэнгүй харах &#8594;</p>
+        <button type="button" class="fav-btn" aria-label="Хадгалах" data-id="${id}">
+          <span class="fav-icon">&#9825;</span>
+          <span class="fav-count">${state.count}</span>
+        </button>
+      </div>`
+
+    return div
+  }
+
+  cacheElements() {
+    this.favBtn = this.root.querySelector(".fav-btn")
+    this.favIcon = this.root.querySelector(".fav-icon")
+    this.favCount = this.root.querySelector(".fav-count")
+  }
+
+  syncFavoriteUI() {
+    applyFavoriteVisuals(
+      this.favBtn,
+      this.favIcon,
+      this.favCount,
+      this.getFavoriteState(),
+    )
+  }
+
+  bindEvents() {
+    this.favBtn.onclick = (e) => {
+      e.stopPropagation()
+      const next = toggleFavorite(this.property.id)
+      applyFavoriteVisuals(this.favBtn, this.favIcon, this.favCount, next)
     }
-    onCardClick(property)
-  }
 
-  div.onkeydown = function (e) {
-    if (e.key === "Enter" || e.key === " ") {
+    this.root.onclick = (e) => {
       if (e.target.closest(".fav-btn")) {
         return
       }
-      e.preventDefault()
-      onCardClick(property)
+      this.onCardClick(this.property)
+    }
+
+    this.root.onkeydown = (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        if (e.target.closest(".fav-btn")) {
+          return
+        }
+        e.preventDefault()
+        this.onCardClick(this.property)
+      }
     }
   }
 
-  return div
+  mount() {
+    this.root = this.buildTemplate()
+    this.cacheElements()
+    this.syncFavoriteUI()
+    this.bindEvents()
+    return this.root
+  }
+}
+
+export function createProductCard(property, onCardClick) {
+  const component = new ProductCardComponent(property, onCardClick)
+  return component.mount()
 }
